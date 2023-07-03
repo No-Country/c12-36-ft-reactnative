@@ -1,34 +1,17 @@
-import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import './App.css'
-
-import Root from './routes/Root'
-import Auth from './routes/Auth'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Root />,
-    children: [
-      {
-        path: 'landing'
-      },
-      {
-        path: 'auth',
-        element: <Auth />
-      },
-      {
-        path: 'home'
-      }
-    ]
-  }
-])
-
-export default function App () {
+const App = () => {
   return (
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element='' />
+        <Route path='/pagina2' element='' />
+        <Route path='/' element='' />
+        <Route path='/' element='' />
+      </Routes>
+    </BrowserRouter>
   )
 }
+
+export default App
