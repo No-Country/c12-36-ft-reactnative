@@ -1,1 +1,0 @@
-En esta carpeta trabajará el equipo de front, cada uno debe crear su rama con su nombreApelido
