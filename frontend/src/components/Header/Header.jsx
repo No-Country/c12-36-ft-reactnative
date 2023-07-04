@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
 import Toolbar from '@mui/material/Toolbar'
 import './header.css'
+import Login from '../Login/Login'
+import Register from '../Register/Register'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
 
@@ -26,7 +28,7 @@ const Header = () => {
   }
 
   return (
-    <AppBar position='static' className='header'>
+    <AppBar className='header'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <img src={logo} alt='logo' width='100px' />
@@ -40,13 +42,20 @@ const Header = () => {
                   <Typography textAlign='center'><Link>{page}</Link></Typography>
                 </MenuItem>
               ))}
+              <Login />
             </Menu>
           </Box>
           <Typography variant='h5' noWrap component='a' sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1, color: 'inherit', textDecoration: 'none' }}> Nombre</Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent='space-around'>
-            {pages.map((page) => (
-              <Link key={page} onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>{page}</Link>
-            ))}
+            <div style={{ display: 'flex', gap: '3rem' }}>
+              {pages.map((page) => (
+                <Link key={page} onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>{page}</Link>
+              ))}
+            </div>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <Login />
+              <Register />
+            </div>
           </Box>
         </Toolbar>
       </Container>
