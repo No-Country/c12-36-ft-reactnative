@@ -4,15 +4,20 @@ html{
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(46deg, #121832 11.98%, rgba(121, 74, 111, 0.35) 44.79%, #140F26 78.13%);
     width: 100vw;
-    height: 100vh;
+    height: 1342px;
+    overflow-x: hidden;
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
 
-* {
+* { 
+    margin: 0;
     padding: 0;
     border: 0;
     -webkit-box-sizing: border-box;
