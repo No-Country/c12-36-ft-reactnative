@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 1236
 
 
 app.get('/', (req, res)=>{
-    res.send({ mensaje: "Hola mundo" })
+    res.send({ mensaje: "Hola Backend" })
 })
 
 
