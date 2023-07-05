@@ -3,7 +3,7 @@ import './register.css'
 
 const Register = () => {
   return (
-    <Button variant='contained' className='btnRegister'>Registrarse</Button>
+    <Button variant='contained' className='btnGradient'>Registrarse</Button>
   )
 }
 
