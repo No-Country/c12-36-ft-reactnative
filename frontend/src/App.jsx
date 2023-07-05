@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './config/temeConfig'
 import './App.css'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
         </Routes>
+        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   )
