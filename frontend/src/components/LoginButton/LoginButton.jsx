@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 const LoginButton = () => {
   return (
-    <Button color='secondary'>
-      <Link to='/login'>
+    <Link to='/login'>
+      <Button color='secondary'>
         Iniciar sesión
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   )
 }
 

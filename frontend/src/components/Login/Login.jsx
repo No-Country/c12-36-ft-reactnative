@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Button, FormControl, TextField } from '@mui/material'
 
 import './Login.css'
@@ -20,6 +21,7 @@ const Login = () => {
                 label='Correo electrónico'
                 variant='standard'
                 color='secondary'
+                autoComplete='off'
                 sx={{
                   input: {
                     textAlign: 'center',
@@ -27,10 +29,17 @@ const Login = () => {
                   },
                   '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
                 }}
+                InputLabelProps={{
+                  style: {
+                    width: '100%',
+                    color: 'gray'
+                  }
+                }}
               />
               <TextField
                 id='standard-basic'
                 label='Contraseña'
+                type='password'
                 variant='standard'
                 color='secondary'
                 sx={{
@@ -40,13 +49,25 @@ const Login = () => {
                   },
                   '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
                 }}
+                InputLabelProps={{
+                  style: {
+                    width: '100%',
+                    color: 'gray'
+                  }
+                }}
               />
               <p className='text-sm text-forgotten'>
                 ¿Olvidaste tu contraseña?
               </p>
-              <Button color='secondary' variant='contained'>
-                Ingresar
-              </Button>
+              <Link to='/'>
+                <Button
+                  color='secondary'
+                  variant='contained'
+                  fullWidth='true'
+                >
+                  Ingresar
+                </Button>
+              </Link>
             </FormControl>
           </article>
           <article className='text-sm'>
