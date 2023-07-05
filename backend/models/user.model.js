@@ -10,32 +10,7 @@ const userSchema = new Schema({
         required: true
     },
 
-    dateOfBirth: {
-        type: Date,
-        required: true
-    },
-
-    dni:{
-        type: Number,
-        required: true
-    },
-
-    nacionality:{
-        type: String,
-        required: true
-    },
-    
-    adress:{
-        type: String,
-        required: true
-    },
-
     email:{
-        type: String,
-        required: true
-    },
-
-    user:{
         type: String,
         required: true
     },
@@ -44,6 +19,16 @@ const userSchema = new Schema({
         type: String, 
         required: true
     }, 
+
+    dateOfBirth: Date,
+    dni: Number,
+    nacionality: String,
+    address: {
+        street: String,
+        number: Number,
+        zipcode: String
+    },
+      isActivated: Boolean,
 })
 
 module.exports = model("User", userSchema)
