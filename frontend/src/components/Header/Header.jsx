@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
 import Toolbar from '@mui/material/Toolbar'
 import './header.css'
-import Login from '../Login/Login'
+import LoginButton from '../LoginButton/LoginButton'
 import Register from '../Register/Register'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
@@ -42,7 +42,7 @@ const Header = () => {
                   <Typography textAlign='center'><Link>{page}</Link></Typography>
                 </MenuItem>
               ))}
-              <Login />
+              <LoginButton />
             </Menu>
           </Box>
           <Typography variant='h5' noWrap component='a' sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1, color: 'inherit', textDecoration: 'none' }}> Nombre</Typography>
@@ -53,7 +53,7 @@ const Header = () => {
               ))}
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <Login />
+              <LoginButton />
               <Register />
             </div>
           </Box>

@@ -1,0 +1,24 @@
+.login-root {
+  /* Auxiliar */
+  /* height: 100vh; */
+  height: 1342px;
+
+  background: linear-gradient(0deg, #241A30 36.79%, #41233D 100%);
+  display: flex;
+  align-items: center;
+}
+
+.login-root main {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.login-root main section:first-of-type {
+  border-radius: 10px;
+  background: rgba(241, 240, 234, 0.12);
+
+  width: 464px;
+  height: 671px;
+  flex-shrink: 0;
+}
