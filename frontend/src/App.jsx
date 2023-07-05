@@ -7,6 +7,7 @@ import theme from './config/temeConfig'
 import Header from './components/Header/Header'
 import Landing from './components/Landing/Landing'
 import Login from './components/Login/Login'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<Login />} />
         </Routes>
+        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   )

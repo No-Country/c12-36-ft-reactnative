@@ -2,8 +2,9 @@ import './infoBanner.css'
 import join from '../../assets/enlace.png'
 import cargar from '../../assets/cargar.png'
 import pagar from '../../assets/pagar.png'
+import Typography from '@mui/material/Typography'
 
-const info = [{ name: 'Unete a nosotros', img: join }, { name: 'Carga dinero', img: cargar }, { name: 'Usalo donde quieras', img: pagar }]
+const info = [{ name: 'Hace rendir tus ahorros', img: join }, { name: 'Enviar y recibir dinero', img: cargar }, { name: 'Pagar tus servicios', img: pagar }]
 
 const InfoBanner = () => {
   return (
@@ -11,8 +12,8 @@ const InfoBanner = () => {
       {
         info.map((inf) => (
           <div className='info' key={inf.name}>
-            <img width='64px' src={inf.img} alt={inf.name} />
-            <h3>{inf.name}</h3>
+            <img width='90px' height='90px' style={{ objectFit: 'contain' }} src={inf.img} alt={inf.name} />
+            <Typography variant='h6' color='secondary'>{inf.name}</Typography>
           </div>
         ))
       }
