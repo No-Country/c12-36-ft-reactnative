@@ -401,7 +401,7 @@
 
 img, picture, video, iframe, figure {
   max-width: 100%;
-  width: 100%;
+  /* width: 100%; */
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
@@ -416,3 +416,4 @@ a {
 
 li {
   list-style-type: none;
+}

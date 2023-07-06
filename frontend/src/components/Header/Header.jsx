@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 import Toolbar from '@mui/material/Toolbar'
 import './header.css'
 import LoginButton from '../LoginButton/LoginButton'
-import Register from '../Register/Register'
+import SignUpButton from '../SignUpButton/SignUpButton'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
 
@@ -56,7 +56,7 @@ const Header = () => {
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <LoginButton />
-              <Register />
+              <SignUpButton />
             </div>
           </Box>
         </Toolbar>

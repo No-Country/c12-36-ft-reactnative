@@ -9,6 +9,7 @@ import Landing from './components/Landing/Landing'
 import Login from './components/Login/Login'
 import Footer from './components/Footer/Footer'
 import Home from './components/Home/Home'
+import SignUp from './components/SignUp/SignUp'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
           <Route path='/home' element={<Home />} />
         </Routes>
         <Footer />
