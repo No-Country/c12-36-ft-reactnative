@@ -5,6 +5,7 @@ import Welcome from '../Welcome/Welcome.jsx'
 import arrowSortImage from '../../assets/fluent_arrow-sort-16-filled.png'
 import Sidebar from '../Sidebar/Sidebar'
 import Divider from '@mui/material/Divider'
+import CardsHome from '../CardsHome/CardsHome'
 
 const Overlap = () => {
   return (
@@ -25,12 +26,11 @@ export const Home = () => {
       <div style={{ display: 'flex' }}>
         <Sidebar />
         <Divider orientation='vertical' flexItem className='divider' />
-        <div className='div'>
+        <div style={{ display: 'flex', margin: 'auto', height: '600px', justifyContent: 'center' }}>
           <Welcome />
-
+          <CardsHome />
         </div>
       </div>
-
     </article>
   )
 }
