@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 80%;
+
   gap: 6rem;
   margin: auto;
   margin-top: 150px;
@@ -399,21 +399,6 @@
   flex-shrink: 0;
 }
 
-img, picture, video, iframe, figure {
-  max-width: 100%;
-  /* width: 100%; */
-  display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-a {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  font-size: inherit;
-}
-
-li {
-  list-style-type: none;
+.divider{
+  background: #f1f0ea;
 }
