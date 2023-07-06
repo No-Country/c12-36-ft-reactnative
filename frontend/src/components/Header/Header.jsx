@@ -30,9 +30,12 @@ const Header = () => {
   return (
     <AppBar className='header'>
       <Container maxWidth='xl'>
-        <Toolbar disableGutters>
+        <Toolbar disableGutters className='toolbar'>
           <Link to='/'>
-            <img src={logo} alt='logo' width='100px' />
+            <div className='logo'>
+              <img src={logo} alt='logo' />
+              Pocketpal
+            </div>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} justifyContent='flex-end'>
             <IconButton size='large' aria-label='account' aria-controls='menu-appbar' aria-haspopup='true' onClick={handleOpenNavMenu} color='inherit'>
