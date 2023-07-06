@@ -12,14 +12,16 @@
 .signup main section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
-  text-align: center;
+  width: 30%;
 }
 
 .signup form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 90%;
 }
 
 .signup h1 {
@@ -27,7 +29,16 @@
   font-size: 2rem;
 }
 
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxes > * > * {
+  width: 100%;
+}
+
 .link-login {
-  color: #8D4EB5;
+  color: #6672DE;
   text-decoration: underline;
 }

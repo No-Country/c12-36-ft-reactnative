@@ -71,11 +71,16 @@ const Login = () => {
             </FormControl>
           </article>
           <article className='text-sm'>
-            ¿No tienes cuenta?
-            <span style={{ color: '#8D4EB5' }}>
-              {' '}
-              Regístrate aquí
-            </span>
+            <p>
+              ¿No tienes cuenta?
+              <Link
+                to='/signup'
+                style={{ color: '#6672DE' }}
+              >
+                {' '}
+                Regístrate aquí
+              </Link>
+            </p>
           </article>
         </section>
         <section>

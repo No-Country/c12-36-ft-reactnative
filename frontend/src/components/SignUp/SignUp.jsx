@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Checkbox, FormControl, FormControlLabel, TextField } from '@mui/material'
+import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material'
 
 import './signUp.css'
 
@@ -12,8 +12,8 @@ const SignUp = () => {
       </aside>
       <main>
         <section>
+          <h1>Crea tu cuenta en Pocketpal</h1>
           <form action=''>
-            <h1>Crea tu cuenta en Pocketpal</h1>
             <TextField
               id='email'
               label='Correo electrónico'
@@ -48,37 +48,43 @@ const SignUp = () => {
                 }
               }}
             />
-            <FormControlLabel
-              required
-              control={
-                <Checkbox
-                  sx={{
-                    color: '#fdfdfe',
-                    '&.Mui-checked': {
-                      color: '#fdfdfe'
-                    }
-                  }}
-                />
-              }
-              label='Soy mayor de 18 años.'
-            />
-            <FormControlLabel
-              required
-              control={
-                <Checkbox
-                  sx={{
-                    color: '#fdfdfe',
-                    '&.Mui-checked': {
-                      color: '#fdfdfe'
-                    }
-                  }}
-                />
-              }
-              label='
-                Acepto los términos y condiciones y estoy de
-                acuerdo con las políticas de privacidad.
-              '
-            />
+            <article className='checkboxes'>
+              <FormControlLabel
+                // required
+                control={
+                  <Checkbox
+                    sx={{
+                      color: '#fdfdfe',
+                      '&.Mui-checked': {
+                        color: '#fdfdfe'
+                      },
+                      height: '3rem',
+                      width: '3rem'
+                    }}
+                  />
+                }
+                label='Soy mayor de 18 años.'
+              />
+              <FormControlLabel
+                // required
+                control={
+                  <Checkbox
+                    sx={{
+                      color: '#fdfdfe',
+                      '&.Mui-checked': {
+                        color: '#fdfdfe'
+                      },
+                      height: '3rem',
+                      width: '3rem'
+                    }}
+                  />
+                }
+                label='
+                  Acepto los términos y condiciones y estoy de
+                  acuerdo con las políticas de privacidad.
+                '
+              />
+            </article>
             <Link to='/home'>
               <Button
                 color='secondary'
@@ -95,9 +101,12 @@ const SignUp = () => {
             <p>
               ¿Ya tienes cuenta?
               {' '}
-              <span className='link-login'>
+              <Link
+                to='/login'
+                className='link-login'
+              >
                 Ingresa aquí
-              </span>
+              </Link>
             </p>
           </article>
         </section>
