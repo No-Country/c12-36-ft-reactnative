@@ -59,7 +59,7 @@ const Login = () => {
               <p className='text-sm text-forgotten'>
                 ¿Olvidaste tu contraseña?
               </p>
-              <Link to='/'>
+              <Link to='/home'>
                 <Button
                   color='secondary'
                   variant='contained'
