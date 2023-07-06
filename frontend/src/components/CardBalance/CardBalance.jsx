@@ -1,6 +1,7 @@
 import React from "react";
 import "./cardBalance.css";
 
+import Welcome from "../Welcome/Welcome.jsx";
 import arrowSortImage from "../../assets/fluent_arrow-sort-16-filled.png";
 import handCashImage from "../../assets/iconoir_hand-cash.png";
 import basilDocumentImage from "../../assets/basil_document-solid.png";
@@ -108,10 +109,12 @@ const Rectangle11 = () => {
 
 export const Home = () => {
   return (
-    <div className="home">
+    <article className="home">
       <div className="div">
-        <div className="text-wrapper">Hola Fernando,</div>
-        <h1 className="h-1">Bienvenido</h1>
+
+<Welcome />
+
+        {/*
         <div className="text-wrapper-2">Nuestros productos</div>
         <div className="text-wrapper-3">Beneficios</div>
         <div className="text-wrapper-4">Historial de movimientos</div>
@@ -119,15 +122,7 @@ export const Home = () => {
         <OverlapGroup />
         <Overlap2 />
         <OverlapGroup2 />
-        <Overlap3>
-          <div className="element">
-            <span className="span">$ </span>
-            <span className="text-wrapper-8">0,00</span>
-          </div>
-          <div className="text-wrapper-9">Saldos totales</div>
-          <div className="text-wrapper-10">Cuentas</div>
-          <div className="text-wrapper-11">Tu CVU</div>
-        </Overlap3>
+        
         <Rectangle />
         <Rectangle2 />
         <Rectangle3 />
@@ -139,8 +134,9 @@ export const Home = () => {
         <Rectangle9 />
         <Rectangle10 />
         <Rectangle11 />
+        */}
       </div>
-    </div>
+    </article>
   );
 };
 

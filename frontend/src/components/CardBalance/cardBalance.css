@@ -1,22 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 .home {
-  background: linear-gradient(
-    46deg,
-    #121832,
-    rgba(71, 45, 75, 1) 44.79%,
-    #140F26 78.13%)
-  ;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  gap: 6rem;
+  margin: auto;
+  margin-top: 150px;
 }
 
 .home .div {
@@ -35,7 +24,7 @@
   left: 393px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 138px;
 }
 
@@ -48,7 +37,7 @@
   left: 389px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 172px;
 }
 
@@ -61,7 +50,7 @@
   left: 393px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 466px;
 }
 
@@ -74,7 +63,7 @@
   left: 393px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 1073px;
 }
 
@@ -87,7 +76,7 @@
   left: 393px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 703px;
 }
 
@@ -98,7 +87,6 @@
   border-radius: 10px;
   height: 70px;
   left: 733px;
-  position: absolute;
   top: 263px;
   width: 154px;
   flex-shrink: 0;
@@ -112,14 +100,14 @@
   left: 49px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 25px;
 }
 
 .home .fluent-arrow-sort {
   height: 34px;
   left: 12px;
-  position: absolute;
+
   top: 18px;
   width: 34px;
   flex-shrink: 0;
@@ -132,7 +120,7 @@
   border-radius: 10px;
   height: 70px;
   left: 903px;
-  position: absolute;
+
   top: 263px;
   width: 154px;
   flex-shrink: 0;
@@ -146,14 +134,14 @@
   left: 54px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 25px;
 }
 
 .home .iconoir-hand-cash {
   height: 24px;
   left: 20px;
-  position: absolute;
+
   top: 22px;
   width: 24px;
   flex-shrink: 0;
@@ -166,7 +154,7 @@
   border-radius: 10px;
   height: 70px;
   left: 733px;
-  position: absolute;
+
   top: 353px;
   width: 154px;
   flex-shrink: 0;
@@ -180,14 +168,14 @@
   left: 40px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 25px;
 }
 
 .home .basil-document-solid {
   height: 24px;
   left: 11px;
-  position: absolute;
+
   top: 23px;
   width: 24px;
   flex-shrink: 0;
@@ -200,7 +188,7 @@
   border-radius: 10px;
   height: 70px;
   left: 903px;
-  position: absolute;
+
   top: 353px;
   width: 154px;
   flex-shrink: 0;
@@ -209,7 +197,7 @@
 .home .streamline-money {
   height: 24px;
   left: 16px;
-  position: absolute;
+
   top: 23px;
   width: 24px;
   flex-shrink: 0;
@@ -223,7 +211,7 @@
   box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.15);
   height: 160px;
   left: 393px;
-  position: absolute;
+
   top: 263px;
   width: 324px;
   flex-shrink: 0;
@@ -237,7 +225,7 @@
   left: 16px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 63px;
 }
 
@@ -262,7 +250,7 @@
   left: 16px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 36px;
 }
 
@@ -274,7 +262,7 @@
   left: 16px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 13px;
 }
 
@@ -286,7 +274,7 @@
   left: 16px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
+
   top: 123px;
 }
 
@@ -295,7 +283,7 @@
   border-radius: 10px;
   height: 130px;
   left: 389px;
-  position: absolute;
+
   top: 530px;
   width: 239px;
   flex-shrink: 0;
@@ -306,7 +294,7 @@
   border-radius: 10px;
   height: 130px;
   left: 393px;
-  position: absolute;
+
   top: 1137px;
   width: 154px;
   flex-shrink: 0;
@@ -317,7 +305,7 @@
   border-radius: 10px;
   height: 130px;
   left: 563px;
-  position: absolute;
+
   top: 1137px;
   width: 154px;
   flex-shrink: 0;
@@ -328,7 +316,7 @@
   border-radius: 10px;
   height: 130px;
   left: 733px;
-  position: absolute;
+
   top: 1137px;
   width: 154px;
   flex-shrink: 0;
@@ -339,7 +327,7 @@
   border-radius: 10px;
   height: 130px;
   left: 903px;
-  position: absolute;
+
   top: 1137px;
   width: 154px;
   flex-shrink: 0;
@@ -350,7 +338,7 @@
   border-radius: 10px;
   height: 130px;
   left: 1073px;
-  position: absolute;
+
   top: 1137px;
   width: 69px;
   flex-shrink: 0;
@@ -361,7 +349,7 @@
   border-radius: 10px;
   height: 65px;
   left: 389px;
-  position: absolute;
+
   top: 767px;
   width: 749px;
   flex-shrink: 0;
@@ -372,7 +360,7 @@
   border-radius: 10px;
   height: 65px;
   left: 389px;
-  position: absolute;
+
   top: 866px;
   width: 749px;
   flex-shrink: 0;
@@ -383,7 +371,7 @@
   border-radius: 10px;
   height: 65px;
   left: 389px;
-  position: absolute;
+
   top: 965px;
   width: 749px;
   flex-shrink: 0;
@@ -394,7 +382,7 @@
   border-radius: 10px;
   height: 130px;
   left: 644px;
-  position: absolute;
+
   top: 530px;
   width: 239px;
   flex-shrink: 0;
@@ -405,7 +393,7 @@
   border-radius: 10px;
   height: 130px;
   left: 900px;
-  position: absolute;
+
   top: 530px;
   width: 239px;
   flex-shrink: 0;
