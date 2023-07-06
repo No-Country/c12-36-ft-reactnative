@@ -1,89 +1,105 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, FormControl, TextField } from '@mui/material'
+import { Button, Checkbox, FormControl, FormControlLabel, TextField } from '@mui/material'
 
 import './signUp.css'
-import logo from '../../assets/logo.png'
-import cardOverPhoneImage from '../../assets/card-over-phone.png'
 
 const SignUp = () => {
   return (
-    <div className='login'>
+    <div className='signup'>
+      <aside>
+        Volver atrás
+      </aside>
       <main>
         <section>
-          <article>
-            <img src={logo} alt='logo' width='150px' />
-          </article>
-          <article>
-            <FormControl className='form'>
-              <TextField
-                id='standard-basic'
-                label='Correo electrónico'
-                variant='standard'
+          <form action=''>
+            <h1>Crea tu cuenta en Pocketpal</h1>
+            <TextField
+              id='email'
+              label='Correo electrónico'
+              variant='outlined'
+              color='secondary'
+              autoComplete='off'
+              // focused
+              sx={{
+                input: {
+                  color: '#fdfdfe',
+                  fontSize: '1rem'
+                },
+                label: {
+                  color: 'gray'
+                }
+              }}
+            />
+            <TextField
+              id='full-name'
+              label='Nombre completo'
+              variant='outlined'
+              color='secondary'
+              autoComplete='off'
+              // focused
+              sx={{
+                input: {
+                  color: '#fdfdfe',
+                  fontSize: '1rem'
+                },
+                label: {
+                  color: 'gray'
+                }
+              }}
+            />
+            <FormControlLabel
+              required
+              control={
+                <Checkbox
+                  sx={{
+                    color: '#fdfdfe',
+                    '&.Mui-checked': {
+                      color: '#fdfdfe'
+                    }
+                  }}
+                />
+              }
+              label='Soy mayor de 18 años.'
+            />
+            <FormControlLabel
+              required
+              control={
+                <Checkbox
+                  sx={{
+                    color: '#fdfdfe',
+                    '&.Mui-checked': {
+                      color: '#fdfdfe'
+                    }
+                  }}
+                />
+              }
+              label='
+                Acepto los términos y condiciones y estoy de
+                acuerdo con las políticas de privacidad.
+              '
+            />
+            <Link to='/home'>
+              <Button
                 color='secondary'
-                autoComplete='off'
+                variant='contained'
                 sx={{
-                  input: {
-                    textAlign: 'center',
-                    color: 'white'
-                  },
-                  '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
+                  color: '#706670'
                 }}
-                InputLabelProps={{
-                  style: {
-                    width: '100%',
-                    color: 'gray'
-                  }
-                }}
-              />
-              <TextField
-                id='standard-basic'
-                label='Contraseña'
-                type='password'
-                variant='standard'
-                color='secondary'
-                sx={{
-                  input: {
-                    textAlign: 'center',
-                    color: 'white'
-                  },
-                  '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
-                }}
-                InputLabelProps={{
-                  style: {
-                    width: '100%',
-                    color: 'gray'
-                  }
-                }}
-              />
-              <p className='text-sm text-forgotten'>
-                ¿Olvidaste tu contraseña?
-              </p>
-              <Link to='/home'>
-                <Button
-                  color='secondary'
-                  variant='contained'
-                  fullWidth='true'
-                >
-                  Ingresar
-                </Button>
-              </Link>
-            </FormControl>
-          </article>
-          <article className='text-sm'>
-            ¿No tienes cuenta?
-            <span style={{ color: '#8D4EB5' }}>
+              >
+                Crear cuenta
+              </Button>
+            </Link>
+          </form>
+          <article>
+            <p>
+              ¿Ya tienes cuenta?
               {' '}
-              Regístrate aquí
-            </span>
+              <span className='link-login'>
+                Ingresa aquí
+              </span>
+            </p>
           </article>
-        </section>
-        <section>
-          <img
-            src={cardOverPhoneImage}
-            alt='card-over-phone'
-            height={671}
-          />
         </section>
       </main>
     </div>
