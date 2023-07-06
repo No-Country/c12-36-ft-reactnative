@@ -17,7 +17,7 @@ const Login = () => {
           <article>
             <FormControl className='form'>
               <TextField
-                id='standard-basic'
+                id='email'
                 label='Correo electrónico'
                 variant='standard'
                 color='secondary'
@@ -37,7 +37,7 @@ const Login = () => {
                 }}
               />
               <TextField
-                id='standard-basic'
+                id='password'
                 label='Contraseña'
                 type='password'
                 variant='standard'

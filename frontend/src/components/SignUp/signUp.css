@@ -4,9 +4,20 @@
   padding-top: 150px;
 }
 
+.link-back {
+  margin-left: 2.5rem;
+  display: flex;
+  gap: .6rem;
+}
+
+.signup aside img {
+  width: 12px;
+}
+
 .signup main {
   display: flex;
   justify-content: center;
+  padding-top: 3rem;
 }
 
 .signup main section {
@@ -21,7 +32,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 90%;
+  width: 80%;
 }
 
 .signup h1 {
@@ -38,7 +49,16 @@
   width: 100%;
 }
 
+.signup .signup-button {
+  text-align: center;
+}
+
 .link-login {
   color: #6672DE;
   text-decoration: underline;
+}
+
+.signup .text-sm {
+  font-size: 13px;
+  font-weight: 300;
 }
