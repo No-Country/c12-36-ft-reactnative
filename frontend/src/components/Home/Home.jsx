@@ -26,7 +26,7 @@ export const Home = () => {
       <div style={{ display: 'flex' }}>
         <Sidebar />
         <Divider orientation='vertical' flexItem className='divider' />
-        <div style={{ display: 'flex', margin: 'auto', height: '600px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
           <Welcome />
           <CardsHome />
         </div>
