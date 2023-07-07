@@ -63,7 +63,7 @@ const Login = () => {
                 <Button
                   color='secondary'
                   variant='contained'
-                  fullWidth='true'
+                  fullWidth
                 >
                   Ingresar
                 </Button>
