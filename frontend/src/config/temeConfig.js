@@ -8,6 +8,11 @@ const theme = createTheme({
     secondary: {
       main: '#f1f0ea'
     }
+  },
+  typography: {
+    button: {
+      textTransform: 'none'
+    }
   }
 })
 

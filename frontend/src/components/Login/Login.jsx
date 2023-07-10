@@ -17,7 +17,7 @@ const Login = () => {
           <article>
             <FormControl className='form'>
               <TextField
-                id='standard-basic'
+                id='email'
                 label='Correo electrónico'
                 variant='standard'
                 color='secondary'
@@ -37,7 +37,7 @@ const Login = () => {
                 }}
               />
               <TextField
-                id='standard-basic'
+                id='password'
                 label='Contraseña'
                 type='password'
                 variant='standard'
@@ -63,7 +63,7 @@ const Login = () => {
                 <Button
                   color='secondary'
                   variant='contained'
-                  fullWidth='true'
+                  fullWidth
                 >
                   Ingresar
                 </Button>
@@ -71,11 +71,16 @@ const Login = () => {
             </FormControl>
           </article>
           <article className='text-sm'>
-            ¿No tienes cuenta?
-            <span style={{ color: '#8D4EB5' }}>
-              {' '}
-              Regístrate aquí
-            </span>
+            <p>
+              ¿No tienes cuenta?
+              <Link
+                to='/signup'
+                style={{ color: '#6672DE' }}
+              >
+                {' '}
+                Regístrate aquí
+              </Link>
+            </p>
           </article>
         </section>
         <section>
