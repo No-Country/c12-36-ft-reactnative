@@ -5,8 +5,18 @@ import { Button, FormControl, TextField } from '@mui/material'
 import './Login.css'
 import logo from '../../assets/logo.png'
 import cardOverPhoneImage from '../../assets/card-over-phone.png'
+import { useForm } from 'react-hook-form'
 
 const Login = () => {
+  const form = useForm({
+    defaultValues: {
+      email: '',
+      password: ''
+    }
+  })
+
+  const { register } = form
+
   return (
     <div className='login'>
       <main>
@@ -15,7 +25,7 @@ const Login = () => {
             <img src={logo} alt='logo' width='150px' />
           </article>
           <article>
-            <FormControl className='form'>
+            <FormControl className='form' noValidate>
               <TextField
                 id='email'
                 label='Correo electrónico'
