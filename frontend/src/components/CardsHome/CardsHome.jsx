@@ -11,8 +11,8 @@ const CardsHome = () => {
     <div className='gridCards'>
       {
             iconCards.map((icon) => (
-              <div className='card'>
-                <img className='cardImage'style={{ width: '24px', objectFit: 'contain' }} src={icon.img} alt={icon.name} />
+              <div className='card' key={icon.name}>
+                <img className='cardImage' style={{ width: '24px', objectFit: 'contain' }} src={icon.img} alt={icon.name} />
                 <Typography variant='p' color='secondary'>{icon.name}</Typography>
               </div>
             ))

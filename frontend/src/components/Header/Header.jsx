@@ -12,7 +12,7 @@ import { Link, useLocation } from 'react-router-dom'
 import Toolbar from '@mui/material/Toolbar'
 import './header.css'
 import LoginButton from '../LoginButton/LoginButton'
-import SignUpButton from '../SignUpButton/SignUpButton'
+import BtnGradient from '../BtnGradient/BtnGradient'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
 
@@ -28,6 +28,7 @@ const Header = () => {
     setAnchorNav(null)
   }
 
+  const register = { text: 'Registrarse', path: '/signup' }
   return (
     <AppBar className='header'>
       <Container maxWidth='xl'>
@@ -51,19 +52,20 @@ const Header = () => {
                       <Typography textAlign='center'><Link>{page}</Link></Typography>
                     </MenuItem>
                   ))}
+
                   <LoginButton />
                 </Menu>
               </Box>
               <Typography variant='h5' noWrap component='a' sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1, color: 'inherit', textDecoration: 'none' }}> Nombre</Typography>
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent='space-around'>
-                <div style={{ display: 'flex', gap: '3rem' }}>
+                <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
                   {pages.map((page) => (
                     <Link key={page} onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>{page}</Link>
                   ))}
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                   <LoginButton />
-                  <SignUpButton />
+                  <BtnGradient prop={register} />
                 </div>
               </Box>
             </>
