@@ -1,9 +1,4 @@
 .home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  gap: 6rem;
   margin: auto;
   margin-top: 150px;
 }
