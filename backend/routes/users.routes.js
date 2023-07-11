@@ -1,5 +1,5 @@
 const Router = require('express')
-const {getUsers, getUserById, editUser,  createUser, deleteUser} =require('../controllers/usersControllers')
+const {getUsers, getUserById, editUser,  createUser, deleteUser, resetPassword, loginUser} =require('../controllers/usersControllers')
 const router = Router()
 const { body } = require('express-validator');
 const {validateErrors }= require('../middlewares/validateErrors');
@@ -37,5 +37,26 @@ editUser)
 
 
 router.delete("/:id", deleteUser)
+
+
+
+router.post("/login",
+[
+    body('email').isEmail().withMessage('El email debe ser un email válido'),
+    body('password').notEmpty().withMessage('La contraseña es obligatoria'),
+    validateErrors
+],
+loginUser)
+
+
+router.patch("/reset/password"
+,[
+    body('email').isEmail().withMessage('El email debe ser un email válido'),
+    body('newPassword').notEmpty().withMessage('La contraseña es obligatoria'),
+    body('newPassword').isLength({min: 6}).withMessage('La contraseña debe tener al menos 6 caracteres'),
+    body('newPassword').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/).withMessage('La contraseña debe tener al menos una mayúscula, una minúscula y un número'),
+    validateErrors
+]
+,resetPassword)
 
 module.exports = router
