@@ -1,11 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
 import { Button, FormControl, TextField } from '@mui/material'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import './Login.css'
 import logo from '../../assets/logo.png'
 import cardOverPhoneImage from '../../assets/card-over-phone.png'
-import { useForm } from 'react-hook-form'
 
 const Login = () => {
   const form = useForm({
@@ -15,7 +15,26 @@ const Login = () => {
     }
   })
 
-  const { register } = form
+  const { register, handleSubmit, formState } = form
+  const { errors } = formState
+
+  const onSubmit = data => console.log(data)
+
+  const muiStyles = {
+    sxInput: {
+      input: {
+        textAlign: 'center',
+        color: 'white'
+      },
+      '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
+    },
+    label: {
+      style: {
+        width: '100%',
+        color: 'gray'
+      }
+    }
+  }
 
   return (
     <div className='login'>
@@ -25,59 +44,51 @@ const Login = () => {
             <img src={logo} alt='logo' width='150px' />
           </article>
           <article>
-            <FormControl className='form' noValidate>
-              <TextField
-                id='email'
-                label='Correo electrónico'
-                variant='standard'
-                color='secondary'
-                autoComplete='off'
-                sx={{
-                  input: {
-                    textAlign: 'center',
-                    color: 'white'
-                  },
-                  '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
-                }}
-                InputLabelProps={{
-                  style: {
-                    width: '100%',
-                    color: 'gray'
-                  }
-                }}
-              />
-              <TextField
-                id='password'
-                label='Contraseña'
-                type='password'
-                variant='standard'
-                color='secondary'
-                sx={{
-                  input: {
-                    textAlign: 'center',
-                    color: 'white'
-                  },
-                  '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
-                }}
-                InputLabelProps={{
-                  style: {
-                    width: '100%',
-                    color: 'gray'
-                  }
-                }}
-              />
+            <FormControl
+              className='form'
+            >
+              <div style={{ height: '4rem' }}>
+                <TextField
+                  label='Correo electrónico'
+                  variant='standard'
+                  color='secondary'
+                  autoComplete='off'
+                  sx={muiStyles.sxInput}
+                  InputLabelProps={muiStyles.label}
+                  {...register('email', {
+                    required: 'Correo requerido.'
+                  })}
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                />
+              </div>
+              <div style={{ height: '4rem' }}>
+                <TextField
+                  label='Contraseña'
+                  variant='standard'
+                  color='secondary'
+                  type='password'
+                  sx={muiStyles.sxInput}
+                  InputLabelProps={muiStyles.label}
+                  {...register('password', {
+                    required: 'Contraseña requerida.'
+                  })}
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                />
+              </div>
               <p className='text-sm text-forgotten'>
                 ¿Olvidaste tu contraseña?
               </p>
-              <Link to='/home'>
-                <Button
-                  color='secondary'
-                  variant='contained'
-                  fullWidth
-                >
-                  Ingresar
-                </Button>
-              </Link>
+              <Button
+                type='button'
+                color='secondary'
+                variant='contained'
+                fullWidth
+                onClick={handleSubmit(onSubmit)}
+              >
+                Ingresar
+              </Button>
             </FormControl>
           </article>
           <article className='text-sm'>
