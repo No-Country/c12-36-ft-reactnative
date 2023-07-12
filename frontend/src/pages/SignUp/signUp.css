@@ -33,6 +33,7 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 80%;
+  align-items: center;
 }
 
 .signup h1 {
@@ -61,4 +62,17 @@
 .signup .text-sm {
   font-size: 13px;
   font-weight: 300;
+}
+
+.error{
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.8rem;
+  color: #DD643E;
+}
+
+.textField{
+  display: flex;
+  position: relative;
+  width: 441px;
 }
