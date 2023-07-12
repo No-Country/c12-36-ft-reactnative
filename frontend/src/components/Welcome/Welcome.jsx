@@ -1,15 +1,19 @@
 import { Typography } from '@mui/material'
+
+import './welcome.css'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import icon1 from '../../assets/fi-sr-eye.png'
 import icon2 from '../../assets/fi-sr-copy.png'
-import './welcome.css'
 
 const iconCard1 = [{ img: icon1 }]
 const iconCard2 = [{ img: icon2 }]
 const Welcome = () => {
+  const { user } = useAuthContext()
+
   return (
     <section style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '150px', margin: 'auto' }}>
       <div>
-        <p className='greetings'>Hola Francisco,</p>
+        <p className='greetings'>Hola {user.firstName},</p>
         <p className='welcome'>Bienvenido</p>
       </div>
       <div className='cardSaldo' style={{ color: '#f1f0ea', display: 'flex', flexDirection: 'column', gap: '1rem', width: '401px', height: '216px', background: '#6D5D6E', padding: '16px', borderRadius: '10px' }}>
