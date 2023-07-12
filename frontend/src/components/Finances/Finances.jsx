@@ -10,7 +10,7 @@ const Finances = () => {
         <p className='ourProducts'>Nuestros productos</p>
       </div>
       <div className='cardsProducts' style={{ display: 'flex', width: '193px', height: '130px', justifyContent: 'center', alignItems: 'center' }}>
-        <div> {/*className='containerCuentas'>*/}
+        <div>
           {
               iconCard1.map((icon) => (
                 <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
