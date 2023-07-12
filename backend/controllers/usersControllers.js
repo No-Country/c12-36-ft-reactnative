@@ -111,13 +111,14 @@ const loginUser = async(req, res)=>{
           const passwordMatch = bcrypt.compareSync(passwordEnterByUser, passwordStoredInDB)
           if(passwordMatch){
 
-         /* const accessToken = jwt.sign({ id: userFind.email }, process.env.SECRET_KEY, {
+
+         const accessToken = jwt.sign({ id: userFind.email }, process.env.SECRET_KEY, {
           expiresIn: process.env.JWT_EXPIRE_LOGIN,
-      });    */                                                                        // descomentar para el token
-    // Enviar una respuesta al cliente
-       /* res.status(200).json({ accessToken });     */                               // descomentar para el token
+      });                                                                         
+      // Enviar una respuesta al cliente
+       res.status(200).json({ accessToken, mensaje: "Usuario logueado con éxito" });                                  
                 
-          res.status(200).send({ mensaje: "Usuario logueado con éxito"})              // comentar para el token
+                  // comentar para el token
           }else{
               res.status(400).send({ mensaje: "Email o Contraseña incorrectos " })
           }
@@ -132,28 +133,23 @@ const loginUser = async(req, res)=>{
 //Reset password
 
 const resetPassword = async (req, res) => {
-  const email = req.body.email; 
-  const newPassword = req.body.newPassword;
-
   try {
-    const user = await Users.findOne({ email: email }); 
-    if (!user) {
-      return res.status(401).json({ message: 'Datos de inicio de sesión incorrectos' });
+    const email = req.body.email;
+    let userFind = await Users.findOne({ email });
+    console.log(userFind);
+    if (userFind) {
+      const password = req.body.password;
+      const salt = bcrypt.genSaltSync(10);
+      const passwordHash = bcrypt.hashSync(password, salt);
+      userFind.password = passwordHash;
+      userFind.save();
+      res.status(200).send({ mensaje: "Contraseña reseteada con exito" });
+    } else {
+      res.status(400).send({ mensaje: "Usuario no encontrado" });
     }
-    
-
-    user.password = newPassword;
-    user.markModified('password');                                        // agregar bcrypt para hashear nueva clave
-    await user.save();
-
-
-    res
-      .status(200).send({ mensaje: "Contraseña cambiada con éxito"});
-
   } catch (error) {
-    res.status(404).send(error);
+    res.send(error);
   }
-
 };
 
 
