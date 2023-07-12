@@ -1,18 +1,18 @@
 import React from 'react'
 import { Divider } from '@mui/material'
 import SidebarPerfil from '../SidebarPerfil/SidebarPerfil'
-import panel from '../../assets/panel.png'
-import cards from '../../assets/tarjetas-de-credito.png'
-import manos from '../../assets/apreton-de-manos.png'
-import moves from '../../assets/iconoir_hand-cash.png'
+import panel from '../../assets/fi-sr-apps.png'
+import cards from '../../assets/fi-sr-credit-card (1).png'
+import manos from '../../assets/fa-solid_hands-helping.png'
+import moves from '../../assets/fi-sr-navigation.png'
 import SidebarComponent from '../SidebarComponent/SidebarComponent'
-import noti from '../../assets/zondicons_notification.png'
-import term from '../../assets/basil_document-solid.png'
-import help from '../../assets/ph_headset-fill.png'
-import tarjeta from '../../assets/tarjeta.png'
+import help from '../../assets/fi-sr-comments.png'
+import settings from '../../assets/fi-sr-settings.png'
+import terms from '../../assets/fi-sr-document.png'
+import tarjeta from '../../assets/fi-sr-credit-card.png'
 
 const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard' }, { name: 'Transacciones', img: tarjeta }, { name: 'Mis tarjetas', img: cards }, { name: 'Servicios', img: manos }, { name: 'Movimientos', img: moves }]
-const sidebarDown = [{ name: 'Ayuda y soporte', img: help }, { name: 'Notificaciones', img: noti }, { name: 'Configuracion', img: term, path: '/home/settings/profile' }]
+const sidebarDown = [{ name: 'Terminos de uso', img: terms }, { name: 'Ayuda y soporte', img: help }, { name: 'Configuraciones', img: settings, path: '/home/settings/profile' }]
 
 const Sidebar = () => {
   return (
