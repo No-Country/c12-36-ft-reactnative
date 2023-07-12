@@ -1,7 +1,7 @@
 import React from 'react'
 import './cardBalance.css'
 
-import Sidebar from '../Sidebar/Sidebar'
+import Sidebar from '../../components/Sidebar/Sidebar'
 import Divider from '@mui/material/Divider'
 import { Outlet } from 'react-router-dom'
 
