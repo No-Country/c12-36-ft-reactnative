@@ -1,8 +1,10 @@
 import { Typography } from '@mui/material'
 import icon1 from '../../assets/fi-sr-hand-holding-heart.png'
+import icon2 from '../../assets/fi-sr-shopping-bag-add.png'
 import './finances.css'
 
 const iconCard1 = [{ name: 'Seguros', img: icon1 }]
+const iconCard2 = [{ name: 'Préstamos', img: icon2 }]
 const Finances = () => {
   return (
     <section className='card1' style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -13,6 +15,30 @@ const Finances = () => {
         <div>
           {
               iconCard1.map((icon) => (
+                <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
+                  <img style={{ objectFit: 'contain' }} src={icon.img} alt={icon.name} />
+                  <Typography variant='p' color='secondary'>{icon.name}</Typography>
+                </div>
+              ))
+          }
+          {
+              iconCard2.map((icon) => (
+                <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
+                  <img style={{ objectFit: 'contain' }} src={icon.img} alt={icon.name} />
+                  <Typography variant='p' color='secondary'>{icon.name}</Typography>
+                </div>
+              ))
+          }
+          {
+              iconCard2.map((icon) => (
+                <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
+                  <img style={{ objectFit: 'contain' }} src={icon.img} alt={icon.name} />
+                  <Typography variant='p' color='secondary'>{icon.name}</Typography>
+                </div>
+              ))
+          }
+          {
+              iconCard2.map((icon) => (
                 <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
                   <img style={{ objectFit: 'contain' }} src={icon.img} alt={icon.name} />
                   <Typography variant='p' color='secondary'>{icon.name}</Typography>

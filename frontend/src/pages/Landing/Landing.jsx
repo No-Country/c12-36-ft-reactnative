@@ -1,9 +1,9 @@
 import Typography from '@mui/material/Typography'
-import InfoBanner from '../InfoBanner/InfoBanner'
+import InfoBanner from '../../components/InfoBanner/InfoBanner'
 import './landing.css'
-import RequestCard from '../RequestCard/RequestCard'
-import Banner from '../Banner/Banner'
-import Benefits from '../Benefits/Benefits'
+import RequestCard from '../../components/RequestCard/RequestCard'
+import Banner from '../../components/Banner/Banner'
+import Benefits from '../../components/Benefits/Benefits'
 
 const Landing = () => {
   return (

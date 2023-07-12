@@ -15,7 +15,7 @@ app.get('/', (req, res)=>{
     res.send({ mensaje: "Hola Backend" })
 })
 
-app.use ('/users', usersRouter)
+app.use ('/api/users', usersRouter)
 
 app.listen(PORT, ()=>{
     initDBConnection();
