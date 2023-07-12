@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 
 import './App.css'
+import { AuthContextProvider } from './context/AuthContext'
 import theme from './config/temeConfig'
+
 import Header from './components/Header/Header'
 import Landing from './pages/Landing/Landing'
 import Login from './pages/Login/Login'
@@ -16,23 +18,25 @@ import Profile from './components/Profile/Profile'
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/home' element={<Home />}>
-            <Route path='/home/dashboard' element={<Dashboard />} />
-            <Route path='/home/settings' element={<Settings />}>
-              <Route path='/home/settings/profile' element={<Profile />} />
+    <AuthContextProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Landing />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/home' element={<Home />}>
+              <Route path='/home/dashboard' element={<Dashboard />} />
+              <Route path='/home/settings' element={<Settings />}>
+                <Route path='/home/settings/profile' element={<Profile />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-        <Footer />
-      </ThemeProvider>
-    </BrowserRouter>
+          </Routes>
+          <Footer />
+        </ThemeProvider>
+      </BrowserRouter>
+    </AuthContextProvider>
   )
 }
 

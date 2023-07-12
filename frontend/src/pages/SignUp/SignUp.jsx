@@ -20,7 +20,7 @@ const SignUp = () => {
     setErrorPass('')
 
     if (pass !== repPass) {
-      setErrorPass('*El email no coincide')
+      setErrorPass('Las contraseñas no coinciden')
     }
     console.log(data)
   }
@@ -33,7 +33,7 @@ const SignUp = () => {
     }
   }, [check18, checkTerms])
 
-  console.log(check18)
+  // console.log(check18)
   return (
     <div className='signup'>
       <aside>
