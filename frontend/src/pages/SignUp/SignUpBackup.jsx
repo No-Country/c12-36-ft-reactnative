@@ -4,12 +4,12 @@ import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 import './signUp.css'
-import { useSignup } from '../../hooks/useSignup'
 import backIcon from '../../assets/back.png'
 
 const SignUp = () => {
-  const signup = useSignup()
   const { register, formState: { errors }, handleSubmit } = useForm()
+  const [pass, setPass] = useState('')
+  const [repPass, setRepPass] = useState('')
   const [errorPass, setErrorPass] = useState('')
   const [check18, setCheck18] = useState(false)
   const [checkTerms, setCheckTerms] = useState(false)
@@ -19,11 +19,10 @@ const SignUp = () => {
     e.preventDefault()
     setErrorPass('')
 
-    if (data.password !== data.passwordRepeat) {
+    if (pass !== repPass) {
       setErrorPass('Las contraseñas no coinciden')
-      return
     }
-    signup(data)
+    console.log(data)
   }
 
   useEffect(() => {
@@ -34,6 +33,7 @@ const SignUp = () => {
     }
   }, [check18, checkTerms])
 
+  // console.log(check18)
   return (
     <div className='signup'>
       <aside>
@@ -131,7 +131,9 @@ const SignUp = () => {
               <TextField
                 id='password'
                 label='Contraseña'
+                defaultValue={pass}
                 aria-invalid={errors.password ? 'true' : 'false'}
+                onChange={(e) => setPass(e.target.value)}
                 variant='outlined'
                 color='secondary'
                 autoComplete='off'
@@ -158,6 +160,8 @@ const SignUp = () => {
                 id='password-repeat'
                 label='Repetir contraseña'
                 variant='outlined'
+                value={repPass}
+                onChange={(e) => setRepPass(e.target.value)}
                 color='secondary'
                 autoComplete='off'
                 type='password'
@@ -171,9 +175,6 @@ const SignUp = () => {
                     color: 'gray'
                   }
                 }}
-                {
-                ...register('passwordRepeat', { required: '*La contraseña debe tener al menos 6 caracteres', pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ })
-              }
               />
               {errorPass && (<p className='error' role='alert'>{errorPass}</p>)}
             </div>
