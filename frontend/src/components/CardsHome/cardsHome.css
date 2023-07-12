@@ -1,32 +1,26 @@
 .gridCards{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
+    align-content: flex-end;
+    grid-gap: 16px;
     padding: 16px;
-    height: 70px;
-    margin: 75px auto;
+    height: 368px;
 }
 
 .card { 
-   background: rgba(241, 240, 234, 0.12);
-   backdrop-filter: blur(10px);
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 12px 30px;
     border-radius: 10px;
-    width: 154px;
-    height: 70px;
-    gap: 8px;
-    line-height: 20px;
-   
+    width: 245px;
+    height: 100px;
+    gap: 14px;
+    background: rgba(241, 240, 234, 0.12);
+    backdrop-filter: blur(26px);
 }
 
-.cardImage {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
+.iconText {
+  color: #FFFFFF;
+  font-family: 'Poppins';
+  font-weight: 600;
 }
-

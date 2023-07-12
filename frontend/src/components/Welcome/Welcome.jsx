@@ -12,7 +12,7 @@ const Welcome = () => {
         <p className='greetings'>Hola Francisco,</p>
         <p className='welcome'>Bienvenido</p>
       </div>
-      <div className='cardSaldo' style={{ color: '#f1f0ea', display: 'flex', flexDirection: 'column', gap: '1rem', width: '324px', heigt: '160px', background: '#6D5D6E', padding: '16px', borderRadius: '10px' }}>
+      <div className='cardSaldo' style={{ color: '#f1f0ea', display: 'flex', flexDirection: 'column', gap: '1rem', width: '401px', height: '216px', background: '#6D5D6E', padding: '16px', borderRadius: '10px' }}>
         <div className='containerCuentas'>
           <div>
             <div style={{ color: '#F1F0EA', fontWeight: '600', fontSize: '14px' }}>Cuentas</div>
