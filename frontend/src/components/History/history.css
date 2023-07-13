@@ -1,0 +1,15 @@
+.transactions {
+  color: #F1F0EA;
+  font-family: "Poppins", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 90px;
+  margin-bottom: 33px;
+}
+
+.cardsTransactions {
+  display: flex;
+  border-radius: 10px;
+  background: rgba(241, 240, 234, 0.12);
+  flex-shrink: 0;
+}

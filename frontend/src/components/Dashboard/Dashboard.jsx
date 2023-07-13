@@ -2,16 +2,20 @@ import React from 'react'
 import Welcome from '../Welcome/Welcome'
 import CardsHome from '../CardsHome/CardsHome'
 import Finances from '../Finances/Finances'
+import History from '../History/History'
+import BenefitsHome from '../BenefitsHome/BenefitsHome'
 
 const Dashboard = () => {
   return (
-  	<div className='wrapper' style={{ margin: '104px' }}>
-		<div style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
+  	<div style={{ margin: '104px' }}>
+		<div style={{ display: 'flex' }}>
 	      <Welcome />
 	      <CardsHome />
 	   	</div>
-	    <div style={{ display: 'flex', margin: 'auto', justifyContent: 'center', flexDirection: 'column' }}>
+	    <div>
 	      <Finances />
+	      <History />
+	      <BenefitsHome />
 	    </div>
 	</div>
   )
