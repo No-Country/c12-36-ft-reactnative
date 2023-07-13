@@ -7,7 +7,7 @@ const {jwtValidation}= require('../middlewares/jwtvalidation');
 
 router.get('/', getUsers)
 
-router.get('/:id', getUserById)
+router.get('/:id', getUserById) 
 
 router.post('/', 
 body('firstName').notEmpty().withMessage('El nombre es obligatorio'),
@@ -35,8 +35,7 @@ body('address.number').notEmpty().withMessage('El número es requerido'),
 body('address.zipcode').notEmpty().withMessage('El código postal es requerido'),
 validateErrors,
 jwtValidation,
-editUser)
-
+editUser)    
 
 router.delete("/:id", jwtValidation, deleteUser)
 
