@@ -2,6 +2,7 @@ import React from 'react'
 import Welcome from '../Welcome/Welcome'
 import CardsHome from '../CardsHome/CardsHome'
 import Finances from '../Finances/Finances'
+
 import History from '../History/History'
 import BenefitsHome from '../BenefitsHome/BenefitsHome'
 

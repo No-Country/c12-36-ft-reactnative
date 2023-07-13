@@ -13,10 +13,15 @@ import Toolbar from '@mui/material/Toolbar'
 import './header.css'
 import LoginButton from '../LoginButton/LoginButton'
 import BtnGradient from '../BtnGradient/BtnGradient'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { Button } from '@mui/material'
+import { useLogout } from '../../hooks/useLogout'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
 
 const Header = () => {
+  const { user } = useAuthContext()
+  const { logout } = useLogout()
   const actualPath = useLocation().pathname
   const [anchorNav, setAnchorNav] = useState(null)
 
@@ -29,6 +34,7 @@ const Header = () => {
   }
 
   const register = { text: 'Registrarse', path: '/signup' }
+  const home = { text: 'Home', path: '/home' }
   return (
     <AppBar className='header'>
       <Container maxWidth='xl'>
@@ -64,11 +70,35 @@ const Header = () => {
                   ))}
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
-                  <LoginButton />
-                  <BtnGradient prop={register} />
+                  {
+                    user
+                      ? <BtnGradient prop={home} />
+                      : (
+                        <>
+                          <LoginButton />
+                          <BtnGradient prop={register} />
+                        </>
+                        )
+                  }
                 </div>
               </Box>
             </>
+          }
+          {
+            user && actualPath !== '/' &&
+              <div
+                style={{
+                  textAlign: 'end',
+                  width: '100%'
+                }}
+              >
+                <Button
+                  color='secondary'
+                  onClick={logout}
+                >
+                  Cerrar sesión
+                </Button>
+              </div>
           }
         </Toolbar>
       </Container>
