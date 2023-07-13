@@ -28,10 +28,11 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
 
     // Verificando si el usuario existe
-    /*const existingUser = await User.findOne({ email });
+    const email = req.body.email;
+    const existingUser = await Users.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Ya existe un usuario con el mismo correo electrónico' });
-    }*/
+    }
     
     const salt = bcrypt.genSaltSync(10); //cantidad de saltos que da para encriptar, entre mas vuelta da es mas segura.
     const passwordHash = bcrypt.hashSync(req.body.password, salt);
@@ -43,15 +44,15 @@ const createUser = async (req, res) => {
         password: passwordHash,
         isActivated: req.body.isActivated || false,
       };
-      const user = Users.create(newUser);
-        /* const accessToken = jwt.sign({ id: userFind.email }, process.env.SECRET_KEY, {
+      const user = await Users.create(newUser);
+          const accessToken = jwt.sign({ id: user.email }, process.env.SECRET_KEY, {
           expiresIn: process.env.JWT_EXPIRE_REGISTER,
-      });    */                                                                        // descomentar para el token
-    // Enviar una respuesta al cliente
-       /* res.status(200).json({ accessToken });     */                               // descomentar para el token
-      res
-        .status(201)
-        .send({ mensaje: "Usuario creado con exito", usuario: newUser });             // COMENTAR PARA EL TOKEN
+      });                                                                           
+     
+      //Enviar una respuesta al cliente
+      res.status(200).json({ usuario: newUser, accessToken, mensaje: "Usuario creado con exito" });                             // descomentar para el token
+      
+      
     } catch (error) {
       res.status(404).send(error);
     }
@@ -118,7 +119,7 @@ const loginUser = async(req, res)=>{
       // Enviar una respuesta al cliente
        res.status(200).json({ accessToken, mensaje: "Usuario logueado con éxito" });                                  
                 
-                  // comentar para el token
+                  
           }else{
               res.status(400).send({ mensaje: "Email o Contraseña incorrectos " })
           }
