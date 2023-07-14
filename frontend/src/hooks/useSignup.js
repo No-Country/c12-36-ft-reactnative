@@ -1,26 +1,3 @@
-// import { useAuthContext } from './useAuthContext'
-
-// export const useSignup = () => {
-//   const { dispatch } = useAuthContext()
-
-//   const signup = async ({ email, firstName, lastName }) => {
-//     const user = {
-//       email,
-//       firstName,
-//       lastName,
-//       token: 'akjsdfljasdlfadsjlfas' // Fake
-//     }
-
-//     // save the user to local storage
-//     localStorage.setItem('user', JSON.stringify(user))
-
-//     // update the auth context
-//     dispatch({ type: 'LOGIN', payload: user })
-//   }
-
-//   return signup
-// }
-
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 
@@ -31,7 +8,7 @@ export const useSignup = () => {
   // Delete after proxy setup:
   const api = 'https://wallet-project-nocountry-backend-production-y.up.railway.app/api'
 
-  const signup = async (data) => {
+  const signup = async ({ email, firstName, lastName, password }) => {
     setIsLoading(true)
     setError(null)
 
@@ -39,9 +16,16 @@ export const useSignup = () => {
     const response = await fetch(api + '/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ email, firstName, lastName, password })
     })
-    const user = await response.json()
+    const responseObject = await response.json()
+    const user = {
+      token: responseObject.accessToken,
+      email: responseObject.usuario.email,
+      firstName: responseObject.usuario.firstName,
+      lastName: responseObject.usuario.lastName,
+      isActivated: responseObject.usuario.isActivated
+    }
 
     if (!response.ok) {
       setIsLoading(false)

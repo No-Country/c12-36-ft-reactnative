@@ -23,7 +23,6 @@ const SignUp = () => {
       setErrorPass('Las contraseñas no coinciden')
       return
     }
-    // console.log(data)
     signup(data)
   }
 
