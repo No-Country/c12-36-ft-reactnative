@@ -54,3 +54,8 @@
 .error{
   color: #DD643E;
 }
+
+.response-error {
+  color: #DD643E;
+  font-size: .8rem;
+}

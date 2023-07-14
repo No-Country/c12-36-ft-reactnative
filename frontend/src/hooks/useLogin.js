@@ -19,19 +19,22 @@ export const useLogin = () => {
       body: JSON.stringify({ email, password })
     })
     const responseObject = await response.json()
-    // Edit after backend updates /login response:
-    const user = {
-      token: responseObject.accessToken,
-      email: responseObject.email,
-      firstName: responseObject.firstName,
-      lastName: responseObject.lastName
-    }
 
     if (!response.ok) {
       setIsLoading(false)
-      setError(responseObject.message)
+      if (responseObject.mensaje) {
+        setError(responseObject.mensaje)
+      } else if (responseObject.errors[0] && responseObject.errors[0].msg) {
+        setError(responseObject.errors[0].msg)
+      }
     }
     if (response.ok) {
+      const user = {
+        token: responseObject.accessToken,
+        email: responseObject.email,
+        firstName: responseObject.firstName,
+        lastName: responseObject.lastName
+      }
       // save the user to local storage
       localStorage.setItem('user', JSON.stringify(user))
 
