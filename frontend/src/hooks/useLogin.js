@@ -22,18 +22,14 @@ export const useLogin = () => {
     // Edit after backend updates /login response:
     const user = {
       token: responseObject.accessToken,
-      // email: responseObject.usuario.email,
-      email,
-      // firstName: responseObject.usuario.firstName,
-      firstName: 'Juan',
-      // lastName: responseObject.usuario.lastName,
-      lastName: 'Pérez'
-      // isActivated: responseObject.usuario.isActivated
+      email: responseObject.email,
+      firstName: responseObject.firstName,
+      lastName: responseObject.lastName
     }
 
     if (!response.ok) {
       setIsLoading(false)
-      setError(responseObject.error)
+      setError(responseObject.message)
     }
     if (response.ok) {
       // save the user to local storage

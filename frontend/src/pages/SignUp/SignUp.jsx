@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material'
+import { Button, Checkbox, CircularProgress, FormControlLabel, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 import './signUp.css'
@@ -8,12 +8,13 @@ import { useSignup } from '../../hooks/useSignup'
 import backIcon from '../../assets/back.png'
 
 const SignUp = () => {
-  const { signup } = useSignup()
+  const { signup, error, isLoading } = useSignup()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
   const [check18, setCheck18] = useState(false)
   const [checkTerms, setCheckTerms] = useState(false)
   const [status, setStatus] = useState(false)
+  // const [error, setError] = useState('')
 
   const onSubmit = (data, e) => {
     e.preventDefault()
@@ -253,6 +254,8 @@ const SignUp = () => {
               </div>
 
             </article>
+            {isLoading && <CircularProgress color='secondary' />}
+            <p className='response-error'>{error}</p>
             <article className='signup-button'>
               <Button
                 className='btnGradient'
@@ -267,7 +270,6 @@ const SignUp = () => {
                 {/* <Link to='/home'>Crear cuenta</Link> */}
 
               </Button>
-
             </article>
           </form>
           <article className='text-sm'>
