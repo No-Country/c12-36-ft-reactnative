@@ -56,9 +56,9 @@ const SignUp = () => {
                 aria-invalid={errors.email ? 'true' : 'false'}
                 variant='outlined'
                 color='secondary'
-                type='email'
+                // type='email'
                 autoComplete='off'
-              // focused
+                // focused
                 sx={{
                   input: {
                     color: '#fdfdfe',
@@ -70,11 +70,17 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register('email', { required: '*El email no puede estar vacío' })
-              }
+                  ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
+                }
               />
-              {errors.email && <p className='error' role='alert'>{errors.email?.message}</p>}
-              {errors.email?.type === 'required'}
+              {
+                errors.email && errors.email.type === 'required' &&
+                  <p className='error' role='alert'>* El email no puede estar vacío</p>
+              }
+              {
+                errors.email && errors.email.type === 'pattern' &&
+                  <p className='error' role='alert'>* Email inválido</p>
+              }
             </div>
 
             <div className='textField' style={{ gap: '16px' }}>
@@ -96,11 +102,17 @@ const SignUp = () => {
                     }
                   }}
                   {
-                  ...register('firstName', { required: '*El nombre es obligatorio', minLength: 3 })
-                }
+                  ...register('firstName', { required: true, minLength: 3 })
+                  }
                 />
-                {errors.firstName && <p className='error' role='alert'>{errors.firstName?.message}</p>}
-                {errors.firstName?.type === 'required'}
+                {
+                  errors.firstName && errors.firstName.type === 'required' &&
+                    <p className='error' role='alert'>* El nombre es obligatorio</p>
+                }
+                {
+                  errors.firstName && errors.firstName.type === 'minLength' &&
+                    <p className='error' role='alert'>* El nombre debe tener al menos 3 caracteres</p>
+                }
               </div>
               <div>
                 <TextField
@@ -120,11 +132,17 @@ const SignUp = () => {
                     }
                   }}
                   {
-                  ...register('lastName', { required: '*El apellido es obligatorio', minLength: 3 })
-                }
+                  ...register('lastName', { required: true, minLength: 3 })
+                  }
                 />
-                {errors.lastName && <p className='error' role='alert'>{errors.lastName?.message}</p>}
-                {errors.lastName?.type === 'required'}
+                {
+                  errors.lastName && errors.lastName.type === 'required' &&
+                    <p className='error' role='alert'>* El apellido es obligatorio</p>
+                }
+                {
+                  errors.lastName && errors.firstlastNameName.type === 'minLength' &&
+                    <p className='error' role='alert'>* El apellido debe tener al menos 3 caracteres</p>
+                }
               </div>
             </div>
             <div className='textField'>
@@ -147,11 +165,24 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register('password', { required: '*La contraseña debe tener al menos 6 caracteres', pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ })
-              }
+                ...register(
+                  'password',
+                  {
+                    required: true,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
+                  })
+                }
               />
-              {errors.password && <p className='error' role='alert'>{errors.password?.message}</p>}
-              {errors.password?.type === 'required'}
+              {
+                errors.password && errors.password.type === 'required' &&
+                  <p className='error' role='alert'>* Contraseña requerida</p>
+              }
+              {
+                errors.password && errors.password.type === 'pattern' &&
+                  <p className='error' role='alert'>
+                    * La contraseña debe incluir al menos: 1 mayúscula, 1 minúscula y un número
+                  </p>
+              }
             </div>
             <div className='textField'>
               <TextField
@@ -172,10 +203,24 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register('passwordRepeat', { required: '*La contraseña debe tener al menos 6 caracteres', pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ })
-              }
+                ...register(
+                  'passwordRepeat',
+                  {
+                    required: true,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
+                  })
+                }
               />
-              {errorPass && (<p className='error' role='alert'>{errorPass}</p>)}
+              {
+                errors.passwordRepeat && errors.passwordRepeat.type === 'required' &&
+                  <p className='error' role='alert'>* Repetir contraseña</p>
+              }
+              {
+                errors.passwordRepeat && errors.passwordRepeat.type === 'pattern' &&
+                  <p className='error' role='alert'>
+                    * La contraseña debe incluir al menos: 1 mayúscula, 1 minúscula y un número
+                  </p>
+              }
             </div>
 
             <article className='checkboxes'>
