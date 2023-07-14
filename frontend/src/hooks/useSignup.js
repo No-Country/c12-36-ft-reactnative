@@ -35,18 +35,11 @@ export const useSignup = () => {
     setIsLoading(true)
     setError(null)
 
-    // // Edit after proxy setup:
-    // const response = await fetch(api + '/users', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // })
-    // const user = await response.json()
-
-    const response = await fetch(api + '/users/64b14eb5c8e69950e3c00304', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-      // body: JSON.stringify(data)
+    // Edit after proxy setup:
+    const response = await fetch(api + '/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     })
     const user = await response.json()
 
