@@ -50,3 +50,7 @@
 .text-forgotten {
   margin: 1rem;
 }
+
+.error{
+  color: #DD643E;
+}

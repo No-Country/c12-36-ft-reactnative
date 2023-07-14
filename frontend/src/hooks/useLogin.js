@@ -8,21 +8,32 @@ export const useLogin = () => {
   // Delete after proxy setup:
   const api = 'https://wallet-project-nocountry-backend-production-y.up.railway.app/api'
 
-  const login = async (email, password) => {
+  const login = async ({ email, password }) => {
     setIsLoading(true)
     setError(null)
 
     // Edit after proxy setup:
-    const response = await fetch(api + '/api/users/login', {
+    const response = await fetch(api + '/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     })
-    const user = await response.json()
+    const responseObject = await response.json()
+    // Edit after backend updates /login response:
+    const user = {
+      token: responseObject.accessToken,
+      // email: responseObject.usuario.email,
+      email,
+      // firstName: responseObject.usuario.firstName,
+      firstName: 'Juan',
+      // lastName: responseObject.usuario.lastName,
+      lastName: 'Pérez'
+      // isActivated: responseObject.usuario.isActivated
+    }
 
     if (!response.ok) {
       setIsLoading(false)
-      setError(user.error)
+      setError(responseObject.error)
     }
     if (response.ok) {
       // save the user to local storage

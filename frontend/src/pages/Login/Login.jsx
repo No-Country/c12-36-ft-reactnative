@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom'
 import './Login.css'
 import logo from '../../assets/logo.png'
 import cardOverPhoneImage from '../../assets/card-over-phone.png'
+import { useLogin } from '../../hooks/useLogin'
 
 const Login = () => {
+  const { login } = useLogin()
   const form = useForm({
     defaultValues: {
       email: '',
@@ -18,7 +20,7 @@ const Login = () => {
   const { register, handleSubmit, formState } = form
   const { errors } = formState
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = data => login(data)
 
   const muiStyles = {
     sxInput: {

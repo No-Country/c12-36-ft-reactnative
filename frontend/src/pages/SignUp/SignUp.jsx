@@ -75,11 +75,11 @@ const SignUp = () => {
               />
               {
                 errors.email && errors.email.type === 'required' &&
-                  <p className='error' role='alert'>* El email no puede estar vacío</p>
+                  <p className='error' role='alert'>*El email no puede estar vacío</p>
               }
               {
                 errors.email && errors.email.type === 'pattern' &&
-                  <p className='error' role='alert'>* Email inválido</p>
+                  <p className='error' role='alert'>*Email inválido</p>
               }
             </div>
 
@@ -107,11 +107,11 @@ const SignUp = () => {
                 />
                 {
                   errors.firstName && errors.firstName.type === 'required' &&
-                    <p className='error' role='alert'>* El nombre es obligatorio</p>
+                    <p className='error' role='alert'>*El nombre es obligatorio</p>
                 }
                 {
                   errors.firstName && errors.firstName.type === 'minLength' &&
-                    <p className='error' role='alert'>* El nombre debe tener al menos 3 caracteres</p>
+                    <p className='error' role='alert'>*Mínimo 3 caracteres</p>
                 }
               </div>
               <div>
@@ -137,11 +137,11 @@ const SignUp = () => {
                 />
                 {
                   errors.lastName && errors.lastName.type === 'required' &&
-                    <p className='error' role='alert'>* El apellido es obligatorio</p>
+                    <p className='error' role='alert'>*El apellido es obligatorio</p>
                 }
                 {
-                  errors.lastName && errors.firstlastNameName.type === 'minLength' &&
-                    <p className='error' role='alert'>* El apellido debe tener al menos 3 caracteres</p>
+                  errors.lastName && errors.lastName.type === 'minLength' &&
+                    <p className='error' role='alert'>*Mínimo 3 caracteres</p>
                 }
               </div>
             </div>
@@ -180,7 +180,7 @@ const SignUp = () => {
               {
                 errors.password && errors.password.type === 'pattern' &&
                   <p className='error' role='alert'>
-                    * La contraseña debe incluir al menos: 1 mayúscula, 1 minúscula y un número
+                    * Debe incluir al menos: 1 mayúscula, 1 minúscula y un número
                   </p>
               }
             </div>
@@ -203,24 +203,10 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register(
-                  'passwordRepeat',
-                  {
-                    required: true,
-                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
-                  })
+                ...register('passwordRepeat', { required: false })
                 }
               />
-              {
-                errors.passwordRepeat && errors.passwordRepeat.type === 'required' &&
-                  <p className='error' role='alert'>* Repetir contraseña</p>
-              }
-              {
-                errors.passwordRepeat && errors.passwordRepeat.type === 'pattern' &&
-                  <p className='error' role='alert'>
-                    * La contraseña debe incluir al menos: 1 mayúscula, 1 minúscula y un número
-                  </p>
-              }
+              <p className='error' role='alert'>{errorPass}</p>
             </div>
 
             <article className='checkboxes'>
