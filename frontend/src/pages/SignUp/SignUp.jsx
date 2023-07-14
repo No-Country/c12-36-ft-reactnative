@@ -8,7 +8,7 @@ import { useSignup } from '../../hooks/useSignup'
 import backIcon from '../../assets/back.png'
 
 const SignUp = () => {
-  const signup = useSignup()
+  const { signup } = useSignup()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
   const [check18, setCheck18] = useState(false)
@@ -23,6 +23,7 @@ const SignUp = () => {
       setErrorPass('Las contraseñas no coinciden')
       return
     }
+    // console.log(data)
     signup(data)
   }
 

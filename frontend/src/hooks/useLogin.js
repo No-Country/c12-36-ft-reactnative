@@ -5,12 +5,15 @@ export const useLogin = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
+  // Delete after proxy setup:
+  const api = 'https://wallet-project-nocountry-backend-production-y.up.railway.app/api'
 
   const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('/api/user/login', {
+    // Edit after proxy setup:
+    const response = await fetch(api + '/api/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
