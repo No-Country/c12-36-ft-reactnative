@@ -15,18 +15,18 @@ export const useLogin = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     })
-    const json = await response.json()
+    const user = await response.json()
 
     if (!response.ok) {
       setIsLoading(false)
-      setError(json.error)
+      setError(user.error)
     }
     if (response.ok) {
       // save the user to local storage
-      localStorage.setItem('user', JSON.stringify(json))
+      localStorage.setItem('user', JSON.stringify(user))
 
       // update the auth context
-      dispatch({ type: 'LOGIN', payload: json })
+      dispatch({ type: 'LOGIN', payload: user })
 
       // update loading state
       setIsLoading(false)
