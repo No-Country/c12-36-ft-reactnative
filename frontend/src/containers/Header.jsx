@@ -75,7 +75,17 @@ const Header = () => {
                 <div style={{ display: 'flex', gap: '1rem' }}>
                   {
                     user
-                      ? <BtnGradient prop={home} />
+                      ? (
+                        <>
+                          <BtnGradient prop={home} />
+                          <Button
+                            color='secondary'
+                            onClick={logout}
+                          >
+                            Salir
+                          </Button>
+                        </>
+                        )
                       : (
                         <>
                           <LoginButton />

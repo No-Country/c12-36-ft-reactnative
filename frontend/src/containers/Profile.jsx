@@ -12,8 +12,10 @@ import localeData from 'dayjs/plugin/localeData'
 import picture from '../assets/picture.svg'
 import camera from '../assets/fi-sr-camera.png'
 import BtnGradient from '../components/BtnGradient'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Profile = () => {
+  const { user } = useAuthContext()
   dayjs.locale('es')
   dayjs.extend(localeData)
   dayjs.extend(customParseFormat)
@@ -43,11 +45,11 @@ const Profile = () => {
       </div>
       <FormControl style={{ gap: '34px' }}>
         <div className='containerLabel'>
-          <FormLabel className='labelInput' id='firstName'>Nombres* <TextField id='firstName' placeholder='Francisco' /></FormLabel>
-          <FormLabel className='labelInput' id='lastname'>Apellidos* <TextField id='lastname' placeholder='Ledesma' /></FormLabel>
+          <FormLabel className='labelInput' id='firstName'>Nombres* <TextField id='firstName' placeholder={user.firstName} /></FormLabel>
+          <FormLabel className='labelInput' id='lastname'>Apellidos* <TextField id='lastname' placeholder={user.lastName} /></FormLabel>
         </div>
         <div className='containerLabel'>
-          <FormLabel className='labelInput' id='email'>Correo electronico* <TextField id='email' placeholder='Franciscoledesma@gmail.com' /></FormLabel>
+          <FormLabel className='labelInput' id='email'>Correo electronico* <TextField id='email' placeholder={user.email} /></FormLabel>
           <FormLabel className='labelInput' id='nacionality'>Nacionalidad* <TextField id='nacionality' placeholder='Argentina' /></FormLabel>
         </div>
         <div className='containerLabel'>

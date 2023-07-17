@@ -19,7 +19,6 @@ import './styles/app.css'
 
 const App = () => {
   const { user } = useAuthContext()
-  user ? console.log('Hay usuario') : console.log('No hay usuario')
 
   return (
     <BrowserRouter>
