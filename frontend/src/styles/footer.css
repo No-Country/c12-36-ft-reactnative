@@ -1,0 +1,33 @@
+.footer {
+    align-items: center;
+    background: #4f4557;
+    color: #F1F0EA;
+    display: flex;
+    flex-direction: column;    
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-top: 1.5rem;
+    padding: 2rem 6rem; 
+    width: 100vw;
+}
+
+.footer_lists {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    width: 100%;
+}
+
+.footer_options li {
+    margin: 0.5rem 0;
+}
+
+.lists_title {
+    font-weight: 500;
+}
+
+.rrss {    
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}

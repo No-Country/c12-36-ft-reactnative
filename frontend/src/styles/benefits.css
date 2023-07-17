@@ -1,0 +1,19 @@
+.benefits_landing {
+    display: flex;
+    flex-direction: column;
+} 
+
+.options_benefits {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.info-benefits{
+    width: 239px;
+    height: 230px;
+    text-align: center;
+    justify-content: space-evenly;
+}

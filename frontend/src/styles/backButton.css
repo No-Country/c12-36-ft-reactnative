@@ -1,0 +1,9 @@
+.link-back {
+    display: flex;
+    gap: .5rem;
+    margin-left: 2.5rem;
+}
+
+.back_arrow {
+    width: 20px;
+}
