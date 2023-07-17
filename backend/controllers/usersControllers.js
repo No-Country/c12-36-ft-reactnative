@@ -70,7 +70,7 @@ const createUser = async (req, res) => {
 };
 
 //Modificar usuario
-const editUser = async (req, res) => {
+const editUser = async (req, res) => { 
   const id = req.params.id;
   const salt = bcrypt.genSaltSync(10);
   const userEdited = {
