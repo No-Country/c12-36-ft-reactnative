@@ -76,3 +76,8 @@
   position: relative;
   width: 441px;
 }
+
+.response-error {
+  color: #DD643E;
+  font-size: .8rem;
+}

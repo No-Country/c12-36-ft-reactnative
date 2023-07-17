@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material'
+import { Button, Checkbox, CircularProgress, FormControlLabel, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 import './signUp.css'
@@ -8,12 +8,13 @@ import { useSignup } from '../../hooks/useSignup'
 import backIcon from '../../assets/back.png'
 
 const SignUp = () => {
-  const signup = useSignup()
+  const { signup, error, isLoading } = useSignup()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
   const [check18, setCheck18] = useState(false)
   const [checkTerms, setCheckTerms] = useState(false)
   const [status, setStatus] = useState(false)
+  // const [error, setError] = useState('')
 
   const onSubmit = (data, e) => {
     e.preventDefault()
@@ -56,9 +57,9 @@ const SignUp = () => {
                 aria-invalid={errors.email ? 'true' : 'false'}
                 variant='outlined'
                 color='secondary'
-                type='email'
+                // type='email'
                 autoComplete='off'
-              // focused
+                // focused
                 sx={{
                   input: {
                     color: '#fdfdfe',
@@ -70,11 +71,17 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register('email', { required: '*El email no puede estar vacío' })
-              }
+                  ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
+                }
               />
-              {errors.email && <p className='error' role='alert'>{errors.email?.message}</p>}
-              {errors.email?.type === 'required'}
+              {
+                errors.email && errors.email.type === 'required' &&
+                  <p className='error' role='alert'>*El email no puede estar vacío</p>
+              }
+              {
+                errors.email && errors.email.type === 'pattern' &&
+                  <p className='error' role='alert'>*Email inválido</p>
+              }
             </div>
 
             <div className='textField' style={{ gap: '16px' }}>
@@ -96,11 +103,17 @@ const SignUp = () => {
                     }
                   }}
                   {
-                  ...register('firstName', { required: '*El nombre es obligatorio', minLength: 3 })
-                }
+                  ...register('firstName', { required: true, minLength: 3 })
+                  }
                 />
-                {errors.firstName && <p className='error' role='alert'>{errors.firstName?.message}</p>}
-                {errors.firstName?.type === 'required'}
+                {
+                  errors.firstName && errors.firstName.type === 'required' &&
+                    <p className='error' role='alert'>*El nombre es obligatorio</p>
+                }
+                {
+                  errors.firstName && errors.firstName.type === 'minLength' &&
+                    <p className='error' role='alert'>*Mínimo 3 caracteres</p>
+                }
               </div>
               <div>
                 <TextField
@@ -120,11 +133,17 @@ const SignUp = () => {
                     }
                   }}
                   {
-                  ...register('lastName', { required: '*El apellido es obligatorio', minLength: 3 })
-                }
+                  ...register('lastName', { required: true, minLength: 3 })
+                  }
                 />
-                {errors.lastName && <p className='error' role='alert'>{errors.lastName?.message}</p>}
-                {errors.lastName?.type === 'required'}
+                {
+                  errors.lastName && errors.lastName.type === 'required' &&
+                    <p className='error' role='alert'>*El apellido es obligatorio</p>
+                }
+                {
+                  errors.lastName && errors.lastName.type === 'minLength' &&
+                    <p className='error' role='alert'>*Mínimo 3 caracteres</p>
+                }
               </div>
             </div>
             <div className='textField'>
@@ -147,11 +166,24 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register('password', { required: '*La contraseña debe tener al menos 6 caracteres', pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ })
-              }
+                ...register(
+                  'password',
+                  {
+                    required: true,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
+                  })
+                }
               />
-              {errors.password && <p className='error' role='alert'>{errors.password?.message}</p>}
-              {errors.password?.type === 'required'}
+              {
+                errors.password && errors.password.type === 'required' &&
+                  <p className='error' role='alert'>* Contraseña requerida</p>
+              }
+              {
+                errors.password && errors.password.type === 'pattern' &&
+                  <p className='error' role='alert'>
+                    * Debe incluir al menos: 1 mayúscula, 1 minúscula y un número
+                  </p>
+              }
             </div>
             <div className='textField'>
               <TextField
@@ -172,10 +204,10 @@ const SignUp = () => {
                   }
                 }}
                 {
-                ...register('passwordRepeat', { required: '*La contraseña debe tener al menos 6 caracteres', pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ })
-              }
+                ...register('passwordRepeat', { required: false })
+                }
               />
-              {errorPass && (<p className='error' role='alert'>{errorPass}</p>)}
+              <p className='error' role='alert'>{errorPass}</p>
             </div>
 
             <article className='checkboxes'>
@@ -222,6 +254,8 @@ const SignUp = () => {
               </div>
 
             </article>
+            {isLoading && <CircularProgress color='secondary' />}
+            <p className='response-error'>{error}</p>
             <article className='signup-button'>
               <Button
                 className='btnGradient'
@@ -236,7 +270,6 @@ const SignUp = () => {
                 {/* <Link to='/home'>Crear cuenta</Link> */}
 
               </Button>
-
             </article>
           </form>
           <article className='text-sm'>

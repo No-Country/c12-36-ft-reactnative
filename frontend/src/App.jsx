@@ -18,7 +18,6 @@ import Profile from './components/Profile/Profile'
 
 const App = () => {
   const { user } = useAuthContext()
-  user ? console.log('Hay usuario') : console.log('No hay usuario')
 
   return (
     <BrowserRouter>
