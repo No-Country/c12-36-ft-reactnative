@@ -2,19 +2,20 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 
-import './App.css'
-import theme from './config/temeConfig'
 import { useAuthContext } from './hooks/useAuthContext'
 
+import theme from './config/temeConfig'
 import Header from './components/Header/Header'
 import Landing from './pages/Landing/Landing'
-import Login from './pages/Login/Login'
+import Login from './pages/Login'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
-import SignUp from './pages/SignUp/SignUp'
+import SignUp from './pages/SignUp'
 import Settings from './components/Settings/Settings'
 import Dashboard from './components/Dashboard/Dashboard'
 import Profile from './components/Profile/Profile'
+
+import './styles/app.css'
 
 const App = () => {
   const { user } = useAuthContext()

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { Button, Checkbox, CircularProgress, FormControlLabel, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
-import './signUp.css'
-import { useSignup } from '../../hooks/useSignup'
-import backIcon from '../../assets/back.png'
+import '../styles/signupForm.css'
+import { useSignup } from '../hooks/useSignup'
+import backIcon from '../assets/back.png'
 
-const SignUp = () => {
+const SignupForm = () => {
   const { signup, error, isLoading } = useSignup()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
@@ -290,4 +290,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignupForm

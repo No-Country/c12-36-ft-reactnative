@@ -3,12 +3,12 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
-import './Login.css'
-import logo from '../../assets/logo.png'
-import cardOverPhoneImage from '../../assets/card-over-phone.png'
-import { useLogin } from '../../hooks/useLogin'
+import '../styles/loginForm.css'
+import logo from '../assets/logo.png'
+import cardOverPhoneImage from '../assets/card-over-phone.png'
+import { useLogin } from '../hooks/useLogin'
 
-const Login = () => {
+const LoginForm = () => {
   const { login, error, isLoading } = useLogin()
   const form = useForm({
     defaultValues: {
@@ -126,4 +126,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginForm
