@@ -28,9 +28,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route
-            path='/login' 
+            path='/login'
             element={
-              user 
+              user
                 ? <Navigate to='/home' />
                 : <Login />
             }
