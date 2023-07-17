@@ -2,6 +2,7 @@ const Users = require("../models/user.model");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const {generarCbuCompleto} = require("../utils/cbuUtils");
 
 //Obtener todos los usuario
 const getUsers = async (req, res) => {
@@ -70,9 +71,38 @@ const createUser = async (req, res) => {
 };
 
 //Modificar usuario
-const editUser = async (req, res) => { 
-  const id = req.params.id;
-  const salt = bcrypt.genSaltSync(10);
+const editUser = async (req, res) => {   
+  const email = req.body.email;
+  const user = await Users.findOne({ email: email });
+
+  // Si el usuario no esta registrado
+  if (!user) {
+    return res.status(404).send({ mensaje: "Usuario no encontrado" });
+  }
+
+  const VerificarSaldo = user.balance;
+  let cbuFinal = user.cbu;
+  let saldoRegalo;
+  // Verificar si el CBU existe para no editarlo
+  if (!cbuFinal) {
+    cbuFinal = await generarCbuCompleto();
+  }  
+  // Verificar si el saldo esta en 0 para entregar regalo de activaciono o recargarle el saldo para que siga operando
+  if (!VerificarSaldo || VerificarSaldo === 0 ) { // si activa por primera vez o el saldo le llega a cero se le regala 10000
+    saldoRegalo =  10000;
+  }   
+  
+  // verificar edad 
+
+  const dateOfBirth = new Date(req.body.dateOfBirth);
+  const currentDate = new Date();
+  const userAge = currentDate.getFullYear() - dateOfBirth.getFullYear();
+
+  // If the user is younger than 18, reject the request
+  if (userAge < 18) {
+    return res.status(400).send({ mensaje: "Debes ser mayor de 18 años para registrarte." });
+  }
+
   const userEdited = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -85,15 +115,20 @@ const editUser = async (req, res) => {
       number: req.body.address.number,
       zipcode: req.body.address.zipcode,
     },
-    isActivated: req.body.isActivated,
+    isActivated: true,
+    cbu: cbuFinal,
+    balance: saldoRegalo || user.balance,
   };
+ 
   try {
-    const user = await Users.findByIdAndUpdate(id, userEdited);
-    res
-      .status(200)
-      .send({ mensaje: "Usuario modificado con éxito", user: userEdited });
+    // Buscar al usuario por su correo electrónico y actualizar los datos
+    const user = await Users.findOneAndUpdate({ email: email }, userEdited);
+    
+   
+    res.status(200).send({ mensaje: "Usuario modificado con éxito", userEdited });
   } catch (error) {
-    res.status(404).send(error);
+    
+    res.status(500).send({ mensaje: "Error al actualizar el usuario" });
   }
 };
 
@@ -128,6 +163,7 @@ const loginUser = async (req, res) => {
           email: userFind.email,
           firstName: userFind.firstName,
           lastName: userFind.lastName,
+          isActivated: userFind.isActivated,
         };
         const accessToken = jwt.sign(
           { id: userFind.email },
