@@ -7,17 +7,17 @@ import BenefitsHome from './BenefitsHome'
 
 const Dashboard = () => {
   return (
-  	<div style={{ margin: '104px' }}>
-		<div style={{ display: 'flex' }}>
-	      <Welcome />
-	      <CardsHome />
-	   	</div>
-	    <div>
-	      <Finances />
-	      <History />
-	      <BenefitsHome />
-	    </div>
-	</div>
+    <div style={{ margin: '104px' }}>
+      <div style={{ display: 'flex' }}>
+        <Welcome />
+        <CardsHome />
+      </div>
+      <div>
+        <Finances />
+        <History />
+        <BenefitsHome />
+      </div>
+    </div>
   )
 }
 
