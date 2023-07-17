@@ -1,0 +1,21 @@
+.login_form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 3rem;
+}
+
+.form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 80%;
+}
+
+.link-register {
+    color: #8D4EB5;
+    margin-left: 0.5rem;
+    text-decoration: none;
+}

@@ -1,0 +1,26 @@
+.info_banner {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+}
+
+.options_banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.info{
+    align-items: center;
+    background: rgba(241, 240, 234, 0.12);
+    backdrop-filter: blur(35px);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 172px;
+    justify-content: center;
+    width: 239px;    
+}

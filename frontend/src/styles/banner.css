@@ -1,0 +1,20 @@
+.banner{
+    align-items: center;
+    border-radius: 10px;
+    display: flex;
+    height: 343px;
+    justify-content: space-around;
+    margin: auto;
+    object-fit: cover;
+    width: 100%;
+}
+
+.banner_title {
+    font-size: 4rem;
+    font-weight: 700;
+    width: 40%;
+}
+
+.cel{
+    height: 529px;
+}

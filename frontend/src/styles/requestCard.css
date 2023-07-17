@@ -1,0 +1,39 @@
+.request_card {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cardLanding {
+    border-radius: 10px;
+    box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07);
+    height: 218px;
+    width: 364px;
+}
+
+.card_aside {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    justify-content: space-between;
+}
+
+.card_aside_text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    height: 135px;
+    line-height: 45px;
+    width: 295px; 
+}
+
+.card_aside_buttons {
+    display: flex; 
+    gap: 2rem;
+}
