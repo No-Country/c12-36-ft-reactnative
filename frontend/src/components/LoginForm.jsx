@@ -1,13 +1,15 @@
-import { Button, FormControl, TextField } from '@mui/material'
+import { Button, CircularProgress, FormControl, TextField } from '@mui/material'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import React from 'react'
-
-import logo from '../assets/logo.png'
 
 import '../styles/loginForm.css'
+import logo from '../assets/logo.png'
+import cardOverPhoneImage from '../assets/card-over-phone.png'
+import { useLogin } from '../hooks/useLogin'
 
 const LoginForm = () => {
+  const { login, error, isLoading } = useLogin()
   const form = useForm({
     defaultValues: {
       email: '',
@@ -18,7 +20,7 @@ const LoginForm = () => {
   const { register, handleSubmit, formState } = form
   const { errors } = formState
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = data => login(data)
 
   const muiStyles = {
     sxInput: {
@@ -37,64 +39,89 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login_form'>
-      <FormControl className='form'>
-        <img src={logo} alt='logo' width='150px' />
-        <TextField
-          id='email'
-          label='Correo electrónico'
-          type='email'
-          variant='outlined'
-          color='secondary'
-          autoComplete='off'
-          sx={muiStyles.sxInput}
-          InputLabelProps={muiStyles.label}
-          {...register('email', {
-            required: 'Correo requerido.'
-          })}
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
-
-        <TextField
-          id='password'
-          label='Contraseña'
-          type='password'
-          variant='outlined'
-          color='secondary'
-          sx={muiStyles.sxInput}
-          InputLabelProps={muiStyles.label}
-          {...register('password', {
-            required: 'Contraseña requerida.'
-          })}
-          error={!!errors.password}
-          helperText={errors.password?.message}
-        />
-        <p className='text-sm text-forgotten'>
-          ¿Olvidaste tu contraseña?
-        </p>
-        <Button
-          className='btnGradient'
-          variant='text'
-          type='submit'
-          color='secondary'
-          onClick={handleSubmit(onSubmit)}
-        >
-          Ingresar
-        </Button>
-      </FormControl>
-
-      <article className='text-sm'>
-        <p>
-          ¿No tienes cuenta?
-          <Link
-            to='/signup'
-            className='link-register'
-          >
-            Regístrate aquí
-          </Link>
-        </p>
-      </article>
+    <div className='login'>
+      <main>
+        <section>
+          <article>
+            <img src={logo} alt='logo' width='150px' />
+          </article>
+          <article>
+            <FormControl
+              className='form'
+            >
+              <div style={{ height: '4rem' }}>
+                <TextField
+                  label='Correo electrónico'
+                  variant='standard'
+                  color='secondary'
+                  autoComplete='off'
+                  sx={muiStyles.sxInput}
+                  InputLabelProps={muiStyles.label}
+                  {...register('email', {
+                    required: 'Correo requerido.'
+                  })}
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                />
+              </div>
+              <div style={{ height: '4rem' }}>
+                <TextField
+                  label='Contraseña'
+                  variant='standard'
+                  color='secondary'
+                  type='password'
+                  sx={muiStyles.sxInput}
+                  InputLabelProps={muiStyles.label}
+                  {...register('password', {
+                    required: 'Contraseña requerida.'
+                  })}
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                />
+              </div>
+              <p className='text-sm text-forgotten'>
+                ¿Olvidaste tu contraseña?
+              </p>
+              {
+                isLoading && (
+                  <div style={{ textAlign: 'center' }}>
+                    <CircularProgress color='secondary' />
+                  </div>
+                )
+              }
+              <p className='response-error'>{error}</p>
+              <Button
+                type='button'
+                color='secondary'
+                variant='contained'
+                fullWidth
+                onClick={handleSubmit(onSubmit)}
+              >
+                Ingresar
+              </Button>
+            </FormControl>
+          </article>
+          <article className='text-sm'>
+            <p>
+              ¿No tienes cuenta?
+              <Link
+                to='/signup'
+                style={{ color: '#6672DE' }}
+              >
+                {' '}
+                Regístrate aquí
+              </Link>
+            </p>
+          </article>
+        </section>
+        <section>
+          <img
+            src={cardOverPhoneImage}
+            alt='card-over-phone'
+            height={671}
+          />
+        </section>
+      </main>
     </div>
   )
 }
