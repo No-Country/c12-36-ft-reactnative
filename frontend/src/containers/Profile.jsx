@@ -1,89 +1,167 @@
-import FormControl from '@mui/material/FormControl'
-import React, { useState } from 'react'
-import TextField from '@mui/material/TextField'
-import FormLabel from '@mui/material/FormLabel'
+import React from 'react'
+import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
+import { useForm } from 'react-hook-form'
+
 import '../styles/profile.css'
-import '../styles/profile.css'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
-import localeData from 'dayjs/plugin/localeData'
-import picture from '../assets/picture.svg'
-import camera from '../assets/fi-sr-camera.png'
-import BtnGradient from '../components/BtnGradient'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useProfile } from '../hooks/useProfile'
 
 const Profile = () => {
   const { user } = useAuthContext()
-  dayjs.locale('es')
-  dayjs.extend(localeData)
-  dayjs.extend(customParseFormat)
+  const { updateProfile, error, isLoading } = useProfile()
+  const { register, formState: { errors }, handleSubmit } = useForm({
+    defaultValues: {
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName
+    }
+  })
 
-  /*   const [provincia, setProvincia] = useState(1) */
-  const [date, setDate] = useState(dayjs())
+  const onSubmit = (data, e) => {
+    e.preventDefault()
+    const alteredData = {
+      ...data,
+      dni: 12345678,
+      dateOfBirth: '1990-12-30',
+      nacionality: 'Argentino',
+      address: {
+        street: 'Calle Falsa',
+        number: 123,
+        zipcode: '1560'
+      }
+    }
 
-  /*   const handleChange = (event) => {
-    setProvincia(event.target.value)
-  } */
-  const changes = { text: 'Guardar cambios' }
+    // console.log(alteredData)
+    updateProfile(alteredData, user.token)
+  }
+
+  // Custom MUI TextField
+  const customSx = {
+    input: {
+      color: '#fdfdfe',
+      fontSize: '1rem'
+    },
+    label: {
+      color: 'gray'
+    }
+  }
+
   return (
-    <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
-      <div>
-        <div className='circlePicture'>
-          <img className='pictureProfile' src={picture} alt=' ' />
-          <div className='pictureCamera'>
-            <img className='camera' src={camera} alt='' />
-          </div>
+    <div className='signup-form'>
+      <main>
+        <section style={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+          <FormControl>
+            <div className='textField'>
+              <FormLabel
+                id='email'
+                className='labelInput'
+              >
+                Correo electrónico*
+                <TextField
+                  id='email'
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  color='secondary'
+                  autoComplete='off'
+                  sx={customSx}
+                  {
+                    ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
+                  }
+                />
+                {
+                  errors.email && errors.email.type === 'required' &&
+                    <p className='error' role='alert'>*El email no puede estar vacío</p>
+                }
+                {
+                  errors.email && errors.email.type === 'pattern' &&
+                    <p className='error' role='alert'>*Email inválido</p>
+                }
+              </FormLabel>
+            </div>
 
-        </div>
+            <div className='textField' style={{ gap: '16px' }}>
+              <div>
+                <TextField
+                  id='firstName'
+                  label='Nombre'
+                  variant='outlined'
+                  aria-invalid={errors.firstName ? 'true' : 'false'}
+                  color='secondary'
+                  autoComplete='off'
+                  sx={{
+                    input: {
+                      color: '#fdfdfe',
+                      fontSize: '1rem'
+                    },
+                    label: {
+                      color: 'gray'
+                    }
+                  }}
+                  {
+                  ...register('firstName', { required: true, minLength: 3 })
+                  }
+                />
+                {
+                  errors.firstName && errors.firstName.type === 'required' &&
+                    <p className='error' role='alert'>*El nombre es obligatorio</p>
+                }
+                {
+                  errors.firstName && errors.firstName.type === 'minLength' &&
+                    <p className='error' role='alert'>*Mínimo 3 caracteres</p>
+                }
+              </div>
 
-        {/* <div>
-          <Button>Subir Foto</Button>
-          <Button>Quitar</Button>
-        </div> */}
-      </div>
-      <FormControl style={{ gap: '34px' }}>
-        <div className='containerLabel'>
-          <FormLabel className='labelInput' id='firstName'>Nombres* <TextField id='firstName' placeholder={user.firstName} /></FormLabel>
-          <FormLabel className='labelInput' id='lastname'>Apellidos* <TextField id='lastname' placeholder={user.lastName} /></FormLabel>
-        </div>
-        <div className='containerLabel'>
-          <FormLabel className='labelInput' id='email'>Correo electronico* <TextField id='email' placeholder={user.email} /></FormLabel>
-          <FormLabel className='labelInput' id='nacionality'>Nacionalidad* <TextField id='nacionality' placeholder='Argentina' /></FormLabel>
-        </div>
-        <div className='containerLabel'>
-          <div className='labelInput'>
-            <FormLabel style={{ color: '#f1f0ea' }} id='dateOfBirth'>Fecha de Nacimiento*</FormLabel>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker defaultValue={date} onChange={(newDate) => setDate(newDate.format('DD/MM/YYYY'))} />
-            </LocalizationProvider>
-          </div>
-          <FormLabel className='labelInput' id='dni'>DNI*<TextField id='dni' placeholder='12345678' /></FormLabel>
-        </div>
+              <div>
+                <TextField
+                  id='lastName'
+                  label='Apellido'
+                  variant='outlined'
+                  aria-invalid={errors.lastName ? 'true' : 'false'}
+                  color='secondary'
+                  autoComplete='off'
+                  sx={{
+                    input: {
+                      color: '#fdfdfe',
+                      fontSize: '1rem'
+                    },
+                    label: {
+                      color: 'gray'
+                    }
+                  }}
+                  {
+                  ...register('lastName', { required: true, minLength: 3 })
+                  }
+                />
+                {
+                  errors.lastName && errors.lastName.type === 'required' &&
+                    <p className='error' role='alert'>*El apellido es obligatorio</p>
+                }
+                {
+                  errors.lastName && errors.lastName.type === 'minLength' &&
+                    <p className='error' role='alert'>*Mínimo 3 caracteres</p>
+                }
+              </div>
+            </div>
 
-        <div className='containerLabel'>
-          <FormLabel className='labelInput' id='address'>Dirección* <TextField id='address' placeholder='Calle' /></FormLabel>
-          <FormLabel className='labelInput' id='number'>Número* <TextField id='number' placeholder='123' /></FormLabel>
+            {isLoading && <CircularProgress color='secondary' />}
+            <p className='response-error'>{error}</p>
 
-        </div>
-        <div className='containerLabel'>
-          {/* <FormLabel id='province'>Provincia*</FormLabel>
-          <Select id='province' value={provincia} displayEmpty onChange={handleChange}>
-            {
-                  provincias.map(provincia => (
-                    <MenuItem value={provincia.id} key={provincia.id}>{provincia.nombre}</MenuItem>
-                  ))
-            }
-          </Select> */}
-          <FormLabel className='labelInput' id='zipCode'>Codigo Postal* <TextField id='zipCode' placeholder='1000' /></FormLabel>
-        </div>
-        <div />
-        <BtnGradient prop={changes} />
-      </FormControl>
-
-    </section>
+            <article className='signup-button'>
+              <Button
+                className='btnGradient'
+                variant='contained'
+                type='submit'
+                sx={{
+                  color: '#F1F0EA'
+                }}
+                onClick={handleSubmit(onSubmit)}
+              >
+                Guardar cambios
+              </Button>
+            </article>
+          </FormControl>
+        </section>
+      </main>
+    </div>
   )
 }
 
