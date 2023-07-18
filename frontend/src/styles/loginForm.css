@@ -1,62 +1,46 @@
-.login {
-    /* height: 100vh; */
-    /* height: 1342px; */
-    /* background: linear-gradient(0deg, #241A30 36.79%, #41233D 100%); */
-    margin-top: 250px;
-    margin-bottom: 336px;
-  
-    display: flex;
-    align-items: center;
-    color: #fdfdfd;
-    text-align: center;
-  }
-  
-  .login main {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-  }
-  
-  .login main section {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-  
-  .login main section:first-of-type {
-    border-radius: 10px;
-    background: rgba(241, 240, 234, 0.12);
-  
-    width: 464px;
-    height: 671px;
-    flex-shrink: 0;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .login img {
-    margin: 4rem auto 0 auto;
-  }
-  
-  .login .text-sm {
-    font-size: 13px;
-    font-weight: 300;
-  }
-  
-  .text-forgotten {
-    margin: 1rem;
-  }
-  
-  .error{
-    color: #DD643E;
-  }
-  
-  .response-error {
-    color: #DD643E;
-    font-size: .8rem;
-  }
-  
+.login_form {
+  align-self: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 12rem;
+  width: 60%;
+}
+
+.login_form .form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 40%;
+}
+
+.login_form h1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.text-sm {
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.link-signup {
+  color: #8D4EB5;
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
+
+.error {
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.8rem;
+  color: #DD643E;
+}
+
+.response-error {
+  color: #DD643E;
+  font-size: .8rem;
+}
