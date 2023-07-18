@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 const SidebarComponent = ({ sidebar }) => {
   return (
-    <ul style={{ gap: '20px' }}>
+    <ul>
       {
             sidebar.map((list) => (
               <li key={list.name}>

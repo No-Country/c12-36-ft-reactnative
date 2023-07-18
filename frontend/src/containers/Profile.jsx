@@ -13,6 +13,7 @@ import picture from '../assets/picture.svg'
 import camera from '../assets/fi-sr-camera.png'
 import BtnGradient from '../components/BtnGradient'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { Typography } from '@mui/material'
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -23,19 +24,16 @@ const Profile = () => {
   /*   const [provincia, setProvincia] = useState(1) */
   const [date, setDate] = useState(dayjs())
 
-  /*   const handleChange = (event) => {
-    setProvincia(event.target.value)
-  } */
   const changes = { text: 'Guardar cambios' }
   return (
     <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
       <div>
         <div className='circlePicture'>
-          <img className='pictureProfile' src={picture} alt=' ' />
+          <Typography variant='p' color='secondary' style={{ fontSize: '5rem' }}>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+          {/* <img className='pictureProfile' src={picture} alt=' ' />
           <div className='pictureCamera'>
             <img className='camera' src={camera} alt='' />
-          </div>
-
+          </div> */}
         </div>
 
         {/* <div>
