@@ -1,0 +1,15 @@
+.containerDashboard{
+    margin: 104px;
+}
+.welcomeCards{
+    display: flex;
+}
+
+@media screen and (max-width:900px) {
+    .containerDashboard{
+        margin:0;
+    }
+    .welcomeCards{
+        flex-direction: column;
+    }
+}

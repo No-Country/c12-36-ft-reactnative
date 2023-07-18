@@ -24,9 +24,10 @@
     .focus{
         gap:1.5rem
     }
-
     .divider{
-        margin-top: 0;
-margin-bottom: 0;
+        display: none;
+    }
+    .sidebarResponsive{
+        display: none;
     }
 }
