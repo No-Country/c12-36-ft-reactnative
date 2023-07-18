@@ -1,47 +1,51 @@
 import { Typography } from '@mui/material'
 
-import face from '../assets/facebook.png'
-import linkedin from '../assets/linkedin.png'
-import insta from '../assets/instagram.png'
-
+import facebook from '../assets/facebook.png'
+import instagram from '../assets/instagram.png'
+import user from '../assets/fi-sr-user.png'
 import '../styles/footer.css'
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <section className='footer'>
       <div className='footer_lists'>
-        <section>
-          {/* <Typography variant='h5' color='secondary'>Pocketpal</Typography> */}
-          <ul className='footer_options'>
+        <div>
+          <Typography variant='h5' color='secondary' style={{ fontWeight: '700' }}>Pocketpal</Typography>
+          <div className='rrss'>
+            <a className='socialIconBack' href='https://www.facebook.com/profile.php?id=100094393616559'>
+              <img className='socialIcon' src={facebook} alt='facebook' width='42px' />
+            </a>
+            <a className='socialIconBack' href='https://www.instagram.com'>
+              <img className='socialIcon' src={instagram} alt='instagram' width='32px' />
+            </a>
+          </div>
+          <ul className='footer_options '>
             <li>Politicas de Privacidad</li>
             <li>Terminos de uso</li>
             <li>Defensa al Consumidor</li>
           </ul>
-        </section>
-        <ul className='footer_options'>
+        </div>
+        <div>
           <p className='lists_title'>Sobre PocketPal</p>
-          <li>Acerca de nosotros</li>
-          <li>Enviar y recibir dinero</li>
-        </ul>
-        <ul className='footer_options'>
+          <ul className='footer_options footer_options--list'>
+            <li>Acerca de nosotros</li>
+            <li>Enviar y recibir dinero</li>
+            <li>Beneficios</li>
+          </ul>
+        </div>
+        <div>
           <p className='lists_title'>Ayuda y Seguridad</p>
-          <li>Contacto</li>
-          <li>Preguntas Frecuentes</li>
-          <li></li>
-        </ul>
+          <ul className='footer_options footer_options--list'>
+            <li>Contacto</li>
+            <li>Preguntas Frecuentes</li>
+            <li>Seguridad</li>
+          </ul>
+        </div>
       </div>
-      <div className='rrss'>
-        <a href="https://www.facebook.com/profile.php?id=100094393616559">
-          <img src={face} alt='facebook' width='32px' />
-        </a>
-        <a href="https://www.instagram.com">
-          <img src={insta} alt='instagram' width='32px' />
-        </a>
-        <a href="https://www.linkedin.com">
-          <img src={linkedin} alt='linkedin' width='32px' />
-        </a>
+      <div className='userIconContainer'>
+        <img width='35px' src={user} alt=' ' />
       </div>
-    </div>
+    </section>
   )
 }
 
