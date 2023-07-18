@@ -5,7 +5,7 @@ import LoginForm from '../components/LoginForm'
 
 import '../styles/login.css'
 
-const Login = () => {  
+const Login = () => {
   return (
     <div className='login'>
       <BackButton />
