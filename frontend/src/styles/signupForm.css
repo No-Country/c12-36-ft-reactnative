@@ -1,84 +1,134 @@
+.signup_form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 3rem;
+}
+
+.signup_form h1 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.signup_form form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 80%;
+}
+
+.textField {
+  display: flex;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.text-sm {
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.link-login {
+  color: #8D4EB5;
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
+
+.error {
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.8rem;
+  color: #DD643E;
+}
+
+
 .signup {
-    min-height: 100vh;
-    color: #F1F0EA;
-    padding-top: 150px;
-  }
-  
-  .link-back {
-    margin-left: 2.5rem;
-    display: flex;
-    gap: .5rem;
-  }
-  
-  .signup aside img {
-    width: 20px;
-  }
-  
-  .signup main {
-    display: flex;
-    justify-content: center;
-    padding-top: 3rem;
-  }
-  
-  .signup main section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 30%;
-  }
-  
-  .signup form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 80%;
-    align-items: center;
-  }
-  
-  .signup h1 {
-    font-weight: 400;
-    font-size: 2rem;
-  }
-  
-  .checkboxes {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .checkboxes > * > * {
-    width: 100%;
-  }
-  
-  .signup .signup-button {
-    text-align: center;
-  }
-  
-  .link-login {
-    color: #6672DE;
-    text-decoration: underline;
-  }
-  
-  .signup .text-sm {
-    font-size: 13px;
-    font-weight: 300;
-  }
-  
-  .error{
-    position: absolute;
-    bottom: -20px;
-    font-size: 0.8rem;
-    color: #DD643E;
-  }
-  
-  .textField{
-    display: flex;
-    position: relative;
-    width: 441px;
-  }
-  
-  .response-error {
-    color: #DD643E;
-    font-size: .8rem;
-  }
-  
+  min-height: 100vh;
+  color: #F1F0EA;
+  padding-top: 150px;
+}
+
+.link-back {
+  margin-left: 2.5rem;
+  display: flex;
+  gap: .5rem;
+}
+
+.signup aside img {
+  width: 20px;
+}
+
+.signup main {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+.signup main section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 30%;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 80%;
+  align-items: center;
+}
+
+.signup h1 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxes > * > * {
+  width: 100%;
+}
+
+.signup .signup-button {
+  text-align: center;
+}
+
+.link-login {
+  color: #6672DE;
+  text-decoration: underline;
+}
+
+.signup .text-sm {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.error{
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.8rem;
+  color: #DD643E;
+}
+
+.textField{
+  display: flex;
+  position: relative;
+  width: 441px;
+}
+
+.response-error {
+  color: #DD643E;
+  font-size: .8rem;
+}
