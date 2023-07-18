@@ -21,7 +21,7 @@ const Sidebar = () => {
         <SidebarComponent sidebar={sidebarUp} />
         <SidebarComponent sidebar={sidebarDown} />
       </div>
-      <Divider className='divider' style={{ width: '219px', marginTop: '2rem', marginBottom: '2rem' }} />
+      <Divider className='divider' style={{ width: '240px', marginTop: '2rem', marginBottom: '2rem' }} />
       <SidebarPerfil />
     </section>
   )

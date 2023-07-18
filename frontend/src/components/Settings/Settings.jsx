@@ -12,7 +12,7 @@ const sidebar = [{ name: 'Perfil', img: portrait, path: '/home/settings/profile'
 const Settings = () => {
   return (
     <>
-      <div style={{ width: '20%' }}>
+      <div style={{ width: '25%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
           <Typography variant='h5' color='secondary' fontSize='1.25rem'>Configuracion de cuenta</Typography>
           <SidebarComponent sidebar={sidebar} />

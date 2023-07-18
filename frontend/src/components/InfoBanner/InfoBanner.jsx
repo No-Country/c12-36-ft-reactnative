@@ -12,8 +12,8 @@ const InfoBanner = () => {
       {
         info.map((inf) => (
           <div className='info' key={inf.name}>
-            <img width='90px' height='90px' style={{ objectFit: 'contain' }} src={inf.img} alt={inf.name} />
-            <Typography variant='h6' color='secondary'>{inf.name}</Typography>
+            <img width='66.062px' height='64px' style={{ objectFit: 'contain' }} src={inf.img} alt={inf.name} />
+            <Typography variant='h6' color='secondary' style={{ display: 'flex', width: '213px', height: '18px', justifyContent: 'center', fontSize: '18px', fontWeight: '500' }}>{inf.name}</Typography>
           </div>
         ))
       }

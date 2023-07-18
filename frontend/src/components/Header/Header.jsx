@@ -1,6 +1,5 @@
 import Container from '@mui/material/Container'
 import AppBar from '@mui/material/AppBar'
-import logo from '../../assets/logo.png'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -40,8 +39,7 @@ const Header = () => {
       <Container maxWidth='xl'>
         <Toolbar disableGutters className='toolbar'>
           <Link to='/'>
-            <div className='logo'>
-              <img src={logo} alt='logo' />
+            <div className='name'>
               Pocketpal
             </div>
           </Link>

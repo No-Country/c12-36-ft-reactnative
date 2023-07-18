@@ -1,3 +1,14 @@
-.cel{
-    height: 529px;
+.image{
+	width: 583px;
+	height: 378px;
+	flex-shrink: 0;
+	
+}
+
+.textInfo {
+	margin-top: 25px;
+	width: 521px;
+	color: #F1F0EA;
+	font-weight: 400;
+
 }
