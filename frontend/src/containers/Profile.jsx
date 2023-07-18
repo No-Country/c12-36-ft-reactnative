@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
+import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
 
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
@@ -20,17 +20,18 @@ const Profile = () => {
   const onSubmit = (data, e) => {
     e.preventDefault()
     const alteredData = {
-      ...data,
-      dni: 12345678,
-      dateOfBirth: '1990-12-30',
-      nacionality: 'Argentino',
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      nacionality: data.nacionality,
+      dateOfBirth: data.dateOfBirth,
+      dni: data.dni,
       address: {
-        street: 'Calle Falsa',
-        number: 123,
-        zipcode: '1560'
+        street: data.street,
+        number: data.number,
+        zipcode: data.zipcode
       }
     }
-
     // console.log(alteredData)
     updateProfile(alteredData, user.token)
   }
@@ -45,7 +46,7 @@ const Profile = () => {
       color: 'gray'
     }
   }
-
+  // Accross all TextFields
   const sharedProperties = {
     color: 'secondary',
     autoComplete: 'off',
@@ -74,7 +75,7 @@ const Profile = () => {
                 <p className='error' role='alert'>*Este campo no puede estar vacío</p>
             }
             {
-              errors.firstName && errors.firstName.type === 'pattern' &&
+              errors.firstName && errors.firstName.type === 'minLength' &&
                 <p className='error' role='alert'>*Nombre inválido</p>
             }
           </FormLabel>
@@ -96,7 +97,7 @@ const Profile = () => {
                 <p className='error' role='alert'>*Este campo no puede estar vacío</p>
             }
             {
-              errors.lastName && errors.lastName.type === 'pattern' &&
+              errors.lastName && errors.lastName.type === 'minLength' &&
                 <p className='error' role='alert'>*Apellido inválido</p>
             }
           </FormLabel>
@@ -125,7 +126,7 @@ const Profile = () => {
             }
           </FormLabel>
           <FormLabel
-            id='email'
+            id='nacionality'
             className='labelInput'
           >
             Nacionalidad*
@@ -139,6 +140,124 @@ const Profile = () => {
             />
             {
               errors.nacionality && errors.nacionality.type === 'required' &&
+                <p className='error' role='alert'>*Este campo no puede estar vacío</p>
+            }
+          </FormLabel>
+        </div>
+        <div className='containerLabel'>
+          <div style={{ width: '50%' }}>
+            <FormLabel
+              id='dateOfBirth'
+              className='labelInput'
+            >
+              Fecha de nacimiento*
+              <TextField
+                id='dateOfBirth'
+                type='date'
+                aria-invalid={errors.dateOfBirth ? 'true' : 'false'}
+                {...sharedProperties}
+                {
+                  ...register('dateOfBirth', {
+                    required: true
+                    // pattern: /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/
+                  })
+                }
+              />
+              {
+                errors.dateOfBirth && errors.dateOfBirth.type === 'required' &&
+                  <p className='error' role='alert'>*Este campo no puede estar vacío</p>
+              }
+              {
+                errors.dateOfBirth && errors.dateOfBirth.type === 'pattern' &&
+                  <p className='error' role='alert'>*Fecha inválida (año-mes-día) </p>
+              }
+            </FormLabel>
+          </div>
+          <FormLabel
+            id='dni'
+            className='labelInput'
+          >
+            DNI*
+            <TextField
+              id='dni'
+              aria-invalid={errors.dni ? 'true' : 'false'}
+              {...sharedProperties}
+              {
+                ...register('dni', { required: true, minLength: 3, pattern: /^[0-9]*$/ })
+              }
+            />
+            {
+              errors.dni && errors.dni.type === 'required' &&
+                <p className='error' role='alert'>*Este campo no puede estar vacío</p>
+            }
+            {
+              errors.dni && errors.dni.type === 'minLength' &&
+                <p className='error' role='alert'>*DNI inválido</p>
+            }
+            {
+              errors.dni && errors.dni.type === 'pattern' &&
+                <p className='error' role='alert'>*Este campo es numérico</p>
+            }
+          </FormLabel>
+        </div>
+        <div className='containerLabel'>
+          <FormLabel
+            id='street'
+            className='labelInput'
+          >
+            Dirección*
+            <TextField
+              id='street'
+              aria-invalid={errors.street ? 'true' : 'false'}
+              {...sharedProperties}
+              {
+                ...register('street', { required: true })
+              }
+            />
+            {
+              errors.street && errors.street.type === 'required' &&
+                <p className='error' role='alert'>*Este campo no puede estar vacío</p>
+            }
+          </FormLabel>
+          <FormLabel
+            id='number'
+            className='labelInput'
+          >
+            Número*
+            <TextField
+              id='number'
+              aria-invalid={errors.number ? 'true' : 'false'}
+              {...sharedProperties}
+              {
+                ...register('number', { required: true, pattern: /^[0-9]*$/ })
+              }
+            />
+            {
+              errors.number && errors.number.type === 'required' &&
+                <p className='error' role='alert'>*Este campo no puede estar vacío</p>
+            }
+            {
+              errors.number && errors.number.type === 'pattern' &&
+                <p className='error' role='alert'>*Este campo es numérico</p>
+            }
+          </FormLabel>
+        </div>
+        <div className='containerLabel'>
+          <FormLabel
+            id='zipcode'
+            className='labelInput'
+          >
+            Código postal*
+            <TextField
+              id='zipcode'
+              aria-invalid={errors.zipcode ? 'true' : 'false'}
+              {...sharedProperties}
+              {
+                ...register('zipcode', { required: true })
+              }
+            />
+            {
+              errors.zipcode && errors.zipcode.type === 'required' &&
                 <p className='error' role='alert'>*Este campo no puede estar vacío</p>
             }
           </FormLabel>
