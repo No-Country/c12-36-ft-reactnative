@@ -5,8 +5,10 @@ import { useAuthContext } from './useAuthContext'
 export const useProfile = () => {
   // const navigate = useNavigate()
   const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
+  const [activation, setActivation] = useState(false)
   const [isLoading, setIsLoading] = useState(null)
-  const { dispatch } = useAuthContext()
+  const { dispatch, user } = useAuthContext()
   // Delete after proxy setup:
   const api = 'https://wallet-project-nocountry-backend-production-y.up.railway.app/api'
 
@@ -42,20 +44,23 @@ export const useProfile = () => {
       setIsLoading(false)
     }
     if (response.ok) {
-      setIsLoading(false)
+      if (!user?.isActivated) {
+        setActivation(true)
+      } else {
+        setActivation(false)
+      }
+      setSuccess(responseObject.mensaje)
 
-      // [Auxiliar] En realidad, éxito
-      setError(responseObject.mensaje)
+      const { email, ...editedUser } = responseObject.userEdited
+      // update the auth context AND save the user to local storage:
+      dispatch({ type: 'UPDATE', payload: editedUser })
 
-      const { email, ...user } = responseObject.userEdited
-
-      // update the auth context AND save the user to local storage
-      dispatch({ type: 'UPDATE', payload: user })
-
-      // // Redirijo al dashboard (hay que rediseñar)
+      // // ¿Redirijo al dashboard? (Habría que diseñar un popup o algo):
       // navigate('/home/dashboard')
+
+      setIsLoading(false)
     }
   }
 
-  return { updateProfile, isLoading, error }
+  return { updateProfile, isLoading, error, success, activation }
 }

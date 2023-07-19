@@ -67,3 +67,18 @@ background: lightgray 50% / cover no-repeat, #D9D9D9;
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
     height: 48px!important;
 }
+
+.response-error {
+  color: #DD643E;
+  font-size: .8rem;
+}
+
+.response-success {
+    color: green;
+    font-size: .8rem;
+}
+
+.response-activation {
+    color: green;
+    font-size: 1rem;
+}

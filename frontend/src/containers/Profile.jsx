@@ -8,7 +8,7 @@ import { useProfile } from '../hooks/useProfile'
 
 const Profile = () => {
   const { user } = useAuthContext()
-  const { updateProfile, error, isLoading } = useProfile()
+  const { updateProfile, error, success, activation, isLoading } = useProfile()
   // Auxiliar (lo de la fecha):
   const shortenedDateOfBirth = user.dateOfBirth?.slice(0, 10)
   const { register, formState: { errors }, handleSubmit } = useForm({
@@ -279,7 +279,19 @@ const Profile = () => {
         </div>
 
         {isLoading && <CircularProgress color='secondary' />}
-        <p className='response-error'>{error}</p>
+        {error && <p className='response-error'>{error}</p>}
+        {success && <p className='response-success'>{success}</p>}
+        {
+          activation &&
+            <>
+              <p className='response-activation'>
+                ¡Felicitaciones! Tu cuenta ha sido activada.
+              </p>
+              <p className='response-activation'>
+                ¡Te regalamos un saldo inicial de $12.000 para que utilices como quieras!
+              </p>
+            </>
+        }
         <article className='signup-button'>
           <Button
             className='btnGradient'
