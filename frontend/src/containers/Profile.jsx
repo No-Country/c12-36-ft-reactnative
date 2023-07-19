@@ -5,6 +5,8 @@ import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mu
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
+import picture from '../assets/picture.svg'
+import camera from '../assets/fi-sr-camera.png'
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -41,7 +43,6 @@ const Profile = () => {
         zipcode: data.zipcode
       }
     }
-    // console.log('alteredData:', alteredData)
     updateProfile(alteredData, user.accessToken)
   }
 
@@ -49,7 +50,8 @@ const Profile = () => {
   const customSx = {
     input: {
       color: '#fdfdfe',
-      fontSize: '1rem'
+      fontSize: '1rem',
+      width: '300px'
     },
     label: {
       color: 'gray'
@@ -63,7 +65,13 @@ const Profile = () => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '80px' }}>
+      <div className='circlePicture'>
+        <img className='pictureProfile' src={picture} alt='' />
+        <div className='pictureCamera'>
+          <img className='camera' src={camera} alt='' />
+        </div>
+      </div>
       <FormControl style={{ gap: '34px' }}>
         <div className='containerLabel'>
           <FormLabel

@@ -8,6 +8,9 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    /* Auxiliares: */
+    margin-bottom: 40px;
+    margin-top: -40px;
 }
 
 .pictureProfile{
