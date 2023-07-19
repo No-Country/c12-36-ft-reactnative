@@ -30,12 +30,15 @@ export const useLogin = () => {
     }
     if (response.ok) {
       const { mensaje, ...user } = responseObject
+      // Avisar al back que el Login todavía no devuelve el DNI.
+      // Luego, deshacer esto:
+      const userWithDNI = { ...user, dni: 12345678 }
 
       // save the user to local storage
-      localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('user', JSON.stringify(userWithDNI))
 
       // update the auth context
-      dispatch({ type: 'LOGIN', payload: user })
+      dispatch({ type: 'LOGIN', payload: userWithDNI })
 
       // update loading state
       setIsLoading(false)

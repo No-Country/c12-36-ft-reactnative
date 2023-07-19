@@ -9,8 +9,8 @@ import { useProfile } from '../hooks/useProfile'
 const Profile = () => {
   const { user } = useAuthContext()
   const { updateProfile, error, isLoading } = useProfile()
-  // Auxiliar (no debería jugar así con la fecha):
-  const shortenedDateOfBirth = user.dateOfBirth.slice(0, 10)
+  // Auxiliar (lo de la fecha):
+  const shortenedDateOfBirth = user.dateOfBirth?.slice(0, 10)
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName,
@@ -78,6 +78,7 @@ const Profile = () => {
               {
                 ...register('firstName', { required: true, minLength: 3 })
               }
+              disabled={user.isActivated}
             />
             {
               errors.firstName && errors.firstName.type === 'required' &&
@@ -100,6 +101,7 @@ const Profile = () => {
               {
                 ...register('lastName', { required: true, minLength: 3 })
               }
+              disabled={user.isActivated}
             />
             {
               errors.lastName && errors.lastName.type === 'required' &&
@@ -147,6 +149,7 @@ const Profile = () => {
               {
                 ...register('nacionality', { required: true })
               }
+              disabled={user.isActivated}
             />
             {
               errors.nacionality && errors.nacionality.type === 'required' &&
@@ -172,6 +175,7 @@ const Profile = () => {
                     // pattern: /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/
                   })
                 }
+                disabled={user.isActivated}
               />
               {
                 errors.dateOfBirth && errors.dateOfBirth.type === 'required' &&
@@ -195,6 +199,7 @@ const Profile = () => {
               {
                 ...register('dni', { required: true, minLength: 3, pattern: /^[0-9]*$/ })
               }
+              disabled={user.isActivated}
             />
             {
               errors.dni && errors.dni.type === 'required' &&
