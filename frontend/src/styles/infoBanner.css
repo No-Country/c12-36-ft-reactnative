@@ -1,26 +1,52 @@
-.info_banner {
+.infoBanner {
     display: flex;
-    flex-direction: column;
-    padding: 3rem 0;
-}
-
-.options_banner {
-    display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    padding-top: 3rem;
-    width: 100%;
+
 }
 
-.info{
-    align-items: center;
-    background: rgba(241, 240, 234, 0.12);
-    backdrop-filter: blur(35px);
+.info {
+    width: 298px;
+    height: 206px;
     border-radius: 10px;
+    background: rgba(241, 240, 234, 0.12);
+    backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    height: 172px;
+    align-items: center;
     justify-content: center;
-    width: 239px;    
+    gap: 29px;
+
+}
+
+.iconInfoBanner {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+}
+
+.textIconInfoBanner {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media screen and (max-width:900px) {
+    .infoBanner {
+        gap: 11px;
+    }
+
+    .info {
+        width: 102px;
+        height: 73px;
+        gap: 11px;
+        border-radius: 4px;
+    }
+
+    .iconInfoBanner {
+        width: 29px;
+        height: 29px;
+    }
+
+    .textIconInfoBanner {
+        font-size: 8px;
+    }
 }
