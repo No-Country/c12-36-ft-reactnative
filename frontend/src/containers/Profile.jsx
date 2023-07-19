@@ -35,11 +35,6 @@ const Profile = () => {
             <img className='camera' src={camera} alt='' />
           </div> */}
         </div>
-
-        {/* <div>
-          <Button>Subir Foto</Button>
-          <Button>Quitar</Button>
-        </div> */}
       </div>
       <FormControl style={{ gap: '34px' }}>
         <div className='containerLabel'>

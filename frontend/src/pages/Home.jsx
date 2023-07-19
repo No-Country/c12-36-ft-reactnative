@@ -12,7 +12,7 @@ export const Home = () => {
       <div className='sidebarResponsive'>
         <Sidebar />
       </div>
-      <Divider orientation='vertical' flexItem className='divider' />
+      <Divider orientation='vertical' flexItem className='dividerVertical' />
       <Outlet />
     </div>
   )

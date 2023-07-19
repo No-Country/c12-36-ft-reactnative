@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .focus{
@@ -15,11 +16,13 @@
     width: 219px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    background: #f1f0ea;
 }
 
 @media screen and (max-width: 900px) {
     .sidebar{
         width: 100%;
+
     }
     .focus{
         gap:1.5rem

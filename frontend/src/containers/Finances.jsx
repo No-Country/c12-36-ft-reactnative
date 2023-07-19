@@ -11,25 +11,22 @@ const Finances = () => {
       <div>
         <p className='ourProducts'>Nuestros productos</p>
       </div>
-      <div style={{ display:'flex', gap:'16px' }}>
+      <div style={{ display: 'flex', gap: '16px' }}>
         {iconCard.map((icon) => (
-          <div className='cardsProducts' style={{ width: '193px', height: '130px' }} key={icon.name} >
+          <div className='cardsProducts' style={{ width: '193px', height: '130px' }} key={icon.name}>
             <div className='iconImage1'>
-              <img style={{ width:'24px', height:'24px' }} src={icon.img} alt={icon.name} />
+              <img style={{ width: '24px', height: '24px' }} src={icon.img} alt={icon.name} />
               <Typography variant='p' color='secondary'>{icon.name}</Typography>
             </div>
-        </div>
-          )
+          </div>
         )
-      }
+        )}
         {lastIconCard.map((icon) => (
           <div className='cardsProducts' style={{ width: '88px', height: '130px' }} key={icon.name}>
-            <div className='iconImage1'>
-            </div>
+            <div className='iconImage1' />
           </div>
-          )
         )
-      }
+        )}
       </div>
     </section>
   )

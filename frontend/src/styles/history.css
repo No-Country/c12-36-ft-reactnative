@@ -12,4 +12,52 @@
   border-radius: 10px;
   background: rgba(241, 240, 234, 0.12);
   flex-shrink: 0;
+  width: 923px;
+  height: 65px;
 }
+
+.containerHistory{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.emptyTransaction{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: rgba(241, 240, 234, 0.12);
+  align-items: center;
+  width: 95%;
+  padding: 20px;
+  border-radius: 10px;
+}
+.transactions{
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 16px;
+}
+
+/* @media screen and (max-width:900px) {
+  .transactions{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 16px;
+  }
+
+  .emptyTransaction{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background: rgba(241, 240, 234, 0.12);
+    align-items: center;
+    width: 95%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .containerHistory{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+} */

@@ -19,7 +19,7 @@
   backdrop-filter: blur(26px);
 }
 
-.cardResponsive {
+.containerCards {
   display: none;
 }
 
@@ -34,6 +34,7 @@
     grid-gap: 0;
     display: flex;
     justify-content: space-around;
+    height: max-content;
   }
 
   .card {

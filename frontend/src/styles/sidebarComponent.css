@@ -3,9 +3,7 @@
     object-fit: contain;
 }
 
-.sidebar{
-    gap: 20px;
-}
+
 
 .btnSidebar{
     display: flex;

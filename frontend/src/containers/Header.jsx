@@ -36,6 +36,7 @@ const Header = () => {
     setAnchorNav(null)
   }
 
+  const pages = ['Nosotros', 'Beneficios', 'Ayuda']
   const register = { text: 'Registrarse', path: '/signup' }
   const home = { text: 'Home', path: '/home' }
   return (
@@ -76,9 +77,23 @@ const Header = () => {
                 <Link to='/'>
                   <div className='logo'>Pocketpal</div>
                 </Link>
+                <ul className='listNav'>
+                  {
+                  pages.map(name => (
+                    <li key={name}>{name}</li>
+                  ))
+                }
+                </ul>
                 <div>
-                  <img src={bell} alt=' ' />
+                  <img className='notifications' src={bell} alt=' ' />
+                  <div className='perfilHeader'>
+                    <div className='circlePictureHeader'>
+                      <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+                    </div>
+                    <Link to='/home/dashboard' className='btnGradient btnGradient--header'>Ir a mi panel</Link>
+                  </div>
                 </div>
+
               </Container>
               )
         }

@@ -13,8 +13,8 @@ const Dashboard = () => {
         <Welcome />
         <CardsHome />
       </div>
-      <div>
-        <Finances />
+      <div className='historyBenefits'>
+        {/* <Finances /> */}
         <History />
         <BenefitsHome />
       </div>
