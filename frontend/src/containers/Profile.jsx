@@ -9,6 +9,8 @@ import picture from '../assets/picture.svg'
 import camera from '../assets/fi-sr-camera.png'
 
 import BtnGradient from '../components/BtnGradient'
+import { Typography } from '@mui/material'
+
 
 const Profile = () => {
   const { user } = useAuthContext()
