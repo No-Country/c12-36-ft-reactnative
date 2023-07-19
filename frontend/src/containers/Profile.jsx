@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
+import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
 
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
@@ -9,8 +9,6 @@ import picture from '../assets/picture.svg'
 import camera from '../assets/fi-sr-camera.png'
 
 import BtnGradient from '../components/BtnGradient'
-import { Typography } from '@mui/material'
-
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -49,7 +47,6 @@ const Profile = () => {
     }
     updateProfile(alteredData, user.accessToken)
   }
-
 
   const changes = { text: 'Guardar cambios' }
   return (
@@ -306,7 +303,7 @@ const Profile = () => {
           </Button>
         </article>
       </FormControl>
-    </div>
+    </section>
   )
 }
 
