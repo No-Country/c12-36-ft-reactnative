@@ -19,12 +19,14 @@ const Sidebar = () => {
   const { logout } = useLogout()
 
   return (
+
     <section className='sidebar'>
       <div className='focus'>
         <SidebarComponent sidebar={sidebarUp} />
         <SidebarComponent sidebar={sidebarDown} />
       </div>
       <Divider className='divider' />
+
       <Button style={{ display: 'flex', gap: '8px' }} onClick={logout}><img src={close} /><Typography color='secondary'>Cerrar sesión</Typography></Button>
     </section>
   )

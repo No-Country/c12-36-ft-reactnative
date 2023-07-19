@@ -15,6 +15,7 @@ const Dashboard = () => {
       </div>
       <div className='historyBenefits'>
         {/* <Finances /> */}
+
         <History />
         <BenefitsHome />
       </div>

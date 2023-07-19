@@ -41,6 +41,7 @@ const Header = () => {
   const home = { text: 'Home', path: '/home' }
   return (
     <AppBar className='header'>
+
       {/* <Container maxWidth='xl' style={{ display: 'flex', alignItems: 'center' }}> */}
 
       {
@@ -103,6 +104,7 @@ const Header = () => {
         {
             actualPath === '/' &&
               <>
+
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent='space-around'>
                   <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
                     {pages.map((page) => (

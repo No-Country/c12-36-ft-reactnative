@@ -7,9 +7,10 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
 import picture from '../assets/picture.svg'
 import camera from '../assets/fi-sr-camera.png'
+
 import BtnGradient from '../components/BtnGradient'
-import { useAuthContext } from '../hooks/useAuthContext'
 import { Typography } from '@mui/material'
+
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -49,23 +50,6 @@ const Profile = () => {
     updateProfile(alteredData, user.accessToken)
   }
 
-  // Custom MUI TextField
-  const customSx = {
-    input: {
-      color: '#fdfdfe',
-      fontSize: '1rem',
-      width: '300px'
-    },
-    label: {
-      color: 'gray'
-    }
-  }
-  // Accross all TextFields
-  const sharedProperties = {
-    color: 'secondary',
-    autoComplete: 'off',
-    sx: customSx
-  }
 
   const changes = { text: 'Guardar cambios' }
   return (
@@ -77,6 +61,7 @@ const Profile = () => {
           <div className='pictureCamera'>
             <img className='camera' src={camera} alt='' />
           </div> */}
+
         </div>
       </div>
       <FormControl style={{ gap: '34px' }}>
