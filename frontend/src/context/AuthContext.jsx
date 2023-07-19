@@ -15,7 +15,6 @@ export const authReducer = (state, action) => {
         ...state.user,
         ...action.payload
       }
-      // console.log('updatedUser:', updatedUser)
       // save the user to local storage
       localStorage.setItem('user', JSON.stringify(updatedUser))
       return { user: updatedUser }

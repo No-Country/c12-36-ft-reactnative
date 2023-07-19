@@ -26,6 +26,8 @@ export const useProfile = () => {
     const responseObject = await response.json()
 
     if (!response.ok) {
+      // Avisar al back que estandarice la
+      // propiedad de mensaje-error
       if (responseObject.message) {
         setError(responseObject.message)
       } else if (responseObject.mensaje) {
@@ -45,24 +47,8 @@ export const useProfile = () => {
       // [Auxiliar] En realidad, éxito
       setError(responseObject.mensaje)
 
-      const editedUser = responseObject.userEdited
+      const { email, ...user } = responseObject.userEdited
 
-      const user = {
-        firstName: editedUser.firstName,
-        lastName: editedUser.lastName,
-        nacionality: editedUser.nacionality,
-        dateOfBirth: editedUser.dateOfBirth,
-        dni: editedUser.dni,
-        address: {
-          street: editedUser.address.street,
-          number: editedUser.address.number,
-          zipcode: editedUser.address.zipcode
-        },
-        isActivated: editedUser.isActivated,
-        // New:
-        cbu: editedUser.cbu,
-        balance: editedUser.balance
-      }
       // update the auth context AND save the user to local storage
       dispatch({ type: 'UPDATE', payload: user })
 

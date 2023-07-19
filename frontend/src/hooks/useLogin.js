@@ -29,12 +29,8 @@ export const useLogin = () => {
       }
     }
     if (response.ok) {
-      const user = {
-        token: responseObject.accessToken,
-        email: responseObject.email,
-        firstName: responseObject.firstName,
-        lastName: responseObject.lastName
-      }
+      const { mensaje, ...user } = responseObject
+
       // save the user to local storage
       localStorage.setItem('user', JSON.stringify(user))
 

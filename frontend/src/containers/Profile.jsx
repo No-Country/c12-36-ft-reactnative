@@ -9,13 +9,16 @@ import { useProfile } from '../hooks/useProfile'
 const Profile = () => {
   const { user } = useAuthContext()
   const { updateProfile, error, isLoading } = useProfile()
+  // Auxiliar (no debería jugar así con la fecha):
+  const shortenedDateOfBirth = user.dateOfBirth.slice(0, 10)
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
       nacionality: user.nacionality,
-      dateOfBirth: user.dateOfBirth,
+      // dateOfBirth: user.dateOfBirth,
+      dateOfBirth: shortenedDateOfBirth,
       dni: user.dni,
       street: user.address?.street,
       number: user.address?.number,
@@ -39,7 +42,7 @@ const Profile = () => {
       }
     }
     // console.log('alteredData:', alteredData)
-    updateProfile(alteredData, user.token)
+    updateProfile(alteredData, user.accessToken)
   }
 
   // Custom MUI TextField
