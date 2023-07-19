@@ -33,7 +33,7 @@ const Welcome = () => {
         </div>
         <div style={{ color: '#F1F0EA', display: 'flex', fontSize: '48px', fontWeight: '700' }}>
           <span>$ </span>
-          <span>0,00</span>
+          <span>{user.balance}</span>
         </div>
         <div className='containerCVU'>
           <div className='cvu' style={{ fontSize: '14px' }}>Tu CVU</div>

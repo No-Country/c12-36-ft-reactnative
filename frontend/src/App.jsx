@@ -27,9 +27,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route
-            path='/login' 
+            path='/login'
             element={
-              user 
+              user
                 ? <Navigate to='/home' />
                 : <Login />
             }
@@ -50,7 +50,14 @@ const App = () => {
                 : <Navigate to='/' />
             }
           >
-            <Route path='/home/dashboard' element={<Dashboard />} />
+            <Route
+              path='/home/dashboard'
+              element={
+                user?.isActivated
+                  ? <Dashboard />
+                  : <Navigate to='/home/settings/profile' />
+              }
+            />
             <Route path='/home/settings' element={<Settings />}>
               <Route path='/home/settings/profile' element={<Profile />} />
             </Route>
