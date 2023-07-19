@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
+import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
 
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
