@@ -11,9 +11,15 @@ const Profile = () => {
   const { updateProfile, error, isLoading } = useProfile()
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
-      email: user.email,
       firstName: user.firstName,
-      lastName: user.lastName
+      lastName: user.lastName,
+      email: user.email,
+      nacionality: user.nacionality,
+      dateOfBirth: user.dateOfBirth,
+      dni: user.dni,
+      street: user.address?.street,
+      number: user.address?.number,
+      zipcode: user.address?.zipcode
     }
   })
 
@@ -32,7 +38,7 @@ const Profile = () => {
         zipcode: data.zipcode
       }
     }
-    // console.log(alteredData)
+    // console.log('alteredData:', alteredData)
     updateProfile(alteredData, user.token)
   }
 
@@ -115,6 +121,7 @@ const Profile = () => {
               {
                 ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
               }
+              disabled
             />
             {
               errors.email && errors.email.type === 'required' &&
