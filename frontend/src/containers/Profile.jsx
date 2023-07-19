@@ -7,6 +7,9 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
 import picture from '../assets/picture.svg'
 import camera from '../assets/fi-sr-camera.png'
+import BtnGradient from '../components/BtnGradient'
+import { useAuthContext } from '../hooks/useAuthContext'
+import { Typography } from '@mui/material'
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -64,12 +67,16 @@ const Profile = () => {
     sx: customSx
   }
 
+  const changes = { text: 'Guardar cambios' }
   return (
-    <div style={{ padding: '80px' }}>
-      <div className='circlePicture'>
-        <img className='pictureProfile' src={picture} alt='' />
-        <div className='pictureCamera'>
-          <img className='camera' src={camera} alt='' />
+    <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
+      <div>
+        <div className='circlePicture'>
+          <Typography variant='p' color='secondary' style={{ fontSize: '5rem' }}>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+          {/* <img className='pictureProfile' src={picture} alt=' ' />
+          <div className='pictureCamera'>
+            <img className='camera' src={camera} alt='' />
+          </div> */}
         </div>
       </div>
       <FormControl style={{ gap: '34px' }}>
