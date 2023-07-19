@@ -8,9 +8,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    /* Auxiliares: */
-    margin-bottom: 40px;
-    margin-top: -40px;
 }
 
 .pictureProfile{
@@ -42,7 +39,7 @@ background: lightgray 50% / cover no-repeat, #D9D9D9;
 .labelInput{
     display: flex;
     flex-direction: column;
-    /* width: 40%; */
+    width: 40%;
     color: #f1f0ea!important;
     font-size: 0.8rem;
     font-weight: 400;
@@ -69,19 +66,4 @@ background: lightgray 50% / cover no-repeat, #D9D9D9;
 }
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
     height: 48px!important;
-}
-
-.response-error {
-  color: #DD643E;
-  font-size: .8rem;
-}
-
-.response-success {
-    color: green;
-    font-size: .8rem;
-}
-
-.response-activation {
-    color: green;
-    font-size: 1rem;
 }
