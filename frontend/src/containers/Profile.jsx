@@ -1,10 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
+import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
 
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
+import camera from '../assets/fi-sr-camera.png'
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -63,15 +64,17 @@ const Profile = () => {
 
   return (
     <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
-      <div>
-        {/*         <div className='circlePicture'>
-          <Typography variant='p' color='secondary' style={{ fontSize: '5rem' }}>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
- */}          {/* <img className='pictureProfile' src={picture} alt=' ' />
-          <div className='pictureCamera'>
-            <img className='camera' src={camera} alt='' />
-          </div> */}
-
-        {/* </div> */}
+      <div className='circlePicture'>
+        <Typography
+          variant='p'
+          color='secondary'
+          style={{ fontSize: '5rem' }}
+        >
+          {user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}
+        </Typography>
+        <div className='pictureCamera'>
+          <img className='camera' src={camera} alt='' />
+        </div>
       </div>
       <FormControl style={{ gap: '34px' }}>
         <div className='containerLabel'>
