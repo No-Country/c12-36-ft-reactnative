@@ -11,25 +11,20 @@ const Welcome = () => {
   const { user } = useAuthContext()
 
   return (
-    <section style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '150px', margin: 'auto' }}>
+    <section className='containerWelcome'>
       <div>
-        <p className='greetings'>Hola {user.firstName},</p>
+        <p className='greetings'>Hola {user.firstName}</p>
         <p className='welcome'>Bienvenido</p>
       </div>
-      <div className='cardSaldo' style={{ color: '#f1f0ea', display: 'flex', flexDirection: 'column', gap: '1rem', width: '401px', height: '216px', background: '#6D5D6E', padding: '16px', borderRadius: '10px' }}>
+      <div className='cardSaldo'>
         <div className='containerCuentas'>
           <div>
             <div style={{ color: '#F1F0EA', fontWeight: '600', fontSize: '14px' }}>Cuentas</div>
             <div style={{ color: '#F1F0EA', fontWeight: '500', fontSize: '12px' }}>Saldos totales</div>
           </div>
-          {
-              iconCard1.map((icon) => (
-                <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
-                  <img style={{ objectFit: 'contain' }} src={icon.img} alt={icon.name} />
-                  <Typography variant='p' color='secondary'>{icon.name}</Typography>
-                </div>
-              ))
-          }
+          <div className='icon-image1' style={{ color: '#FFFFFF', width: '24px', height: '24px' }}>
+            <img style={{ objectFit: 'contain' }} src={icon1} />
+          </div>
         </div>
         <div style={{ color: '#F1F0EA', display: 'flex', fontSize: '48px', fontWeight: '700' }}>
           <span>$ </span>
@@ -37,14 +32,9 @@ const Welcome = () => {
         </div>
         <div className='containerCVU'>
           <div className='cvu' style={{ fontSize: '14px' }}>Tu CVU</div>
-          {
-              iconCard2.map((icon) => (
-                <div className='icon-image2' style={{ color: '#FFFFFF', width: '24px', height: '24px' }} key={icon.name}>
-                  <img style={{ objectFit: 'contain' }} src={icon.img} alt={icon.name} />
-                  <Typography variant='p' color='secondary'>{icon.name}</Typography>
-                </div>
-              ))
-          }
+          <div className='icon-image2' style={{ color: '#FFFFFF', width: '24px', height: '24px' }}>
+            <img style={{ objectFit: 'contain' }} src={icon2} />
+          </div>
         </div>
       </div>
     </section>

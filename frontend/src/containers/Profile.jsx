@@ -1,12 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, CircularProgress, FormControl, FormLabel, TextField } from '@mui/material'
+import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
 
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
-import picture from '../assets/picture.svg'
-import camera from '../assets/fi-sr-camera.png'
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -46,7 +44,6 @@ const Profile = () => {
     updateProfile(alteredData, user.accessToken)
   }
 
-  // Custom MUI TextField
   const customSx = {
     input: {
       color: '#fdfdfe',
@@ -65,12 +62,16 @@ const Profile = () => {
   }
 
   return (
-    <div style={{ padding: '80px' }}>
-      <div className='circlePicture'>
-        <img className='pictureProfile' src={picture} alt='' />
-        <div className='pictureCamera'>
-          <img className='camera' src={camera} alt='' />
-        </div>
+    <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
+      <div>
+        {/*         <div className='circlePicture'>
+          <Typography variant='p' color='secondary' style={{ fontSize: '5rem' }}>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+ */}          {/* <img className='pictureProfile' src={picture} alt=' ' />
+          <div className='pictureCamera'>
+            <img className='camera' src={camera} alt='' />
+          </div> */}
+
+        {/* </div> */}
       </div>
       <FormControl style={{ gap: '34px' }}>
         <div className='containerLabel'>
@@ -314,7 +315,7 @@ const Profile = () => {
           </Button>
         </article>
       </FormControl>
-    </div>
+    </section>
   )
 }
 

@@ -1,22 +1,64 @@
 .header{
     backdrop-filter: blur(11.5px);
     background: linear-gradient(52deg, rgba(241, 240, 234, 0.12) 0%, rgba(241, 240, 234, 0.05) 50%, rgba(241, 240, 234, 0.06) 100%)!important;
-    border-radius: 10px;
     height: 80px;
-    margin: 1rem;
-    width: calc(100vw - 2rem)!important;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    align-items: center;
-    display: flex;
     gap: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
-.logo img {
-    width: 50px;
+.menuResponsive{
+    background: #2D1930;;
 }
 
-.toolbar {
-    padding-top: 1rem;
+.listNav{
+    display: flex;
+    gap: 54px;
+}
+
+.notifications{
+    display: none;
+}
+
+.circlePictureHeader{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #7565FC 0%, #8D4EB5 100%);
+    filter: drop-shadow(0px 4px 54px #8D4EB5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.perfilHeader{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.btnGradient--header{
+    border-radius: 10px;
+    padding: 12px 30px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:900px) {
+    .listNav{
+        display: none;
+    }
+    .notifications{
+        display: block;
+    }
+    .perfilHeader{
+        display: none;
+    }
 }

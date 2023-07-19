@@ -13,11 +13,12 @@ import { useState } from 'react'
 
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
-import logo from '../assets/logo.png'
+import bell from '../assets/fi-sr-bell.png'
 import LoginButton from '../components/LoginButton'
 import BtnGradient from '../components/BtnGradient'
 
 import '../styles/header.css'
+import Sidebar from './Sidebar'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
 
@@ -35,36 +36,75 @@ const Header = () => {
     setAnchorNav(null)
   }
 
+  const pages = ['Nosotros', 'Beneficios', 'Ayuda']
   const register = { text: 'Registrarse', path: '/signup' }
   const home = { text: 'Home', path: '/home' }
   return (
     <AppBar className='header'>
-      <Container maxWidth='xl'>
-        <Toolbar disableGutters className='toolbar'>
-          <Link to='/'>
-            <div className='logo'>
-              <img src={logo} alt='logo' />
-              Pocketpal
-            </div>
-          </Link>
-          {
-            actualPath === '/' &&
-              <>
-                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} justifyContent='flex-end'>
+
+      {/* <Container maxWidth='xl' style={{ display: 'flex', alignItems: 'center' }}> */}
+
+      {
+          actualPath === '/' && !user
+
+            ? (
+              <Container style={{ display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'space-between' }}>
+                <Link to='/'>
+                  <div className='logo'>Pocketpal</div>
+                </Link>
+                <div style={{ display: 'flex' }}>
+                  <LoginButton />
+                  <BtnGradient prop={register} />
+                </div>
+              </Container>
+
+              )
+            : (
+              <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
                   <IconButton size='large' aria-label='account' aria-controls='menu-appbar' aria-haspopup='true' onClick={handleOpenNavMenu} color='inherit'>
                     <MenuIcon />
                   </IconButton>
-                  <Menu id='menu-appbar' anchorEl={anchorNav} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={Boolean(anchorNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' } }}>
-                    {pages.map((page) => (
+                  <Menu id='menu-appbar' anchorEl={anchorNav} anchorOrigin={{ vertical: 'bottom', horizontal: 'rigth' }} open={Boolean(anchorNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' } }}>
+
+                    <Sidebar />
+                    {/* pages.map((page) => (
                       <MenuItem key={page} onClick={handleCloseNavMenu}>
                         <Typography textAlign='center'><Link>{page}</Link></Typography>
                       </MenuItem>
-                    ))}
-
-                    <LoginButton />
+                    ))} */}
                   </Menu>
                 </Box>
-                <Typography variant='h5' noWrap component='a' sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1, color: 'inherit', textDecoration: 'none' }}> Nombre</Typography>
+                <Link to='/'>
+                  <div className='logo'>Pocketpal</div>
+                </Link>
+                <ul className='listNav'>
+                  {
+                  pages.map(name => (
+                    <li key={name}>{name}</li>
+                  ))
+                }
+                </ul>
+                <div>
+                  <img className='notifications' src={bell} alt=' ' />
+                  <div className='perfilHeader'>
+                    {/* <div className='circlePictureHeader'>
+                      <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+                    </div> */}
+                    <Link to='/home/dashboard' className='btnGradient btnGradient--header'>Ir a mi panel</Link>
+                  </div>
+                </div>
+
+              </Container>
+              )
+        }
+
+      {/* <Toolbar disableGutters className='toolbar'>
+
+        {
+            actualPath === '/' &&
+              <>
+
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent='space-around'>
                   <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
                     {pages.map((page) => (
@@ -96,7 +136,7 @@ const Header = () => {
                 </Box>
               </>
           }
-          {
+        {
             user && actualPath !== '/' &&
               <div
                 style={{
@@ -112,8 +152,8 @@ const Header = () => {
                 </Button>
               </div>
           }
-        </Toolbar>
-      </Container>
+      </Toolbar>
+      {/* </Container> */}
     </AppBar>
   )
 }

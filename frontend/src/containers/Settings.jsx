@@ -18,7 +18,7 @@ const Settings = () => {
           <SidebarComponent sidebar={sidebar} />
         </div>
       </div>
-      <Divider orientation='vertical' flexItem className='divider' />
+      <Divider orientation='vertical' flexItem className='dividerVertical' />
       <Outlet />
     </>
 

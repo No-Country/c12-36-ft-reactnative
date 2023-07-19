@@ -1,6 +1,7 @@
  .home {
   margin: auto;
   margin-top: 150px;
+  display: flex;
 }
 
 .home .div {
@@ -394,6 +395,25 @@
   flex-shrink: 0;
 }
 
-.divider{
+.dividerVertical{
   background: #f1f0ea;
+
+}
+
+.sidebarResponsive{
+  display: contents;
+}
+
+@media screen and (max-width:900px) {
+  .home{
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+  }
+  .sidebarResponsive{
+    display: none;
+  }
+  .dividerVertical{
+    display: none;
+  }
 }
