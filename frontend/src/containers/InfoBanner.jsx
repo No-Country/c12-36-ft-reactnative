@@ -9,19 +9,16 @@ const info = [{ name: 'Hace rendir tus ahorros', img: join }, { name: 'Enviar y 
 
 const InfoBanner = () => {
   return (
-    <div className='info_banner'>
-      <Typography variant='h4' color='secondary' textAlign='center'>Con Pocketpal podes</Typography>
-      <div className='options_banner'>
-        {
-          info.map((inf) => (
-            <div className='info' key={inf.name}>
-              <img width='90px' height='90px' style={{ objectFit: 'contain' }} src={inf.img} alt={inf.name} />
-              <Typography variant='h6' color='secondary'>{inf.name}</Typography>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+    <section className='infoBanner'>
+      {
+        info.map((inf) => (
+          <div className='info' key={inf.name}>
+            <img className='iconInfoBanner' src={inf.img} alt={inf.name} />
+            <Typography variant='p' color='secondary' className='textIconInfoBanner'>{inf.name}</Typography>
+          </div>
+        ))
+      }
+    </section>
   )
 }
 

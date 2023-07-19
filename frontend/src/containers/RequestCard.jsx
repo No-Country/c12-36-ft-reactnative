@@ -1,26 +1,23 @@
 import Typography from '@mui/material/Typography'
+import card from '../assets/TarjNaranja.png'
 
-import card from '../assets/card.png'
-import BtnGradient from '../components/BtnGradient'
+import card2 from '../assets/tarjVioleta.png'
 
 import '../styles/requestCard.css'
+import { Button } from '@mui/material'
 
 const RequestCard = () => {
-  const descargar = { text: 'Descargar App' }
-  const tarjeta = { text: 'Pedí tu tarjeta' }
   return (
-    <div className='request_card'>
-      <img className='cardLanding' src={card} alt='Tarjeta Pocketpal'/>
-      <aside className='card_aside'>
-        <Typography className='card_aside_text' variant='p' color='secondary'>
-          Pagá en cuotas y disfruta de promociones exclusivas
-        </Typography>
-        <div className='card_aside_buttons'>
-          <BtnGradient prop={descargar} />
-          <BtnGradient prop={tarjeta} />
-        </div>
-      </aside>
-    </div>
+    <section className='containerRequestCard'>
+      <div className='containersCards'>
+        <img src={card} alt='Tarjeta Pocketpal' className='cardLanding' />
+        <img src={card2} alt='Tarjeta Pocketpal' className='cardLanding_2' />
+      </div>
+      <div className='btnTextRequest'>
+        <Typography variant='p' color='secondary' className='titleRequestCard'>Pagá en cuotas <br /> y disfruta de <br /> promociones exclusivas</Typography>
+        <Button color='secondary' className='btnGradient btnGradient--request'><Typography className='textRequestBtn' color='secondary'>Solicitá tu tarjeta hoy</Typography></Button>
+      </div>
+    </section>
   )
 }
 

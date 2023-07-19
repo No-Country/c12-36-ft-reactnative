@@ -1,39 +1,84 @@
-.request_card {
-    align-items: center;
+.containerRequestCard{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.titleRequestCard{
+    font-size: 24px;
+    text-align: center;
+    line-height: 45px;
+    font-weight: 500;
+    width: 365px;
+}
+.btnTextRequest{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 250px;
 }
 
 .cardLanding {
-    border-radius: 10px;
-    box-shadow:
-        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-        100px 100px 80px rgba(0, 0, 0, 0.07);
-    height: 218px;
-    width: 364px;
+    width: 300.673px;
+    height: 190.149px;
+    flex-shrink: 0;
+    transform: rotate(-5.827deg);
+    border-radius: 14.855px;
 }
 
-.card_aside {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 250px;
-    justify-content: space-between;
+.cardLanding_2 {
+    width: 336.545px;
+    height: 222.749px;
+    flex-shrink: 0;
+    transform: rotate(6.578deg);
+    border-radius: 15.132px;
+    position: absolute;
+    top: 48px;
+    left: -5px;
 }
 
-.card_aside_text {
-    font-size: 1.5rem;
-    font-weight: 500;
-    height: 135px;
-    line-height: 45px;
-    width: 295px; 
+.btnGradient--request{
+    padding: 0!important;
 }
 
-.card_aside_buttons {
-    display: flex; 
-    gap: 2rem;
+.textRequestBtn{
+    padding: 12px 30px;
+    font-weight: 500!important;
+}
+.containersCards{
+    position: relative;
+}
+
+@media screen and (max-width:900px) {
+    .containerRequestCard{
+        height: 150px;
+    }
+    .titleRequestCard{
+        display: none;
+    }
+    .cardLanding {
+        width: 101px;
+        height: 67px;
+        border-radius: 0;
+    }
+    .cardLanding_2 {
+        width: 125px;
+        height: 83px;
+        border-radius: 0;
+        top: 15px;
+    }
+    .containersCards{
+        margin-left: 18px;
+    }
+    .btnGradient--request{
+        width: 109px!important;
+    }
+    .textRequestBtn{
+        font-size: 8px!important;
+        padding: 4.25px 9px;
+    }
+    .btnTextRequest{
+        height: fit-content;
+    }
 }

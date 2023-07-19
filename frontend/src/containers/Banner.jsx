@@ -1,16 +1,20 @@
 import Typography from '@mui/material/Typography'
 
-import celular from '../assets/celular.png'
+import screen from '../assets/screen.png'
 import '../styles/banner.css'
 
 const Banner = () => {
   return (
-    <div className='banner'>
-      <Typography className='banner_title' variant='p' color='secondary'>
-        La mejor manera de llevar tu dinero
-      </Typography>
-      <img className='cel' src={celular} alt=' '/>
-    </div>
+    <section className='banner'>
+      <div className='titleTextBanner'>
+        <Typography variant='p' color='secondary' className='titleBanner'>La mejor manera de llevar tu dinero</Typography>
+        <p className='textInfo'>Simplifica tus finanzas con nuestra billetera digital. <br />
+          Descubre todo lo que Pocketpal tiene para ti. <br /> <br />
+          ¡Tu vida financiera en un solo lugar!<br />
+        </p>
+      </div>
+      <img src={screen} alt=' ' className='image' />
+    </section>
   )
 }
 

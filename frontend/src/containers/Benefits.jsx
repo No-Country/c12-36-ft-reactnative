@@ -9,21 +9,26 @@ import '../styles/benefits.css'
 const info = [{ name: 'Recarga tu linea con promos', img: recarga }, { name: '30% en bares adheridos', img: descuento }, { name: '15% en locales adheridos', img: beneficios }]
 const Benefits = () => {
   return (
-    <div className='benefits_landing'>
-      <Typography variant='h4' color='secondary' textAlign='center'>
-        Tenemos estos beneficios para vos
-      </Typography>
-      <div className='options_benefits'>
+    <section className='containerBenefits'>
+      {
+            info.map((inf) => (
+              <div className='info info-benefits' key={inf.name}>
+                <img width='80px' height='80px' style={{ objectFit: 'contain' }} src={inf.img} alt={inf.name} />
+                <Typography variant='p' color='secondary' fontSize='1.5rem' fontWeight='500' textAlign='center'>{inf.name}</Typography>
+              </div>
+            ))
+        }
+      <div className='info info-benefitsResp'>
         {
           info.map((inf) => (
-            <div className='info info-benefits' key={inf.name}>
-              <img width='90px' height='90px' style={{ objectFit: 'contain' }} src={inf.img} alt={inf.name} />
-              <Typography variant='p' color='secondary' fontSize='1.25rem'>{inf.name}</Typography>
+            <div className='iconText' key={inf.name}>
+              <img className='iconBenefits' src={inf.img} alt={inf.name} />
+              <Typography variant='p' color='secondary' className='textBenefits'>{inf.name}</Typography>
             </div>
           ))
         }
-      </div>      
-    </div>
+      </div>
+    </section>
   )
 }
 

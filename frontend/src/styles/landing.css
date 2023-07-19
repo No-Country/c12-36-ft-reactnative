@@ -4,5 +4,18 @@
     gap: 6rem;
     margin: auto;
     margin-top: 150px;
-    width: 80%;
+    width: 95%;
+}
+.subtitleLanding{
+    font-size: 30px;
+}
+
+@media screen and (max-width:900px) {
+    .subtitleLanding{
+        font-size: 14px;
+    }
+    .landing{
+        margin-top: 100px;
+        gap: 2rem;
+    }
 }

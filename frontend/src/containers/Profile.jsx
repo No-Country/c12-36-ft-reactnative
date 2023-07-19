@@ -5,7 +5,9 @@ import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography
 import '../styles/profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
+
 import camera from '../assets/fi-sr-camera.png'
+
 
 const Profile = () => {
   const { user } = useAuthContext()
@@ -61,9 +63,9 @@ const Profile = () => {
     autoComplete: 'off',
     sx: customSx
   }
-
   return (
     <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
+
       <div className='circlePicture'>
         <Typography
           variant='p'
