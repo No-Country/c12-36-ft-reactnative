@@ -8,7 +8,6 @@ import { useProfile } from '../hooks/useProfile'
 
 import camera from '../assets/fi-sr-camera.png'
 
-
 const Profile = () => {
   const { user } = useAuthContext()
   const { updateProfile, error, success, activation, isLoading } = useProfile()
