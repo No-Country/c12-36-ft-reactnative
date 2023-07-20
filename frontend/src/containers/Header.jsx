@@ -85,16 +85,18 @@ const Header = () => {
                   ))
                 }
                 </ul>
-                <div>
-                  <img className='notifications' src={bell} alt=' ' />
-                  <div className='perfilHeader'>
-                    {/* <div className='circlePictureHeader'>
-                      <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
-                    </div> */}
-                    <Link to='/home/dashboard' className='btnGradient btnGradient--header'>Ir a mi panel</Link>
-                  </div>
-                </div>
-
+                {
+                  user &&
+                    <div>
+                      <img className='notifications' src={bell} alt=' ' />
+                      <div className='perfilHeader'>
+                        {/* <div className='circlePictureHeader'>
+                          <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+                        </div> */}
+                        <Link to='/home/dashboard' className='btnGradient btnGradient--header'>Ir a mi panel</Link>
+                      </div>
+                    </div>
+                }
               </Container>
               )
         }

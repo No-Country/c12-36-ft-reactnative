@@ -2,8 +2,10 @@
     display: flex;
     gap: .5rem;
     margin-left: 2.5rem;
+    color: #f1f0ea;
 }
 
 .back_arrow {
     width: 20px;
+    
 }
