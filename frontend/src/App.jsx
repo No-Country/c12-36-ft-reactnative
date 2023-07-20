@@ -16,6 +16,7 @@ import Dashboard from './containers/Dashboard'
 import Profile from './containers/Profile'
 
 import './styles/app.css'
+import Transfers from './containers/Transfers'
 
 const App = () => {
   const { user } = useAuthContext()
@@ -27,37 +28,34 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route
-            path='/login'
-            element={
-              user
-                ? <Navigate to='/home' />
-                : <Login />
-            }
+            path='/login' element={
+                                    user
+                                      ? <Navigate to='/home' />
+                                      : <Login />
+                                  }
           />
           <Route
-            path='/signup'
-            element={
-              user
-                ? <Navigate to='/home' />
-                : <SignUp />
-            }
+            path='/signup' element={
+                                      user
+                                        ? <Navigate to='/home' />
+                                        : <SignUp />
+                                    }
           />
           <Route
-            path='/home'
-            element={
-              user
-                ? <Home />
-                : <Navigate to='/' />
-            }
+            path='/home' element={
+                                    user
+                                      ? <Home />
+                                      : <Navigate to='/' />
+                                  }
           >
             <Route
-              path='/home/dashboard'
-              element={
-                user?.isActivated
-                  ? <Dashboard />
-                  : <Navigate to='/home/settings/profile' />
-              }
+              path='/home/dashboard' element={
+                                                user?.isActivated
+                                                  ? <Dashboard />
+                                                  : <Navigate to='/home/settings/profile' />
+                                              }
             />
+            <Route path='/home/transfers' element={<Transfers />} />
             <Route path='/home/settings' element={<Settings />}>
               <Route path='/home/settings/profile' element={<Profile />} />
             </Route>
