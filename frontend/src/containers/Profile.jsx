@@ -63,7 +63,8 @@ const Profile = () => {
     sx: customSx
   }
   return (
-    <div style={{ padding: '80px' }}>
+    <section style={{ width: '50%', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '69px' }}>
+
       <div className='circlePicture'>
         <Typography
           variant='p'
@@ -318,7 +319,7 @@ const Profile = () => {
           </Button>
         </article>
       </FormControl>
-    </div>
+    </section>
   )
 }
 
