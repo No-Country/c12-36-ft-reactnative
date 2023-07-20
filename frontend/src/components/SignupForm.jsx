@@ -1,7 +1,9 @@
-import { Button, Checkbox, CircularProgress, FormControlLabel, TextField } from '@mui/material'
+import { Button, Checkbox, CircularProgress, FormControlLabel, TextField, InputAdornment } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { useSignup } from '../hooks/useSignup'
 
@@ -33,6 +35,11 @@ const SignupForm = () => {
       setStatus(false)
     }
   }, [check18, checkTerms])
+
+  const [viewer, setViewer] = useState(false);
+  const handleVisibility = () => {
+    setViewer((prev) => !prev);
+  };
 
   return (
     <div className='signup_form'>
@@ -144,7 +151,6 @@ const SignupForm = () => {
             variant='outlined'
             color='secondary'
             autoComplete='off'
-            type='password'
             sx={{
               input: {
                 color: '#fdfdfe',
@@ -163,6 +169,16 @@ const SignupForm = () => {
                 pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
               })
             }
+
+            type={viewer ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end" onClick={handleVisibility}>
+                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary'/>}
+                  
+                </InputAdornment>
+              ),
+            }}
           />
           {
             errors.password && errors.password.type === 'required' &&
@@ -185,7 +201,6 @@ const SignupForm = () => {
             variant='outlined'
             color='secondary'
             autoComplete='off'
-            type='password'
             sx={{
               input: {
                 color: '#fdfdfe',
@@ -199,6 +214,16 @@ const SignupForm = () => {
             {
             ...register('passwordRepeat', { required: false })
             }
+
+            type={viewer ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end" onClick={handleVisibility}>
+                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary'/>}
+                  
+                </InputAdornment>
+              ),
+            }}
           />
           <p className='error' role='alert'>{errorPass}</p>
         </div>
