@@ -12,7 +12,7 @@ import tarjeta from '../assets/fi-sr-credit-card.png'
 import close from '../assets/close.png'
 import { useLogout } from '../hooks/useLogout'
 
-const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta }, { name: 'Mis tarjetas', img: cards }, { name: 'Servicios', img: manos }, { name: 'Movimientos', img: moves }]
+const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Mis tarjetas', img: cards }, { name: 'Servicios', img: manos }, { name: 'Movimientos', img: moves }]
 const sidebarDown = [{ name: 'Terminos de uso', img: terms }, { name: 'Ayuda y soporte', img: help }, { name: 'Configuraciones', img: settings, path: '/home/settings/profile' }]
 
 const Sidebar = () => {

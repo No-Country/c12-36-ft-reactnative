@@ -14,8 +14,6 @@ const Dashboard = () => {
         <CardsHome />
       </div>
       <div className='historyBenefits'>
-        {/* <Finances /> */}
-
         <History />
         <BenefitsHome />
       </div>
