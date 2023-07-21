@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
+import { useNavigate } from 'react-router-dom'
 
 export const useLogin = () => {
+  const navigate = useNavigate()
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
@@ -36,7 +38,7 @@ export const useLogin = () => {
 
       // update the auth context
       dispatch({ type: 'LOGIN', payload: user })
-
+      navigate('/home/dashboard')
       // update loading state
       setIsLoading(false)
     }

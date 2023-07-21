@@ -2,8 +2,8 @@ import { Button, Checkbox, CircularProgress, FormControlLabel, TextField, InputA
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { useSignup } from '../hooks/useSignup'
 
@@ -36,10 +36,10 @@ const SignupForm = () => {
     }
   }, [check18, checkTerms])
 
-  const [viewer, setViewer] = useState(false);
+  const [viewer, setViewer] = useState(false)
   const handleVisibility = () => {
-    setViewer((prev) => !prev);
-  };
+    setViewer((prev) => !prev)
+  }
 
   return (
     <div className='signup_form'>
@@ -170,14 +170,14 @@ const SignupForm = () => {
               })
             }
 
-            type={viewer ? "text" : "password"}
+            type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary'/>}
-                  
+                <InputAdornment position='end' onClick={handleVisibility}>
+                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
+
                 </InputAdornment>
-              ),
+              )
             }}
           />
           {
@@ -215,14 +215,14 @@ const SignupForm = () => {
             ...register('passwordRepeat', { required: false })
             }
 
-            type={viewer ? "text" : "password"}
+            type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary'/>}
-                  
+                <InputAdornment position='end' onClick={handleVisibility}>
+                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
+
                 </InputAdornment>
-              ),
+              )
             }}
           />
           <p className='error' role='alert'>{errorPass}</p>
