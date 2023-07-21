@@ -7,12 +7,12 @@ import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import { Outlet } from 'react-router-dom'
 
-const sidebar = [{ name: 'Perfil', img: portrait, path: '/home/settings/profile' }, { name: 'Contraseña', img: padlock }, { name: 'Notificaciones', img: notification }]
+const sidebar = [{ name: 'Perfil', img: portrait, path: '/home/settings/profile' }, { name: 'Contraseña', img: padlock, path: '/home/settings/password' }, { name: 'Notificaciones', img: notification }]
 
 const Settings = () => {
   return (
     <>
-      <div style={{ width: '20%' }}>
+      <div style={{ width: '22%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
           <Typography variant='h5' color='secondary' fontSize='1.25rem'>Configuracion de cuenta</Typography>
           <SidebarComponent sidebar={sidebar} />

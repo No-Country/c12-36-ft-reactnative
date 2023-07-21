@@ -17,6 +17,7 @@ import Profile from './containers/Profile'
 
 import './styles/app.css'
 import Transfers from './containers/Transfers'
+import Password from './containers/Password'
 
 const App = () => {
   const { user } = useAuthContext()
@@ -58,6 +59,7 @@ const App = () => {
             <Route path='/home/transfers' element={<Transfers />} />
             <Route path='/home/settings' element={<Settings />}>
               <Route path='/home/settings/profile' element={<Profile />} />
+              <Route path='/home/settings/password' element={<Password />} />
             </Route>
           </Route>
         </Routes>

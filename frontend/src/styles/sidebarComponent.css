@@ -3,6 +3,11 @@
     object-fit: contain;
 }
 
+.listaSidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 
 .btnSidebar{
