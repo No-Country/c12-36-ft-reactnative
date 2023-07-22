@@ -2,8 +2,8 @@ import { Button, CircularProgress, FormControl, TextField, InputAdornment } from
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import '../styles/loginForm.css'
 import { useLogin } from '../hooks/useLogin'
@@ -38,14 +38,14 @@ const LoginForm = () => {
     }
   }
 
-  const [viewer, setViewer] = useState(false);
+  const [viewer, setViewer] = useState(false)
   const handleVisibility = () => {
-    setViewer((prev) => !prev);
-  };
+    setViewer((prev) => !prev)
+  }
 
   return (
     <div className='login_form'>
-      <FormControl className='form' >            
+      <FormControl className='form'>
         <h1>Pocketpal</h1>
         <div className='text_Field'>
           <TextField
@@ -75,15 +75,14 @@ const LoginForm = () => {
             })}
             error={!!errors.password}
             helperText={errors.password?.message}
-
-            type={viewer ? "text" : "password"}
+            type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary'/>}
-                  
+                <InputAdornment position='end' onClick={handleVisibility}>
+                  {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
+
                 </InputAdornment>
-              ),
+              )
             }}
           />
         </div>

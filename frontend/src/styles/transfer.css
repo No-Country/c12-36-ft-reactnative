@@ -21,6 +21,9 @@
     width: 90%;
     gap: 2rem;
 }
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{
+    -webkit-text-fill-color: #858585!important;
+}
 .amount{
     font-size: 6rem;
     font-weight: 600;
