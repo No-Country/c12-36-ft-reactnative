@@ -14,6 +14,9 @@ import SignUp from './pages/SignUp'
 import Settings from './containers/Settings'
 import Dashboard from './containers/Dashboard'
 import Profile from './containers/Profile'
+import Terms from './pages/Terms'
+import Policy from './pages/Policy'
+import About from './pages/About'
 
 import './styles/app.css'
 import Transfers from './containers/Transfers'
@@ -60,6 +63,9 @@ const App = () => {
               <Route path='/home/settings/profile' element={<Profile />} />
             </Route>
           </Route>
+          <Route path='/terminos-condiciones' element={<Terms />} />
+          <Route path='/politicas-privacidad' element={<Policy />} />
+          <Route path='/acerca-nosotros' element={<About />} />
         </Routes>
         <Footer />
       </ThemeProvider>

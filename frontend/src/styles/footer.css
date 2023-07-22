@@ -1,11 +1,10 @@
 .footer {
-    align-items: center;
-    background: #4f4557;
-    color: #F1F0EA;
     display: flex;
+    text-align: center;
+    align-items: center;
+    background: #443350;
+    color: #F1F0EA;
     flex-direction: column;
-    font-size: 1.25rem;
-    font-weight: 300;
     margin-top: 1.5rem;
     padding: 2rem 6rem;
     width: 100vw;
@@ -14,58 +13,37 @@
 
 .footer_lists {
     display: flex;
-    justify-content: space-between;
     padding-bottom: 1.5rem;
-
     align-items: center;
-    gap: 166px;
+    gap: 90px;
 }
 
 .footer_options {
     display: flex;
     flex-direction: column;
-    gap: 29px;
-    font-weight: 500;
-}
-
-.footer_options--list {
+    gap: 13px;
     font-weight: 400;
+    font-size: 14px;
 }
 
 .lists_title {
-    font-weight: 500;
-    margin-bottom: 30px;
-    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
 }
 
 .rrss {
-    margin-top: 29px;
+    margin-bottom: 49px;
     display: flex;
-    gap: 21px;
-    margin-bottom: 63px;
+    gap: 23px;
+    filter: drop-shadow(0px 4px 54px #8D4EB5);
 }
 
 .socialIconBack {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background: linear-gradient(90deg, #7565FC 0%, #8D4EB5 100%);
-    border-radius: 50px;
+    border-radius: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    filter: drop-shadow(0px 4px 54px #8D4EB5);
-}
-
-.userIconContainer {
-    position: absolute;
-    bottom: 42px;
-    right: 142px;
-    background: linear-gradient(90deg, #7565FC 0%, #8D4EB5 100%);
-    width: 84px;
-    height: 84px;
-    border-radius: 84px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: drop-shadow(0px 4px 54px #8D4EB5);
 }
