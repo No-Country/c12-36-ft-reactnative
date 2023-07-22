@@ -30,12 +30,6 @@ const Transfers = () => {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
           <BtnGradient prop={continuar} />
-          <div className='back_button'>
-            <Link to='/home/dashboard' className='link-back'>
-              <img className='back_arrow' src={backIcon} alt='back-icon' />
-              Volver a mi panel
-            </Link>
-          </div>
         </div>
 
       </div>
