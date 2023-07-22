@@ -1,0 +1,103 @@
+.benefits {
+  color: #F1F0EA;
+  font-family: "Poppins", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 90px;
+  margin-bottom: 33px;
+}
+
+.containerBenefits{
+  flex-direction: column;
+}
+
+.cardsBenefitsWeb {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  color: #F1F0EA;
+  border-radius: 25px;
+  border: 3px solid rgba(241, 240, 234, 0.12);
+  background: rgba(241, 240, 234, 0.12);
+  margin-bottom: 112px;
+  width: 297px;
+  height: 182px;
+  flex-direction: column;
+  padding: 37px;
+  gap: 12px;
+}
+
+.cardsBenefits{
+  display: none;
+}
+
+.containerCardsBenefits{
+  display: flex;
+  gap: 30px;
+}
+
+.parrafBenefits{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.titleBenefits{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.cardBtnBenefits{
+  padding: 3px 10px;
+  border-radius: 25px;
+  border: 1px solid rgba(241, 240, 234, 0.12);
+  background: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  color: #000;
+}
+
+@media screen and (max-width:900px) {
+  .benefits{
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 16px;
+  }
+  .cardsBenefitsWeb{
+    display: none;
+  }
+  .cardsBenefits{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    width: 148px;
+    height: 139px;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 0;
+    background: rgba(241, 240, 234, 0.12);
+    border: 1px solid rgba(241, 240, 234, 0.12);
+    border-radius: 10px;
+  }
+  .containerCardsBenefits{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .parrafBenefits{
+    font-size: 8px;
+
+  }
+
+  .titleBenefits{
+    font-size: 12px;
+
+  }
+  .cardBtnBenefits{
+    font-size: 8px;
+  }
+  .containerBenefits{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+  }
+}
