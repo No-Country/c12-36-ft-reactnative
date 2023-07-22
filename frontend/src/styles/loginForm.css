@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 2rem;
   padding-top: 12rem;
-  width: 60%;
+  width: 100%;
 }
 
 .login_form .form {
@@ -13,12 +13,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 40%;
 }
 
 .login_form h1 {
   font-size: 1.25rem;
   font-weight: 500;
+}
+
+.btnGradient .login_button {
+  width: 300px;
 }
 
 .text-sm {
@@ -43,4 +46,15 @@
 .response-error {
   color: #DD643E;
   font-size: .8rem;
+}
+
+.css-1laqsz7-MuiInputAdornment-root {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+}
+
+.css-m5fxbh-MuiButtonBase-root-MuiButton-root {
+  height: 3rem;
+  width: 328px!important; 
 }
