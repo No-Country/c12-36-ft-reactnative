@@ -1,0 +1,53 @@
+.policyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin-top: 150px;
+  padding: 10px;
+  backdrop-filter: blur(27px);
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url("../assets/Logo.png");
+  background-repeat: no-repeat;
+  background-size: 500px;
+  background-color: #1a1a1a;
+  background-position: center;
+}
+
+.header h4 {
+  display: flex;
+  justify-content: center;
+  color: rgba(241, 240, 234, 1);
+}
+
+.header p {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  color: #FFFFFF;
+  margin-bottom: 15px;
+}
+
+.content p {
+  color: #FFFFFF;
+}
+
+.content h5 {
+  border-radius: 5px;
+  background: linear-gradient(90deg, #6672DE 0%, #E166FF);
+  box-shadow: 0px 0px 52px 0px #8D4EB5;
+}
+
+.content ul {
+  padding-left: 25px;
+}
+
+.content li {
+  margin-bottom: 3px;
+  color: #FFFFFF;
+}
+
+.content a {
+  color: #1976d2;
+  text-decoration: none;
+}
