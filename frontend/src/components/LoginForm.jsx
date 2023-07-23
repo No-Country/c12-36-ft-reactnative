@@ -26,7 +26,8 @@ const LoginForm = () => {
     sxInput: {
       input: {
         textAlign: 'center',
-        color: 'white'
+        color: 'white',
+        width: '300px'
       },
       '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
     },
@@ -45,7 +46,7 @@ const LoginForm = () => {
 
   return (
     <div className='login_form'>
-      <FormControl className='form'>
+      <FormControl className='form' fullWidth>
         <h1>Pocketpal</h1>
         <div className='text_Field'>
           <TextField
@@ -80,7 +81,6 @@ const LoginForm = () => {
               endAdornment: (
                 <InputAdornment position='end' onClick={handleVisibility}>
                   {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
-
                 </InputAdornment>
               )
             }}
@@ -102,7 +102,7 @@ const LoginForm = () => {
         <p className='response-error'>{error}</p>
 
         <Button
-          className='btnGradient'
+          className='btnGradient login_button'
           type='button'
           color='secondary'
           variant='text'

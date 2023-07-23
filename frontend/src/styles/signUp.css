@@ -5,3 +5,9 @@
   color: #F1F0EA;
   padding-top: 150px;
 }
+
+@media screen and (max-width:900px) {
+  .signup{
+    padding-top: 100px;
+  }
+}

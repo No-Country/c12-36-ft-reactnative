@@ -36,6 +36,37 @@ const SignupForm = () => {
     }
   }, [check18, checkTerms])
 
+  const muiStyles = {
+    sxInput: {
+      input: {
+        textAlign: 'center',
+        color: 'white',
+        width: '440px',
+        '@media screen and (max-width:900px)': {
+          width: '300px'
+        }
+      },
+      '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
+    },
+    smInput: {
+      input: {
+        textAlign: 'center',
+        color: 'white',
+        width: '202px',
+        '@media screen and (max-width:900px)': {
+          width: '132px'
+        }
+      },
+      '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
+    },
+    label: {
+      style: {
+        width: '100%',
+        color: 'gray'
+      }
+    }
+  }
+
   const [viewer, setViewer] = useState(false)
   const handleVisibility = () => {
     setViewer((prev) => !prev)
@@ -55,16 +86,8 @@ const SignupForm = () => {
             aria-invalid={errors.email ? 'true' : 'false'}
             autoComplete='off'
             // focused
-            sx={{
-              input: {
-                color: '#fdfdfe',
-                fontSize: '1rem',
-                width: '441px'
-              },
-              label: {
-                color: 'gray'
-              }
-            }}
+            sx={muiStyles.sxInput}
+            InputLabelProps={muiStyles.label}
             {
             ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
             }
@@ -83,20 +106,13 @@ const SignupForm = () => {
           <div className='textField'>
             <TextField
               id='firstName'
-              label='Nombre'
+              label='Primer Nombre'
               variant='outlined'
               aria-invalid={errors.firstName ? 'true' : 'false'}
               color='secondary'
               autoComplete='off'
-              sx={{
-                input: {
-                  color: '#fdfdfe',
-                  fontSize: '1rem'
-                },
-                label: {
-                  color: 'gray'
-                }
-              }}
+              sx={muiStyles.smInput}
+              InputLabelProps={muiStyles.label}
               {
               ...register('firstName', { required: true, minLength: 3 })
               }
@@ -114,20 +130,13 @@ const SignupForm = () => {
           <div className='textField'>
             <TextField
               id='lastName'
-              label='Apellido'
+              label='Primer Apellido'
               variant='outlined'
               aria-invalid={errors.lastName ? 'true' : 'false'}
               color='secondary'
               autoComplete='off'
-              sx={{
-                input: {
-                  color: '#fdfdfe',
-                  fontSize: '1rem'
-                },
-                label: {
-                  color: 'gray'
-                }
-              }}
+              sx={muiStyles.smInput}
+              InputLabelProps={muiStyles.label}
               {
               ...register('lastName', { required: true, minLength: 3 })
               }
@@ -151,16 +160,8 @@ const SignupForm = () => {
             variant='outlined'
             color='secondary'
             autoComplete='off'
-            sx={{
-              input: {
-                color: '#fdfdfe',
-                fontSize: '1rem',
-                width: '441px'
-              },
-              label: {
-                color: 'gray'
-              }
-            }}
+            sx={muiStyles.sxInput}
+            InputLabelProps={muiStyles.label}
             {
             ...register(
               'password',
@@ -169,7 +170,6 @@ const SignupForm = () => {
                 pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
               })
             }
-
             type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
@@ -201,20 +201,11 @@ const SignupForm = () => {
             variant='outlined'
             color='secondary'
             autoComplete='off'
-            sx={{
-              input: {
-                color: '#fdfdfe',
-                fontSize: '1rem',
-                width: '441px'
-              },
-              label: {
-                color: 'gray'
-              }
-            }}
+            sx={muiStyles.sxInput}
+            InputLabelProps={muiStyles.label}
             {
             ...register('passwordRepeat', { required: false })
             }
-
             type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
@@ -228,7 +219,7 @@ const SignupForm = () => {
           <p className='error' role='alert'>{errorPass}</p>
         </div>
 
-        <div className='checkboxes' style={{ fontSize: '0.8rem', width: '441px' }}>
+        <div className='checkboxes'>
           <FormControlLabel
             // required
             control={

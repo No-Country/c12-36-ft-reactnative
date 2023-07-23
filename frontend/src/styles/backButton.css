@@ -6,6 +6,14 @@
 }
 
 .back_arrow {
-    width: 20px;
-    
+    width: 20px;    
+}
+
+@media screen and (max-width:900px) {
+    .back_arrow {
+        width: 10px;        
+    }
+    .link-back {
+        font-size: 0.8rem;
+    }
 }
