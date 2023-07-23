@@ -1,21 +1,18 @@
 .footer {
     display: flex;
-    text-align: center;
-    align-items: center;
+    text-align: justify;
     background: #443350;
     color: #F1F0EA;
     flex-direction: column;
     margin-top: 1.5rem;
     padding: 2rem 6rem;
-    width: 100vw;
-    position: relative;
 }
 
 .footer_lists {
     display: flex;
     padding-bottom: 1.5rem;
-    align-items: center;
-    gap: 90px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .footer_options {
@@ -33,17 +30,16 @@
 }
 
 .rrss {
-    margin-bottom: 49px;
+    align-items: center;
     display: flex;
-    gap: 23px;
-    filter: drop-shadow(0px 4px 54px #8D4EB5);
+    justify-content: space-between;
+    padding-left: 0.5rem ;
+    width: 90%;
 }
 
 .socialIconBack {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(90deg, #7565FC 0%, #8D4EB5 100%);
-    border-radius: 100px;
-    display: flex;
-    align-items: center;
+    width: 44px;
+}
+
+.footer_rigths {
 }
