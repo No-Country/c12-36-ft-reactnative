@@ -9,12 +9,14 @@ import Header from './containers/Header'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Transfers from './pages/Transfers'
 import Settings from './pages/Settings'
 import EditProfile from './pages/Profile'
 // import Footer from './containers/Footer'
+
 
 import './styles/app.css'
 
@@ -61,6 +63,9 @@ const App = () => {
               <Route path='/home/settings/edit_profile' element={<EditProfile />} />
             </Route>
           </Route>
+          <Route path='/terminos-condiciones' element={<Terms />} />
+          <Route path='/politicas-privacidad' element={<Policy />} />
+          <Route path='/acerca-nosotros' element={<About />} />
         </Routes>
         {/* <Footer /> */}
       </ThemeProvider>
