@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     margin-top: 201px;
-    margin-bottom: 121px;
 }
 
 .titleTextBanner{
@@ -22,8 +21,8 @@
 }
 
 .image{
-	width: 583px;
-	height: 378px;
+	width: 535px;
+	height: 352px;
 	flex-shrink: 0;
 }
 

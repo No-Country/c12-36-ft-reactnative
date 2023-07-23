@@ -1,8 +1,6 @@
 import { Typography } from '@mui/material'
-
 import facebook from '../assets/facebook.png'
 import instagram from '../assets/instagram.png'
-import user from '../assets/fi-sr-user.png'
 import '../styles/footer.css'
 
 const Footer = () => {
@@ -10,40 +8,43 @@ const Footer = () => {
     <section className='footer'>
       <div className='footer_lists'>
         <div>
-          <Typography variant='h5' color='secondary' style={{ fontWeight: '700' }}>Pocketpal</Typography>
-          <div className='rrss'>
-            <a className='socialIconBack' href='https://www.facebook.com/profile.php?id=100094393616559'>
-              <img className='socialIcon' src={facebook} alt='facebook' width='42px' />
-            </a>
-            <a className='socialIconBack' href='https://www.instagram.com'>
-              <img className='socialIcon' src={instagram} alt='instagram' width='32px' />
-            </a>
+          <div>
+            <p className='lists_title'>Terminos y condiciones</p>
+            <ul className='footer_options'>
+              <li><a href='terminos-condiciones' target='_blank'>Terminos y condiciones</a></li>
+              <li><a href='politicas-privacidad' target='_blank'>Politicas de Privacidad</a></li>
+              <li><a href='defensa-consumidor' target='_blank'>Defensa al Consumidor</a></li>
+            </ul>
           </div>
-          <ul className='footer_options '>
-            <li>Politicas de Privacidad</li>
-            <li>Terminos de uso</li>
-            <li>Defensa al Consumidor</li>
-          </ul>
+          <Typography variant='h5' color='secondary' style={{ fontWeight: '700', position: 'absolute', left: '70px', bottom: '10px' }}>© 2023 Pocketpal, Inc</Typography>
         </div>
         <div>
           <p className='lists_title'>Sobre PocketPal</p>
-          <ul className='footer_options footer_options--list'>
-            <li>Acerca de nosotros</li>
-            <li>Enviar y recibir dinero</li>
-            <li>Beneficios</li>
+          <ul className='footer_options'>
+            <li><a href='acerca-nosotros' target='_blank'>Acerca de nosotros</a></li>
+            <li><a href='http://localhost:5173/enviar-recibir-dinero' target='_blank'>Enviar y recibir dinero</a></li>
+            <li><a href='http://localhost:5173/beneficios' target='_blank'>Beneficios</a></li>
           </ul>
         </div>
         <div>
           <p className='lists_title'>Ayuda y Seguridad</p>
-          <ul className='footer_options footer_options--list'>
-            <li>Contacto</li>
-            <li>Preguntas Frecuentes</li>
-            <li>Seguridad</li>
+          <ul className='footer_options'>
+            <li><a href='http://localhost:5173/contacto' target='_blank'>Contacto</a></li>
+            <li><a href='http://localhost:5173/preguntas-frecuentes' target='_blank'>Preguntas Frecuentes</a></li>
+            <li><a href='http://localhost:5173/seguridad' target='_blank'>Seguridad</a></li>
           </ul>
         </div>
-      </div>
-      <div className='userIconContainer'>
-        <img width='35px' src={user} alt=' ' />
+        <div>
+          <p className='lists_title'>Nuestras redes:</p>
+          <div className='rrss'>
+            <a className='socialIconBack' href='https://www.facebook.com/profile.php?id=100094393616559' target='_blank'>
+              <img src={facebook} alt='facebook' height='44px' />
+            </a>
+            <a className='socialIconBack' href='https://www.instagram.com' target='_blank'>
+              <img src={instagram} alt='instagram' height='40px' />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   )

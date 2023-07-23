@@ -52,6 +52,7 @@
 
 @media screen and (max-width:900px) {
     .containerRequestCard{
+        flex-direction: row-reverse;
         height: 150px;
     }
     .titleRequestCard{
