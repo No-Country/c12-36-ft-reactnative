@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 16rem;
   padding-top: 12rem;
   width: 100%;
 }
@@ -33,7 +34,7 @@
 .link-signup {
   color: #8D4EB5;
   margin-left: 0.5rem;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .error {

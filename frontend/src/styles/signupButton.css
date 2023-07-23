@@ -1,0 +1,10 @@
+.signup_button {
+    display: none;
+}
+
+@media screen and (max-width: 900px){
+    .signup_button {
+        align-self: center;
+        display: flex;
+    }
+}
