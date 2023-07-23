@@ -15,8 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    /* Auxiliares: */
+    padding: 20px 0;
     margin-bottom: 40px;
     margin-top: -40px;
 }
