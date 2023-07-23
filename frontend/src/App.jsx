@@ -9,14 +9,15 @@ import Header from './containers/Header'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
-
+import Terms from './pages/Terms'
+import Policy from './pages/Policy'
+import About from './pages/About'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Transfers from './pages/Transfers'
 import Settings from './pages/Settings'
 import EditProfile from './pages/Profile'
 // import Footer from './containers/Footer'
-
 
 import './styles/app.css'
 
