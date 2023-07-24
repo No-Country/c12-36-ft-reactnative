@@ -24,14 +24,19 @@ const userSchema = new Schema(
     },
 
     dateOfBirth: Date,
+
     dni: {
         type: Number, 
-        required: true
     }, 
     
     nacionality: String,
     cbu: String,
-    balance: Number,
+
+    balance: {
+      type: Number, 
+      default: 0
+  },
+
     address: {
       street: String,
       number: Number,
