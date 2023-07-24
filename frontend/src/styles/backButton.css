@@ -1,0 +1,19 @@
+.link-back {
+    display: flex;
+    gap: .5rem;
+    margin-left: 2.5rem;
+    color: #f1f0ea;
+}
+
+.back_arrow {
+    width: 20px;    
+}
+
+@media screen and (max-width:900px) {
+    .back_arrow {
+        width: 10px;        
+    }
+    .link-back {
+        font-size: 0.8rem;
+    }
+}

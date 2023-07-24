@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 1237
 const cors = require ('cors')
 const { initDBConnection } = require('./data/dbConnection');
 const usersRouter = require('./routes/users.routes')
+const transactionsRoutes = require ('./routes/transactions.routes')
 const path = require('path');
 
 
@@ -21,6 +22,7 @@ app.get('/confirm.html', (req, res) => {
   }); // Ruta para la confirmacion del correo, no pasa por la api es interna
 
 app.use ('/api/users', usersRouter)
+app.use ('/api/transactions', transactionsRoutes)
 
 app.listen(PORT, ()=>{
     initDBConnection();

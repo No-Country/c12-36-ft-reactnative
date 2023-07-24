@@ -1,0 +1,35 @@
+.landing {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-top: 100px;
+    padding: 0 13rem;
+    width: 100%;    
+    margin-bottom: 61px;
+}
+
+.signup_landing_mobile {
+    display: none;
+}
+
+.subtitleLanding{
+    font-size: 30px;
+}
+
+.link_tyc {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+@media screen and (max-width:900px) {
+    .subtitleLanding{
+        font-size: 14px;
+    }
+    .landing{
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    .link_tyc{
+        font-size: 10px;
+    }
+}

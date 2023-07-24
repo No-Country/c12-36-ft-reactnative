@@ -1,0 +1,80 @@
+.signup_form {
+  align-self: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 5.5rem;
+  padding-top: 3rem;
+  width: 100%;
+}
+
+.signup_form h1 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.signup_form form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 45%;
+}
+
+.textField {
+  display: flex;
+  position: relative;
+}
+
+.full_name {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.password_text {
+  font-size: 0.8rem;
+  font-weight: 300;
+  max-width: 440px;
+  text-align: center;
+}
+
+.checkboxes {
+  width: 460px;
+}
+
+.text-sm {
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.link-login {
+  color: #8D4EB5;
+  margin-left: 0.5rem;
+  text-decoration: underline;
+}
+
+.error {
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.8rem;
+  color: #DD643E;
+}
+
+.response-error {
+  color: #DD643E;
+  font-size: .8rem;
+}
+
+@media screen and (max-width:900px) {
+  .signup_form h1 {
+    font-size: 0.8rem;
+  }
+  .password_text {
+    width: 300px;
+  }
+  .checkboxes {
+    width: 340px;
+  }
+}

@@ -2,9 +2,13 @@ const Users = require("../models/user.model");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+<<<<<<< HEAD
 const {generarCbuCompleto} = require("../utils/cbuUtils.js");
 const { v4: uuidv4 } = require('uuid');
 const { sendVerificationEmail } = require('../utils/mail.config.js');
+=======
+const {generarCbuCompleto} = require("../utils/cbuUtils");
+>>>>>>> development
 
 //Obtener todos los usuario
 const getUsers = async (req, res) => {
@@ -141,6 +145,7 @@ const editUser = async (req, res) => {
     return res.status(404).send({ mensaje: "Usuario no encontrado" });
   }
 
+<<<<<<< HEAD
   const checkBalance = user.balance;
   let finalCbu = user.cbu;
   let giftBalance;
@@ -151,6 +156,18 @@ const editUser = async (req, res) => {
   // Verificar si el saldo esta en 0 para entregar regalo de activaciono o recargarle el saldo para que siga operando
   if (!checkBalance || checkBalance === 0 ) { // si activa por primera vez o el saldo le llega a cero se le regala 10000
     giftBalance =  12000;
+=======
+  const VerificarSaldo = user.balance;
+  let cbuFinal = user.cbu;
+  let saldoRegalo;
+  // Verificar si el CBU existe para no editarlo
+  if (!cbuFinal) {
+    cbuFinal = await generarCbuCompleto();
+  }  
+  // Verificar si el saldo esta en 0 para entregar regalo de activaciono o recargarle el saldo para que siga operando
+  if (!VerificarSaldo || VerificarSaldo === 0 ) { // si activa por primera vez o el saldo le llega a cero se le regala 10000
+    saldoRegalo =  10000;
+>>>>>>> development
   }   
   
   // verificar edad 
@@ -159,7 +176,11 @@ const editUser = async (req, res) => {
   const currentDate = new Date();
   const userAge = currentDate.getFullYear() - dateOfBirth.getFullYear();
 
+<<<<<<< HEAD
   // Si el usuario es menos de 18 años no se puede registrar
+=======
+  // If the user is younger than 18, reject the request
+>>>>>>> development
   if (userAge < 18) {
     return res.status(400).send({ mensaje: "Debes ser mayor de 18 años para registrarte." });
   }
@@ -177,8 +198,13 @@ const editUser = async (req, res) => {
       zipcode: req.body.address.zipcode,
     },
     isActivated: true,
+<<<<<<< HEAD
     cbu: finalCbu,
     balance: giftBalance || user.balance,
+=======
+    cbu: cbuFinal,
+    balance: saldoRegalo || user.balance,
+>>>>>>> development
   };
  
   try {
@@ -225,12 +251,15 @@ const loginUser = async (req, res) => {
           firstName: userFind.firstName,
           lastName: userFind.lastName,
           isActivated: userFind.isActivated,
+<<<<<<< HEAD
           cbu: userFind.cbu,
           balance: userFind.balance,
           dateOfBirth: userFind.dateOfBirth,
           nacionality: userFind.nacionality,
           address: userFind.address,
           dni: userFind.dni,
+=======
+>>>>>>> development
         };
         const accessToken = jwt.sign(
           { id: userFind.email },

@@ -1,0 +1,13 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #F1F0EA;
+  padding-top: 150px;
+}
+
+@media screen and (max-width:900px) {
+  .login{
+    padding-top: 100px;
+  }
+}

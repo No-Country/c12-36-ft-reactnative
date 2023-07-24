@@ -1,0 +1,85 @@
+.containerRequestCard{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.titleRequestCard{
+    font-size: 24px;
+    text-align: center;
+    line-height: 45px;
+    font-weight: 500;
+    width: 365px;
+}
+.btnTextRequest{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 250px;
+}
+
+.cardLanding {
+    width: 300.673px;
+    height: 190.149px;
+    flex-shrink: 0;
+    transform: rotate(-5.827deg);
+    border-radius: 14.855px;
+}
+
+.cardLanding_2 {
+    width: 336.545px;
+    height: 222.749px;
+    flex-shrink: 0;
+    transform: rotate(6.578deg);
+    border-radius: 15.132px;
+    position: absolute;
+    top: 48px;
+    left: -5px;
+}
+
+.btnGradient--request{
+    padding: 0!important;
+}
+
+.textRequestBtn{
+    padding: 12px 30px;
+    font-weight: 500!important;
+}
+.containersCards{
+    position: relative;
+}
+
+@media screen and (max-width:900px) {
+    .containerRequestCard{
+        flex-direction: row-reverse;
+        height: 150px;
+    }
+    .titleRequestCard{
+        display: none;
+    }
+    .cardLanding {
+        width: 101px;
+        height: 67px;
+        border-radius: 0;
+    }
+    .cardLanding_2 {
+        width: 125px;
+        height: 83px;
+        border-radius: 0;
+        top: 15px;
+    }
+    .containersCards{
+        margin-left: 18px;
+    }
+    .btnGradient--request{
+        width: 109px!important;
+    }
+    .textRequestBtn{
+        font-size: 8px!important;
+        padding: 4.25px 9px;
+    }
+    .btnTextRequest{
+        height: fit-content;
+    }
+}

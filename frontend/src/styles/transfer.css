@@ -1,0 +1,69 @@
+.transfer{
+    margin: auto;
+    width: 75%;
+}
+.titleTransfer{
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.subtitleTransfer{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.titleSubtitle{
+    display: flex;
+    flex-direction: column;
+}
+.containerAmount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    gap: 2rem;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{
+    -webkit-text-fill-color: #858585!important;
+}
+.amount{
+    font-size: 6rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #F1F0ea;
+}
+.balance{
+    display: flex;
+    align-items: center;
+        object-fit: contain;
+        width: 15%;
+}
+
+.sinBorde{
+    font-size: 6rem;
+    font-weight: 600;
+    background: none;
+    outline: none;
+    color: #F1F0ea;
+    border: none;
+    width: fit-content;
+}
+.css-e5ohxz-MuiFormLabel-root-MuiInputLabel-root{
+    color: #F1F0ea!important;
+}
+.css-faz01v-MuiInputBase-root-MuiInput-root:before{
+    color: #F1F0ea!important;
+}
+.containerMotivo{
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+}
+.sinBorde::placeholder{
+    color: #F1F0ea;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: none;
+}

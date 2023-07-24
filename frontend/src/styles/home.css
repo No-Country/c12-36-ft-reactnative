@@ -1,0 +1,29 @@
+.home {
+  height: 100%;
+  margin: auto;
+  margin-top: 120px;
+  display: flex;
+  padding-bottom: 2rem;
+}
+
+.dividerVertical{
+  background: #f1f0ea;
+}
+
+.sidebarResponsive{
+  display: contents;
+}
+
+@media screen and (max-width:900px) {
+  .home{
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+  }
+  .sidebarResponsive{
+    display: none;
+  }
+  .dividerVertical{
+    display: none;
+  }
+}

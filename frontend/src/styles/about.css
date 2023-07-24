@@ -1,0 +1,13 @@
+.aboutContainer {
+  display: flex;
+  color: #FFFFFF;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 150px;
+  padding: 0 2rem 2rem;
+}
+
+.about_title {
+  text-align: center;
+}
+

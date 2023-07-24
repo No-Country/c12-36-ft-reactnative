@@ -1,0 +1,24 @@
+.containerDashboard{
+    margin-left: 60px;
+}
+.welcomeCards{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:900px) {
+    .containerDashboard{
+        margin:0;
+        display: flex;
+        flex-direction: column;
+    }
+    .welcomeCards{
+        flex-direction: column;
+        align-items: normal;
+    }
+    .historyBenefits{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

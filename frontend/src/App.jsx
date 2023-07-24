@@ -2,23 +2,27 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 
-import './App.css'
-import theme from './config/temeConfig'
 import { useAuthContext } from './hooks/useAuthContext'
 
-import Header from './components/Header/Header'
-import Landing from './pages/Landing/Landing'
-import Login from './pages/Login/Login'
-import Footer from './components/Footer/Footer'
-import Home from './pages/Home/Home'
-import SignUp from './pages/SignUp/SignUp'
-import Settings from './components/Settings/Settings'
-import Dashboard from './components/Dashboard/Dashboard'
-import Profile from './components/Profile/Profile'
+import theme from './config/temeConfig'
+import Header from './containers/Header'
+import Landing from './pages/Landing'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
+import Home from './pages/Home'
+import Dashboard from './pages/Dashboard'
+import Transfers from './pages/Transfers'
+import Settings from './pages/Settings'
+import EditProfile from './pages/Profile'
+import Terms from './pages/Terms'
+import Policy from './pages/Policy'
+import About from './pages/About'
+import Error from './pages/Error'
+
+import './styles/app.css'
 
 const App = () => {
   const { user } = useAuthContext()
-  user ? console.log('Hay usuario') : console.log('No hay usuario')
 
   return (
     <BrowserRouter>
@@ -27,36 +31,44 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route
-            path='/login'
-            element={
-              user
-                ? <Navigate to='/home' />
-                : <Login />
-            }
+            path='/login' element={
+                                    user
+                                      ? <Navigate to='/home' />
+                                      : <Login />
+                                  }
           />
           <Route
-            path='/signup'
-            element={
-              user
-                ? <Navigate to='/home' />
-                : <SignUp />
-            }
+            path='/signup' element={
+                                      user
+                                        ? <Navigate to='/home' />
+                                        : <SignUp />
+                                    }
           />
           <Route
-            path='/home'
-            element={
-              user
-                ? <Home />
-                : <Navigate to='/' />
-            }
+            path='/home' element={
+                                    user
+                                      ? <Home />
+                                      : <Navigate to='/' />
+                                  }
           >
-            <Route path='/home/dashboard' element={<Dashboard />} />
+            <Route
+              path='/home/dashboard' element={
+                                                user?.isActivated
+                                                  ? <Dashboard />
+                                                  : <Navigate to='/home/settings/profile' />
+                                              }
+            />
+            <Route path='/home/transfers' element={<Transfers />} />
+            <Route path='/home/profile' element={<EditProfile />} />
             <Route path='/home/settings' element={<Settings />}>
-              <Route path='/home/settings/profile' element={<Profile />} />
+              <Route path='/home/settings/edit_profile' element={<EditProfile />} />
             </Route>
           </Route>
+          <Route path='/terms-conditions' element={<Terms />} />
+          <Route path='/privacy-policies' element={<Policy />} />
+          <Route path='/about-us' element={<About />} />
+          <Route path='/page-not-found' element={<Error />} />
         </Routes>
-        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   )
