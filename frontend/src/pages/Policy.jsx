@@ -1,11 +1,15 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
+
+import BackButton from '../components/BackButton'
+
 import '../styles/policy.css'
 
 const Policy = () => {
   return (
     <div className='policyContainer'>
-      <div className='header'>
+      <BackButton />
+      <div className='policy_title'>
         <Typography variant='h4'>Política de Privacidad de PoketPal Argentina</Typography>
         <Typography variant='subtitle1'>Fecha de entrada en vigencia: [Viernes 23 de junio de 2023]</Typography>
         <Typography variant='body1'>Cuando navegás por la web, dejás una huella digital que es la información de tu dispositivo y la forma en que lo usás cuando estás en línea. La mayoría de los sitios web recaban esta información. Queremos informarte que nosotros (PoketPal, proveedores de tecnología, empresas de ciberseguridad, socios de redes sociales y publicitarios) también recopilamos esta información para poder ofrecerte una mejor experiencia en nuestro sitio.</Typography>
