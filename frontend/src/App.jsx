@@ -8,16 +8,18 @@ import theme from './config/temeConfig'
 import Header from './containers/Header'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
-import Footer from './containers/Footer'
-import Home from './pages/Home'
 import SignUp from './pages/SignUp'
-import Settings from './containers/Settings'
-import Dashboard from './containers/Dashboard'
-import Profile from './containers/Profile'
+import Home from './pages/Home'
+import Dashboard from './pages/Dashboard'
+import Transfers from './pages/Transfers'
+import Settings from './pages/Settings'
+import EditProfile from './pages/Profile'
+import Terms from './pages/Terms'
+import Policy from './pages/Policy'
+import About from './pages/About'
+import Error from './pages/Error'
 
 import './styles/app.css'
-import Transfers from './containers/Transfers'
-import Password from './containers/Password'
 
 const App = () => {
   const { user } = useAuthContext()
@@ -57,13 +59,16 @@ const App = () => {
                                               }
             />
             <Route path='/home/transfers' element={<Transfers />} />
+            <Route path='/home/profile' element={<EditProfile />} />
             <Route path='/home/settings' element={<Settings />}>
-              <Route path='/home/settings/profile' element={<Profile />} />
-              <Route path='/home/settings/password' element={<Password />} />
+              <Route path='/home/settings/edit_profile' element={<EditProfile />} />
             </Route>
           </Route>
+          <Route path='/terms-conditions' element={<Terms />} />
+          <Route path='/privacy-policies' element={<Policy />} />
+          <Route path='/about-us' element={<About />} />
+          <Route path='/page-not-found' element={<Error />} />
         </Routes>
-        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   )

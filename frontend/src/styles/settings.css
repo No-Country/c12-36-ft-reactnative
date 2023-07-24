@@ -1,0 +1,27 @@
+.settings{
+    display: flex;
+}
+
+.settings_sidebar {
+    padding: 0 1rem;
+}
+
+.sidebar_title {
+    padding: 1rem 0 3rem;
+}
+
+@media screen and (max-width: 900px) {
+    .sidebar{
+        width: 100%;
+
+    }
+    .focus{
+        gap:1.5rem
+    }
+    .divider{
+        display: none;
+    }
+    .sidebarResponsive{
+        display: none;
+    }
+}

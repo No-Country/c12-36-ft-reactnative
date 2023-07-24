@@ -14,8 +14,8 @@ const RequestCard = () => {
         <img src={card2} alt='Tarjeta Pocketpal' className='cardLanding_2' />
       </div>
       <div className='btnTextRequest'>
-        <Typography variant='p' color='secondary' className='titleRequestCard'>Pagá en cuotas <br /> y disfruta de <br /> promociones exclusivas</Typography>
-        <Button color='secondary' className='btnGradient btnGradient--request'><Typography className='textRequestBtn' color='secondary'>Solicitá tu tarjeta hoy</Typography></Button>
+        <Typography variant='p' color='secondary' className='titleRequestCard'>Pagá en cuotas <br /> y disfrutá de <br /> promociones exclusivas</Typography>
+        <Button color='secondary' className='btnGradient btnGradient--request'><Typography className='textRequestBtn' color='secondary'>Solicita tu tarjeta hoy</Typography></Button>
       </div>
     </section>
   )

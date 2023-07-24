@@ -8,8 +8,8 @@ const Banner = () => {
     <section className='banner'>
       <div className='titleTextBanner'>
         <Typography variant='p' color='secondary' className='titleBanner'>La mejor manera de llevar tu dinero</Typography>
-        <p className='textInfo'>Simplifica tus finanzas con nuestra billetera digital. <br />
-          Descubre todo lo que Pocketpal tiene para ti. <br /> <br />
+        <p className='textInfo'>Simplifica tus finanzas con nuestra <b>billetera digital</b>. <br />
+          Descubre todo lo que <b>Pocketpal</b> tiene para ti. <br /> <br />
           ¡Tu vida financiera en un solo lugar!<br />
         </p>
       </div>

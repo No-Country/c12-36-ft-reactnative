@@ -87,9 +87,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <p className='text-sm text-forgotten'>
-          ¿Olvidaste tu contraseña?
-        </p>
+        <a href='' className='text-sm text-forgotten'>¿Olvidaste tu contraseña?</a>
 
         {
           isLoading && (

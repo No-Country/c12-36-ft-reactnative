@@ -2,14 +2,14 @@ import Typography from '@mui/material/Typography'
 
 import beneficios from '../assets/beneficios.png'
 import recarga from '../assets/recarga.png'
-import descuento from '../assets/descuento.png'
+import avion from '../assets/avion.png'
 
 import '../styles/benefits.css'
 
-const info = [{ name: 'Recarga tu linea con promos', img: recarga }, { name: '30% en bares adheridos', img: descuento }, { name: '15% en locales adheridos', img: beneficios }]
+const info = [{ name: 'Recargá tu linea con promos', img: recarga }, { name: 'Descuentos en viajes', img: avion }, { name: '15% en locales adheridos', img: beneficios }]
 const Benefits = () => {
   return (
-    <section className='containerBenefits'>
+    <section className='containerBenefitsLanding'>
       {
             info.map((inf) => (
               <div className='info info-benefits' key={inf.name}>
