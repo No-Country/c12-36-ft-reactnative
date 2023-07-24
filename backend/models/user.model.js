@@ -26,13 +26,22 @@ const userSchema = new Schema({
     dateOfBirth: Date,
     dni: {
         type: Number, 
-        required: true,
         unique: true,
     }, 
     
     nacionality: String,
     cbu: String,
-    balance: Number,
+    balance: {
+        type: Number, 
+        default: 0
+    },
+
+    code: { type: String},
+
+    emailstatus: { 
+        type: String,
+        default: "UNVERIFIED" },
+    
     address: {
         street: String,
         number: Number,

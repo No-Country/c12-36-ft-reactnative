@@ -2,7 +2,9 @@ const Users = require("../models/user.model");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {generarCbuCompleto} = require("../utils/cbuUtils");
+const {generarCbuCompleto} = require("../utils/cbuUtils.js");
+const { v4: uuidv4 } = require('uuid');
+const { sendVerificationEmail } = require('../utils/mail.config.js');
 
 //Obtener todos los usuario
 const getUsers = async (req, res) => {
@@ -32,11 +34,14 @@ const createUser = async (req, res) => {
   const existingUser = await Users.findOne({ email });
   if (existingUser) {
     return res
-      .status(400)
+      .status(400) 
       .json({
         message: "Ya existe un usuario con el mismo correo electrónico",
       });
   }
+
+  // Generar el código para validar email
+  const code = uuidv4();
 
   const salt = bcrypt.genSaltSync(10); //cantidad de saltos que da para encriptar, entre mas vuelta da es mas segura.
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
@@ -47,26 +52,82 @@ const createUser = async (req, res) => {
       email: req.body.email,
       password: passwordHash,
       isActivated: req.body.isActivated || false,
-    };
-    const user = await Users.create(newUser);
-    const accessToken = jwt.sign({ id: user.email }, process.env.SECRET_KEY, {
+      code: code,
+      emailstatus: "UNVERIFIED",
+    };   
+
+    /*// Obtener un template
+      const template = getTemplate(newUser.firstName, accessToken);*/
+
+    // se guarda el usuario
+      const user = await Users.create(newUser);
+
+    // genera el token
+    const registerToken = jwt.sign({ id: newUser.email, code: newUser.code }, process.env.SECRET_KEY, {
       expiresIn: process.env.JWT_EXPIRE_REGISTER,
     });
 
+    // Enviar el email
+      await sendVerificationEmail(user, registerToken);
+      
     //Enviar una respuesta al cliente
     res
       .status(200)
       .json({
         mensaje: "Usuario creado con exito",
         usuario: {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          email: req.body.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          //code: user.code,
         },
-        accessToken,
-      }); // descomentar para el token
+        registerToken,
+      }); 
   } catch (error) {
     res.status(404).send(error);
+  }
+};
+
+// Confirmacion de correo electronico valido
+
+const emailConfirm = async (req, res) => {
+  try { 
+    // Obtener el token
+    const  registerToken  = req.params.registertoken;
+    console.log(registerToken+"b")
+
+    // Verificar la data
+    const data = jwt.verify(registerToken, process.env.SECRET_KEY);
+
+    const { id, code } = data;
+
+    // Verificar existencia del usuario
+    const user = await Users.findOne({ email: id });
+
+    if (!user) {
+      return res.json({
+        success: false,
+        msg: 'Usuario no existe',
+      });
+    } 
+
+    // Verificar el código
+    if (code !== user.code) {
+      return res.redirect('/error.html');
+    }
+
+    // Actualizar usuario
+    user.emailstatus = "VERIFIED";
+    await user.save();
+
+    // Redireccionar a la confirmación
+    return res.redirect('/confirm.html');
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      success: false,
+      msg: 'Error al confirmar usuario',
+    });
   }
 };
 
@@ -80,16 +141,16 @@ const editUser = async (req, res) => {
     return res.status(404).send({ mensaje: "Usuario no encontrado" });
   }
 
-  const VerificarSaldo = user.balance;
-  let cbuFinal = user.cbu;
-  let saldoRegalo;
+  const checkBalance = user.balance;
+  let finalCbu = user.cbu;
+  let giftBalance;
   // Verificar si el CBU existe para no editarlo
-  if (!cbuFinal) {
-    cbuFinal = await generarCbuCompleto();
+  if (!finalCbu) {
+    finalCbu = await generarCbuCompleto();
   }  
   // Verificar si el saldo esta en 0 para entregar regalo de activaciono o recargarle el saldo para que siga operando
-  if (!VerificarSaldo || VerificarSaldo === 0 ) { // si activa por primera vez o el saldo le llega a cero se le regala 10000
-    saldoRegalo =  10000;
+  if (!checkBalance || checkBalance === 0 ) { // si activa por primera vez o el saldo le llega a cero se le regala 10000
+    giftBalance =  12000;
   }   
   
   // verificar edad 
@@ -98,7 +159,7 @@ const editUser = async (req, res) => {
   const currentDate = new Date();
   const userAge = currentDate.getFullYear() - dateOfBirth.getFullYear();
 
-  // If the user is younger than 18, reject the request
+  // Si el usuario es menos de 18 años no se puede registrar
   if (userAge < 18) {
     return res.status(400).send({ mensaje: "Debes ser mayor de 18 años para registrarte." });
   }
@@ -116,8 +177,8 @@ const editUser = async (req, res) => {
       zipcode: req.body.address.zipcode,
     },
     isActivated: true,
-    cbu: cbuFinal,
-    balance: saldoRegalo || user.balance,
+    cbu: finalCbu,
+    balance: giftBalance || user.balance,
   };
  
   try {
@@ -164,6 +225,12 @@ const loginUser = async (req, res) => {
           firstName: userFind.firstName,
           lastName: userFind.lastName,
           isActivated: userFind.isActivated,
+          cbu: userFind.cbu,
+          balance: userFind.balance,
+          dateOfBirth: userFind.dateOfBirth,
+          nacionality: userFind.nacionality,
+          address: userFind.address,
+          dni: userFind.dni,
         };
         const accessToken = jwt.sign(
           { id: userFind.email },
@@ -219,4 +286,6 @@ module.exports = {
   createUser,
   editUser,
   deleteUser,
+  emailConfirm,
+  
 };
