@@ -287,5 +287,6 @@ module.exports = {
   editUser,
   deleteUser,
   emailConfirm,
+  hola,
   
 };
