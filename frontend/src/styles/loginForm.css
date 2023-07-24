@@ -49,13 +49,13 @@
   font-size: .8rem;
 }
 
-.css-1laqsz7-MuiInputAdornment-root {
+.eye_icon {
   cursor: pointer;
   position: absolute;
   right: 10px;
 }
 
-.css-m5fxbh-MuiButtonBase-root-MuiButton-root {
-  height: 3rem;
+.login_button {
+  height: 3rem!important;
   width: 328px!important; 
 }

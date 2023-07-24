@@ -173,7 +173,7 @@ const SignupForm = () => {
             type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position='end' onClick={handleVisibility}>
+                <InputAdornment className='eye_icon' position='end' onClick={handleVisibility}>
                   {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
 
                 </InputAdornment>
@@ -209,7 +209,7 @@ const SignupForm = () => {
             type={viewer ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position='end' onClick={handleVisibility}>
+                <InputAdornment className='eye_icon' position='end' onClick={handleVisibility}>
                   {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
 
                 </InputAdornment>
