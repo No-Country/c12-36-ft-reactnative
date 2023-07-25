@@ -17,6 +17,7 @@ import EditProfile from './pages/Profile'
 import Terms from './pages/Terms'
 import Policy from './pages/Policy'
 import About from './pages/About'
+import ContactUs from './pages/ContactUs'
 import Error from './pages/Error'
 
 import './styles/app.css'
@@ -69,6 +70,7 @@ const App = () => {
           <Route path='/terms-conditions' element={<Terms />} />
           <Route path='/privacy-policies' element={<Policy />} />
           <Route path='/about-us' element={<About />} />
+          <Route path='/contact-us' element={<ContactUs />} />
           <Route path='/page-not-found' element={<Error />} />
         </Routes>
       </ThemeProvider>

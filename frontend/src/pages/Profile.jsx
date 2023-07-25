@@ -79,7 +79,7 @@ const Profile = () => {
             id='firstName'
             className='labelInput'
           >
-            Nombres*
+            Primer Nombre*
             <TextField
               id='firstName'
               name='firstName'
@@ -104,7 +104,7 @@ const Profile = () => {
             id='email'
             className='labelInput'
           >
-            Apellidos*
+            Primer Apellido*
             <TextField
               id='lastName'
               aria-invalid={errors.lastName ? 'true' : 'false'}

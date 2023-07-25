@@ -62,20 +62,27 @@ const Header = () => {
               )
             : (
               <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
-                  <IconButton size='large' aria-label='account' aria-controls='menu-appbar' aria-haspopup='true' onClick={handleOpenNavMenu} color='inherit'>
-                    <MenuIcon />
-                  </IconButton>
-                  <Menu id='menu-appbar' anchorEl={anchorNav} anchorOrigin={{ vertical: 'bottom', horizontal: 'rigth' }} open={Boolean(anchorNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' } }}>
+                {
+                  actualPath !== '/login' && actualPath !== '/signup'
+                    ? (
+                      <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
+                        <IconButton size='large' aria-label='account' aria-controls='menu-appbar' aria-haspopup='true' onClick={handleOpenNavMenu} color='inherit'>
+                          <MenuIcon />
+                        </IconButton>
+                        <Menu id='menu-appbar' anchorEl={anchorNav} anchorOrigin={{ vertical: 'bottom', horizontal: 'rigth' }} open={Boolean(anchorNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' } }}>
 
-                    <Sidebar />
-                    {/* pages.map((page) => (
+                          <Sidebar />
+                          {/* pages.map((page) => (
                       <MenuItem key={page} onClick={handleCloseNavMenu}>
                         <Typography textAlign='center'><Link>{page}</Link></Typography>
                       </MenuItem>
                     ))} */}
-                  </Menu>
-                </Box>
+                        </Menu>
+                      </Box>
+                      )
+                    : null
+                }
+
                 <Link to='/'>
                   <div className='logo'>Pocketpal</div>
                 </Link>
@@ -86,9 +93,16 @@ const Header = () => {
                   ))
                 }
                 </ul>
-                {
+                <div style={{ display: 'flex', gap: '25px' }}>
+                  {
                   user &&
-                    <div>
+                    <div className='circlePictureHeader'>
+                      <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+                    </div>
+                }
+                  {
+                  user && actualPath === '/' &&
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
                       <img className='notifications' src={bell} alt=' ' />
                       <div className='perfilHeader'>
                         {/* <div className='circlePictureHeader'>
@@ -98,6 +112,8 @@ const Header = () => {
                       </div>
                     </div>
                 }
+                </div>
+
               </Container>
               )
         }

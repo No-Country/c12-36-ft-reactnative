@@ -1,23 +1,31 @@
 .error_page {
   align-items: center;
-  background-image: url('../assets/broken-background.jpg');
   background-size: cover;
   color: #F1F0EA;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: flex-end;
-  padding: 16rem 0;
+  padding: 10rem 0;
 }
 
 .error_title {
   color: #8D4EB5;
   font-size: 2.9rem;
+  padding-bottom: 2rem;
+}
+
+.error_text {
+  padding-top: 2rem;
 }
 
 @media screen and (max-width:900px) {
   .error_page {
     padding: 18rem 0;
+  }
+
+  .error_page img {
+    width: 70%;
   }
 
   .error_title {
