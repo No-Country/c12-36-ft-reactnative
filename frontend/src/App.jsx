@@ -36,14 +36,14 @@ const App = () => {
           <Route
             path='/login' element={
                                     user
-                                      ? <Navigate to='/home' />
+                                      ? <Navigate to='/home/dashboard' />
                                       : <Login />
                                   }
           />
           <Route
             path='/signup' element={
                                       user
-                                        ? <Navigate to='/home' />
+                                        ? <Navigate to='/login' />
                                         : <SignUp />
                                     }
           />
