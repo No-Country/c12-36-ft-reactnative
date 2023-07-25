@@ -11,15 +11,21 @@ import terms from '../assets/fi-sr-document.png'
 import tarjeta from '../assets/fi-sr-credit-card.png'
 import portrait from '../assets/fi-sr-portrait.png'
 import close from '../assets/close.png'
-import { useLogout } from '../hooks/useLogout'
-
-const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Movimientos', img: moves, path: '' }, { name: 'Mis datos', img: portrait, path: '' }]
+import { useAuth } from '../hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
+/* import { useLogout } from '../hooks/useLogout'
+ */
+const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Movimientos', img: moves, path: '' }, { name: 'Mis datos', img: portrait, path: '/home/settings/edit_profile' }]
 // { name: 'Mis tarjetas', img: cards }, { name: 'Servicios', img: manos },
 const sidebarDown = [{ name: 'Terminos de uso', img: terms, path: '/terms-conditions' }, { name: 'Ayuda y soporte', img: help, path: '/contact-us' }, { name: 'Configuraciones', img: settings, path: '/home/settings/edit_profile' }]
 
 const Sidebar = () => {
-  const { logout } = useLogout()
-
+  const { navigate } = useNavigate()
+  const { logout } = useAuth()
+  const handleLogout = () => {
+    logout()
+    navigate('/landing')
+  }
   return (
     <section className='sidebar'>
       <div className='focus'>
@@ -27,7 +33,7 @@ const Sidebar = () => {
         <SidebarComponent sidebar={sidebarDown} />
       </div>
       <Divider className='divider' />
-      <Button className='logout_button' onClick={logout}><img src={close} className='iconSidebar' />Cerrar sesión</Button>
+      <Button className='logout_button' onClick={handleLogout}><img src={close} className='iconSidebar' />Cerrar sesión</Button>
     </section>
   )
 }

@@ -1,13 +1,14 @@
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import '../styles/transfer.css'
-import { useAuthContext } from '../hooks/useAuthContext'
-import pencil from '../assets/fi-sr-pencil.png'
+/* import { useAuthContext } from '../hooks/useAuthContext'
+ */import pencil from '../assets/fi-sr-pencil.png'
 import BtnGradient from '../components/BtnGradient'
 import { Link } from 'react-router-dom'
 import backIcon from '../assets/back.png'
+import { useAuth } from '../hooks/useAuth'
 const Transfers = () => {
-  const { user } = useAuthContext()
+  const { user } = useAuth()
   const continuar = { text: 'Continuar' }
   return (
     <div className='transfer'>

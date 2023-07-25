@@ -1,12 +1,13 @@
 import '../styles/welcome.css'
-import { useAuthContext } from '../hooks/useAuthContext'
+/* import { useAuthContext } from '../hooks/useAuthContext' */
 import openEye from '../assets/fi-sr-eye.png'
 import icon2 from '../assets/fi-sr-copy.png'
 import closeEye from '../assets/cerrar-ojo.png'
 import { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { useAuth } from '../hooks/useAuth'
 const Welcome = () => {
-  const { user } = useAuthContext()
+  const { user } = useAuth()
   const [eye, setEye] = useState(false)
   const [copied, setCopied] = useState(false)
 

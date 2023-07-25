@@ -11,21 +11,22 @@ import { Button } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
+/* import { useLogout } from '../hooks/useLogout' */
+/* import { useAuthContext } from '../hooks/useAuthContext' */
 import bell from '../assets/fi-sr-bell.png'
 import LoginButton from '../components/LoginButton'
 import BtnGradient from '../components/BtnGradient'
 
 import '../styles/header.css'
 import Sidebar from './Sidebar'
+import { useAuth } from '../hooks/useAuth'
 
 const pages = ['Nosotros', 'Beneficios', 'Ayuda']
 
 const Header = () => {
-  const { user } = useAuthContext()
-  const { logout } = useLogout()
-  const actualPath = useLocation().pathname
+  const { user } = useAuth()
+  /*   const { logout } = useLogout()
+ */ const actualPath = useLocation().pathname
   const [anchorNav, setAnchorNav] = useState(null)
 
   const handleOpenNavMenu = (event) => {
