@@ -13,7 +13,7 @@ import portrait from '../assets/fi-sr-portrait.png'
 import close from '../assets/close.png'
 import { useLogout } from '../hooks/useLogout'
 
-const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Movimientos', img: moves, path: '' }, { name: 'Mis datos', img: portrait, path: '/home/profile' }]
+const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Movimientos', img: moves, path: '' }, { name: 'Mis datos', img: portrait, path: '' }]
 // { name: 'Mis tarjetas', img: cards }, { name: 'Servicios', img: manos },
 const sidebarDown = [{ name: 'Terminos de uso', img: terms, path: '/terms-conditions' }, { name: 'Ayuda y soporte', img: help, path: '/contact-us' }, { name: 'Configuraciones', img: settings, path: '/home/settings/edit_profile' }]
 
