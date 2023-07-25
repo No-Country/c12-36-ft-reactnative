@@ -3,7 +3,7 @@
     flex-direction: column; 
     gap: 1.8rem;
     margin-top: 4rem;
-    padding: 0 6.56rem;
+    padding: 0 4rem;
 }
 
 .circlePicture{
@@ -67,24 +67,11 @@ background: lightgray 50% / cover no-repeat, #D9D9D9;
     font-weight: 400;
 }
 
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+fieldset {
     border-color: #f1f0ea!important;
     border-radius: 10px!important;
-}
-
-.css-mye7ox-MuiInputBase-root-MuiOutlinedInput-root{
-    color: #f1f0ea!important;
-    height: 48px;
-}
-
-.css-69oiey-MuiInputBase-root-MuiOutlinedInput-root{
-    color: #f1f0ea!important;
-    height: 48px;
-}
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
-    height: 48px!important;
-}
-
+}  
+ 
 .response-error {
   color: #DD643E;
   font-size: .8rem;

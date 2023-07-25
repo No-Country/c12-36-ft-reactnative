@@ -1,18 +1,17 @@
 import { Button, Checkbox, CircularProgress, FormControlLabel, TextField, InputAdornment } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 /* import { useSignup } from '../hooks/useSignup' */
 import { useAuth } from '../hooks/useAuth'
+import { SuccessPop, RegisterErrorPop } from '../config/popUps'
 
 import '../styles/signupForm.css'
 
 const SignupForm = () => {
-/*   const { signup, error, isLoading } = useSignup()
-
- */
+/*   const { signup, error, isLoading } = useSignup() */
   const { signup, user } = useAuth()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
@@ -20,8 +19,13 @@ const SignupForm = () => {
   const [checkTerms, setCheckTerms] = useState(false)
   const [status, setStatus] = useState(false)
 
+  const navigate = useNavigate()
+
   const onSubmit = handleSubmit(async (values) => {
     signup(values)
+      .then(() => SuccessPop())
+      .then(() => navigate('/login'))
+      .catch(() => RegisterErrorPop())
   })
   console.log(user)
   useEffect(() => {
@@ -171,7 +175,6 @@ const SignupForm = () => {
               endAdornment: (
                 <InputAdornment className='eye_icon' position='end' onClick={handleVisibility}>
                   {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
-
                 </InputAdornment>
               )
             }}
