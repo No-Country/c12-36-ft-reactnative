@@ -1,5 +1,12 @@
 .containerDashboard{
-    margin-left: 60px;
+    align-items: center;
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+    padding: 0 4rem;
+    height: 95vh;
+    width: 100%;
 }
 .welcomeCards{
     display: flex;
@@ -8,9 +15,12 @@
 
 @media screen and (max-width:900px) {
     .containerDashboard{
-        margin:0;
+        margin-top: 1rem;
         display: flex;
         flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+        width: 382px;
     }
     .welcomeCards{
         flex-direction: column;
@@ -20,5 +30,6 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        width: 100%;
     }
 }

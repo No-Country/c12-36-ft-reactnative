@@ -1,14 +1,11 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
 
-import BackButton from '../components/BackButton'
-
 import '../styles/about.css'
 
 const About = () => {
   return (
     <div className='aboutContainer'>
-      <BackButton />
       <div className='about_title'>
         <Typography variant='h4'>PocketPal</Typography>
         <Typography variant='subtitle1'>Tu Billetera Virtual Todo en Uno</Typography>

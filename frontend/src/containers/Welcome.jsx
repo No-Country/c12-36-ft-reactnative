@@ -15,7 +15,7 @@ const Welcome = () => {
     <section className='containerWelcome'>
       <div>
         <p className='greetings'>Hola {user.firstName}</p>
-        <p className='welcome'>Bienvenido</p>
+        {/* <p className='welcome'>Bienvenido</p> */}
       </div>
       <div className='cardSaldo'>
         <div className='containerCuentas'>
