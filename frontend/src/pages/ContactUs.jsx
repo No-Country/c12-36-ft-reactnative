@@ -2,14 +2,12 @@ import React from 'react'
 
 import facebook from '../assets/facebook.png'
 import instagram from '../assets/instagram.png'
-import BackButton from '../components/BackButton'
 
 import '../styles/contactUs.css'
 
 const ContactUs = () => {
   return (
     <div className='contact_us'>
-      <BackButton />
       <div>
         <h2 className='contact_title'>Contáctenos</h2>
         <div>

@@ -3,8 +3,8 @@
   font-family: "Poppins", Helvetica;
   font-size: 20px;
   font-weight: 600;
-  margin-top: 90px;
-  margin-bottom: 33px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .containerBenefits{
@@ -58,9 +58,7 @@
 
 @media screen and (max-width:900px) {
   .benefits{
-      margin-top: 0;
-      margin-bottom: 0;
-      margin-left: 16px;
+      margin: 0;
   }
   .cardsBenefitsWeb{
     display: none;
@@ -70,8 +68,8 @@
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    width: 148px;
-    height: 139px;
+    width: 10rem;
+    height: 8.6875rem;
     gap: 12px;
     padding: 12px;
     margin-bottom: 0;
@@ -81,7 +79,7 @@
   }
   .containerCardsBenefits{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
   .parrafBenefits{
     font-size: 8px;
