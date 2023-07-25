@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Transfers from './pages/Transfers'
+import History from './pages/History'
 import Settings from './pages/Settings'
 import EditProfile from './pages/Profile'
 import Terms from './pages/Terms'
@@ -36,14 +37,14 @@ const App = () => {
           <Route
             path='/login' element={
                                     user
-                                      ? <Navigate to='/home' />
+                                      ? <Navigate to='/home/dashboard' />
                                       : <Login />
                                   }
           />
           <Route
             path='/signup' element={
                                       user
-                                        ? <Navigate to='/home' />
+                                        ? <Navigate to='/login' />
                                         : <SignUp />
                                     }
           />
@@ -62,7 +63,10 @@ const App = () => {
                                               }
             />
             <Route path='/home/transfers' element={<Transfers />} />
+            <Route path='/home/history' element={<History />} />
             <Route path='/home/profile' element={<EditProfile />} />
+            <Route path='home/terms-conditions' element={<Terms />} />
+            <Route path='home/contact-us' element={<ContactUs />} />
             <Route path='/home/settings' element={<Settings />}>
               <Route path='/home/settings/edit_profile' element={<EditProfile />} />
             </Route>
