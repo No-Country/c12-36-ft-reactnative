@@ -4,30 +4,26 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-
-import { useSignup } from '../hooks/useSignup'
+/* import { useSignup } from '../hooks/useSignup' */
+import { useAuth } from '../hooks/useAuth'
 
 import '../styles/signupForm.css'
 
 const SignupForm = () => {
-  const { signup, error, isLoading } = useSignup()
+/*   const { signup, error, isLoading } = useSignup()
+
+ */
+  const { signup, user } = useAuth()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
   const [check18, setCheck18] = useState(false)
   const [checkTerms, setCheckTerms] = useState(false)
   const [status, setStatus] = useState(false)
 
-  const onSubmit = (data, e) => {
-    e.preventDefault()
-    setErrorPass('')
-
-    if (data.password !== data.passwordRepeat) {
-      setErrorPass('Las contraseñas no coinciden')
-      return
-    }
-    signup(data)
-  }
-
+  const onSubmit = handleSubmit(async (values) => {
+    signup(values)
+  })
+  console.log(user)
   useEffect(() => {
     if (check18 === true && checkTerms === true) {
       setStatus(true)
@@ -75,7 +71,7 @@ const SignupForm = () => {
   return (
     <div className='signup_form'>
       <h1>Crea tu cuenta en Pocketpal</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmit}>
         <div className='textField'>
           <TextField
             id='email'
@@ -261,9 +257,9 @@ const SignupForm = () => {
           />
         </div>
 
-        {isLoading && <CircularProgress color='secondary' />}
+        {/*         {isLoading && <CircularProgress color='secondary' />}
         <p className='response-error'>{error}</p>
-
+ */}
         <Button
           className='btnGradient'
           variant='text'
