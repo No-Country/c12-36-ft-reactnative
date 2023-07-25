@@ -26,7 +26,7 @@ const Footer = () => {
         <div>
           <p className='lists_title'>Ayuda y Seguridad</p>
           <ul className='footer_options'>
-            <li><a href='page-not-found' target='_blank'>Contacto</a></li>
+            <li><a href='contact-us' target='_blank'>Contacto</a></li>
             <li><a href='page-not-found' target='_blank'>Preguntas Frecuentes</a></li>
             <li><a href='page-not-found' target='_blank'>Seguridad</a></li>
           </ul>
