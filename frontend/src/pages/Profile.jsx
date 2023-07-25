@@ -139,7 +139,7 @@ const Profile = () => {
               ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
               }
               defaultValue={user.email}
-
+              disabled
             />
             {
               errors.email && errors.email.type === 'required' &&
