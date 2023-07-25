@@ -1,7 +1,11 @@
-import { Typography } from '@mui/material'
 import facebook from '../assets/facebook.png'
 import instagram from '../assets/instagram.png'
+import FooterComponent from './FooterComponent'
 import '../styles/footer.css'
+
+const tyc = [{ path: 'terms-conditions', name: 'Terminos y condiciones' }, { path: 'privacy-policies', name: 'Politicas de Privacidad' }, { path: 'https://buenosaires.gob.ar/defensaconsumidor/como-denunciar', name: 'Defensa al Consumidor' }]
+const about = [{ path: 'about-us', name: 'Acerca de nosotros' }, { path: 'page-not-found', name: 'Enviar y recibir dinero' }, { path: 'page-not-found', name: 'Beneficios' }]
+const help = [{ path: 'contact-us', name: 'Contacto' }, { path: 'page-not-found', name: 'Preguntas Frecuentes' }, { path: 'terms-conditions/#seguridad', name: 'Seguridad' }]
 
 const Footer = () => {
   return (
@@ -10,25 +14,20 @@ const Footer = () => {
         <div>
           <p className='lists_title'>Terminos y condiciones</p>
           <ul className='footer_options'>
-            <li><a href='terms-conditions' target='_blank'>Terminos y condiciones</a></li>
-            <li><a href='privacy-policies' target='_blank'>Politicas de Privacidad</a></li>
-            <li><a href='page-not-found' target='_blank'>Defensa al Consumidor</a></li>
+            <FooterComponent footerlist={tyc} />
           </ul>
+
         </div>
         <div>
           <p className='lists_title'>Sobre PocketPal</p>
           <ul className='footer_options'>
-            <li><a href='about-us' target='_blank'>Acerca de nosotros</a></li>
-            <li><a href='page-not-found' target='_blank'>Enviar y recibir dinero</a></li>
-            <li><a href='page-not-found' target='_blank'>Beneficios</a></li>
+            <FooterComponent footerlist={about} />
           </ul>
         </div>
         <div>
           <p className='lists_title'>Ayuda y Seguridad</p>
           <ul className='footer_options'>
-            <li><a href='page-not-found' target='_blank'>Contacto</a></li>
-            <li><a href='page-not-found' target='_blank'>Preguntas Frecuentes</a></li>
-            <li><a href='page-not-found' target='_blank'>Seguridad</a></li>
+            <FooterComponent footerlist={help} />
           </ul>
         </div>
         <div>

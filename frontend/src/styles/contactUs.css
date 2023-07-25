@@ -1,0 +1,30 @@
+.contact_us {
+  display: flex;
+  color: #FFFFFF;
+  flex-direction: column;
+  gap: 3rem;
+  height: 100vh;
+  margin-top: 150px;
+  padding: 0 2rem 2rem;
+  text-align: center;
+}
+
+.contact_title {
+  padding-bottom: 3rem;
+  padding-top: 8rem;
+}
+
+.subtitle {
+  padding-top: 1rem;
+}
+
+.contact_us .lists_title {
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+}
+
+.contact_us .rrss {
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
