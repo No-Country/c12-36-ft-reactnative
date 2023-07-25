@@ -11,8 +11,9 @@ export const userUpdate = (token, data) => {
     }
   })
 }
-export const transferRequest = (token, data, sender) => axios.post(`${API}/transactions`, data, sender, {
+export const transferRequest = (token, data, sender) => axios.post(`${API}/transactions`, data, {
   headers: {
     'access-token': token
-  }
+  },
+  body: sender
 })

@@ -7,15 +7,29 @@ import { useAuth } from '../hooks/useAuth'
 import { useForm } from 'react-hook-form'
 import { Button } from '@mui/material'
 import { transferRequest } from '../api/auth'
+import { useEffect, useState } from 'react'
 const Transfers = () => {
   const { user, authToken } = useAuth()
   const { register, formState: { errors }, handleSubmit } = useForm()
+  const [motivo, setMotivo] = useState('')
+  const [cbuODni, setCbuODni] = useState('')
+  const [amount, setAmount] = useState('')
+  const [recipient, setRecipient] = useState('')
+
+  useEffect(() => {
+    if (cbuODni.length > 8) {
+      setRecipient('CBU')
+    } else {
+      setRecipient('DNI')
+    }
+  }, [cbuODni])
 
   console.log(user)
   const onSubmit = (data) => {
     console.log(authToken)
     console.log(data)
-    transferRequest(authToken, data, user.dni)
+    const id = { ...data, sender: user.dni }
+    transferRequest(authToken, id)
       .then((res) => {
         console.log(res.data)
       })
@@ -33,7 +47,7 @@ const Transfers = () => {
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <label id='amount' className='amount'>$</label>
             <TextField
-              id='amount' name='amount' type='number' className='sinBorde ' variant='standard' placeholder='0' {...register('amount', {
+              id='amount' name='amount' type='number' className='sinBorde' onChange={(e) => setAmount(e.target.value)} variant='standard' placeholder='0' {...register('amount', {
                 required: 'Ingrese un monto valido',
                 pattern: {
                   value: /^[0-9]+(\.[0-9]{1,2})?$/,
@@ -54,18 +68,22 @@ const Transfers = () => {
         <Typography variant='p' color='secondary' className='available'>Saldo disponible ${user.balance}</Typography>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <TextField
-            name='recipient' id='recipient' label='Ingresar CBU o CVU' type='number' variant='standard' {
+            name='recipient' id='recipient' onChange={(e) => setCbuODni(e.target.value)} label='Ingresar CBU o CVU' type='number' variant='standard' {
               ...register('recipient', {
-                required: 'Ingrese un CVU valido'
+                required: 'Ingrese un CVU valido',
+                minLength: 8,
+                maxLength: 16
               })
             }
             error={Boolean(errors.recipient)}
           />
           {errors.recipient && <p>{errors.recipient.message}</p>}
+          {errors.recipient && errors.recipient.type === 'minLength' && <p>Ingrese un CBU o DNI</p>}
+          {errors.recipient && errors.recipient.type === 'maxLength' && <p>Ingrese un CBU o DNI</p>}
           <div className='containerMotivo'>
             <Typography variant='p' color='secondary'>Motivo:</Typography>
             <TextField
-              name='detail' id='detail' label='Varios' type='text' variant='standard' {
+              name='detail' id='detail' label='Varios' onChange={(e) => setMotivo(e.target.value)} type='text' variant='standard' {
               ...register('detail', {
                 required: 'Ingrese un motivo'
               })
@@ -82,7 +100,7 @@ const Transfers = () => {
             type='submit'
 
           >
-            Guardar cambios
+            Continuar
           </button>
         </div>
 
