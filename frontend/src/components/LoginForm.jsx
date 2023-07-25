@@ -1,15 +1,16 @@
 import { Button, CircularProgress, FormControl, TextField, InputAdornment } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import '../styles/loginForm.css'
-import { useLogin } from '../hooks/useLogin'
+/* import { useLogin } from '../hooks/useLogin'
+ */import { useAuth } from '../hooks/useAuth'
 
 const LoginForm = () => {
-  const { login, error, isLoading } = useLogin()
+/*   const { login, error, isLoading } = useLogin()
   const form = useForm({
     defaultValues: {
       email: '',
@@ -42,6 +43,40 @@ const LoginForm = () => {
   const [viewer, setViewer] = useState(false)
   const handleVisibility = () => {
     setViewer((prev) => !prev)
+  } */
+
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { login } = useAuth()
+  const navigate = useNavigate()
+
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      await login(data)
+      await navigate('/home/dashboard')
+    } catch (err) {
+      console.error(err)
+    }
+  })
+  const [viewer, setViewer] = useState(false)
+  const handleVisibility = () => {
+    setViewer((prev) => !prev)
+  }
+
+  const muiStyles = {
+    sxInput: {
+      input: {
+        textAlign: 'center',
+        color: 'white',
+        width: '300px'
+      },
+      '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
+    },
+    label: {
+      style: {
+        width: '100%',
+        color: 'gray'
+      }
+    }
   }
 
   return (
@@ -89,7 +124,7 @@ const LoginForm = () => {
 
         <a href='' className='text-sm text-forgotten'>¿Olvidaste tu contraseña?</a>
 
-        {
+        {/*         {
           isLoading && (
             <div style={{ textAlign: 'center' }}>
               <CircularProgress color='secondary' />
@@ -97,7 +132,7 @@ const LoginForm = () => {
           )
         }
 
-        <p className='response-error'>{error}</p>
+        <p className='response-error'>{error}</p> */}
 
         <Button
           className='btnGradient login_button'

@@ -1,48 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
-import { useAuthContext } from '../hooks/useAuthContext'
+/* import { useAuthContext } from '../hooks/useAuthContext'
 import { useProfile } from '../hooks/useProfile'
-
+ */
 // import camera from '../assets/fi-sr-camera.png'
 import '../styles/profile.css'
-
+import { useAuth } from '../hooks/useAuth'
+import { userUpdate } from '../api/auth'
 const Profile = () => {
-  const { user } = useAuthContext()
-  const { updateProfile, error, success, activation, isLoading } = useProfile()
-  // Auxiliar (lo de la fecha):
-  const shortenedDateOfBirth = user.dateOfBirth?.slice(0, 10)
+  const { user, authToken, activation, setActivation, setUser } = useAuth()
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
       nacionality: user.nacionality,
-      // dateOfBirth: user.dateOfBirth,
-      dateOfBirth: shortenedDateOfBirth,
+      dateOfBirth: user.dateOfBirth,
       dni: user.dni,
-      street: user.address?.street,
-      number: user.address?.number,
-      zipcode: user.address?.zipcode
+      address: {
+        street: user.address.street,
+        number: user.address.number,
+        zipcode: user.address.zipcode
+      }
+
     }
   })
 
   const onSubmit = (data, e) => {
     e.preventDefault()
-    const alteredData = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      nacionality: data.nacionality,
-      dateOfBirth: data.dateOfBirth,
-      dni: data.dni,
-      address: {
-        street: data.street,
-        number: data.number,
-        zipcode: data.zipcode
-      }
-    }
-    updateProfile(alteredData, user.accessToken)
+    userUpdate(authToken, data)
+      .then((res) => {
+        setUser(res.data.userEdited)
+        localStorage.setItem('user', JSON.stringify(res.data.userEdited))
+      })
+      .then(() => setActivation(true))
+      .catch((error) => {
+        console.error(error)
+      })
   }
 
   const customSx = {
@@ -76,7 +71,9 @@ const Profile = () => {
           <img className='camera' src={camera} alt='' />
         </div> */}
       </div>
-      <FormControl style={{ gap: '34px' }}>
+      <form
+        style={{ gap: '34px' }} onSubmit={handleSubmit(onSubmit)}
+      >
         <div className='containerLabel'>
           <FormLabel
             id='firstName'
@@ -85,11 +82,13 @@ const Profile = () => {
             Nombres*
             <TextField
               id='firstName'
+              name='firstName'
               aria-invalid={errors.firstName ? 'true' : 'false'}
               {...sharedProperties}
               {
               ...register('firstName', { required: true, minLength: 3 })
               }
+              defaultValue={user.firstName}
               disabled={user.isActivated}
             />
             {
@@ -113,6 +112,7 @@ const Profile = () => {
               {
               ...register('lastName', { required: true, minLength: 3 })
               }
+              defaultValue={user.lastName}
               disabled={user.isActivated}
             />
             {
@@ -138,7 +138,8 @@ const Profile = () => {
               {
               ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
               }
-              disabled
+              defaultValue={user.email}
+
             />
             {
               errors.email && errors.email.type === 'required' &&
@@ -161,6 +162,7 @@ const Profile = () => {
               {
               ...register('nacionality', { required: true })
               }
+              defaultValue={user.nacionality ? user.nacionality : ''}
               disabled={user.isActivated}
             />
             {
@@ -187,6 +189,7 @@ const Profile = () => {
                   // pattern: /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/
                 })
                 }
+                defaultValue={user.dateOfBirth ? user.dateOfBirth : undefined}
                 disabled={user.isActivated}
               />
               {
@@ -211,6 +214,7 @@ const Profile = () => {
               {
               ...register('dni', { required: true, minLength: 3, pattern: /^[0-9]*$/ })
               }
+              defaultValue={user.dni ? user.dni : ''}
               disabled={user.isActivated}
             />
             {
@@ -241,8 +245,9 @@ const Profile = () => {
                 aria-invalid={errors.street ? 'true' : 'false'}
                 {...sharedProperties}
                 {
-                ...register('street', { required: true })
+                ...register('address.street', { required: true })
                 }
+                defaultValue={user.address.street ? user.address.street : ''}
               />
               {
                 errors.street && errors.street.type === 'required' &&
@@ -259,8 +264,9 @@ const Profile = () => {
                 aria-invalid={errors.number ? 'true' : 'false'}
                 {...sharedProperties}
                 {
-                ...register('number', { required: true, pattern: /^[0-9]*$/ })
+                ...register('address.number', { required: true, pattern: /^[0-9]*$/ })
                 }
+                defaultValue={user.address.number ? user.address.number : ''}
               />
               {
                 errors.number && errors.number.type === 'required' &&
@@ -284,8 +290,9 @@ const Profile = () => {
               aria-invalid={errors.zipcode ? 'true' : 'false'}
               {...sharedProperties}
               {
-              ...register('zipcode', { required: true })
+              ...register('address.zipcode', { required: true })
               }
+              defaultValue={user.address.zipcode ? user.address.zipcode : ''}
             />
             {
               errors.zipcode && errors.zipcode.type === 'required' &&
@@ -294,19 +301,19 @@ const Profile = () => {
           </FormLabel>
         </div>
 
-        {isLoading && <CircularProgress color='secondary' />}
+        {/*         {isLoading && <CircularProgress color='secondary' />}
         {error && <p className='response-error'>{error}</p>}
-        {success && <p className='response-success'>{success}</p>}
+        {success && <p className='response-success'>{success}</p>} */}
         {
-          activation &&
-            <>
-              <p className='response-activation'>
-                ¡Felicitaciones! Tu cuenta ha sido activada.
-              </p>
-              <p className='response-activation'>
-                ¡Te regalamos un saldo inicial de $12.000 para que utilices como quieras!
-              </p>
-            </>
+           activation &&
+             <>
+               <p className='response-activation'>
+                 ¡Felicitaciones! Tu cuenta ha sido activada.
+               </p>
+               <p className='response-activation'>
+                 ¡Te regalamos un saldo inicial de $12.000 para que utilices como quieras!
+               </p>
+             </>
         }
         <article className='signup-button'>
           <Button
@@ -316,12 +323,12 @@ const Profile = () => {
             sx={{
               color: '#F1F0EA'
             }}
-            onClick={handleSubmit(onSubmit)}
+
           >
             Guardar cambios
           </Button>
         </article>
-      </FormControl>
+      </form>
     </div>
   )
 }

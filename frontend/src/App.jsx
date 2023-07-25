@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 
-import { useAuthContext } from './hooks/useAuthContext'
-
+/* import { useAuthContext } from './hooks/useAuthContext'
+ */
 import theme from './config/temeConfig'
 import Header from './containers/Header'
 import Landing from './pages/Landing'
@@ -20,11 +20,13 @@ import About from './pages/About'
 import Error from './pages/Error'
 
 import './styles/app.css'
+import { useAuth } from './hooks/useAuth'
 
 const App = () => {
-  const { user } = useAuthContext()
+  const { user } = useAuth()
 
   return (
+
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Header />
@@ -55,7 +57,7 @@ const App = () => {
               path='/home/dashboard' element={
                                                 user?.isActivated
                                                   ? <Dashboard />
-                                                  : <Navigate to='/home/settings/profile' />
+                                                  : <Navigate to='/home/settings/edit_profile' />
                                               }
             />
             <Route path='/home/transfers' element={<Transfers />} />
@@ -71,6 +73,7 @@ const App = () => {
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
+
   )
 }
 

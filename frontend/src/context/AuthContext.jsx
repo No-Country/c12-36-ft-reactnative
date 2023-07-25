@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { createContext, useReducer, useEffect } from 'react'
+/* import { createContext, useReducer, useEffect } from 'react'
 
 export const AuthContext = createContext()
 
@@ -46,3 +46,4 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   )
 }
+ */
