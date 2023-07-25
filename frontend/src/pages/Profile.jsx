@@ -80,6 +80,7 @@ const Profile = () => {
           >
             Primer Nombre*
             <TextField
+              className='text-field'
               id='firstName'
               name='firstName'
               aria-invalid={errors.firstName ? 'true' : 'false'}

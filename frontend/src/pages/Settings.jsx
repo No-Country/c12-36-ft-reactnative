@@ -16,7 +16,7 @@ const Settings = () => {
   return (
     <div className='settings'>
       <div className='settings_sidebar'>
-        <Typography className='sidebar_title' variant='h5' color='secondary' fontSize='1.25rem'>Configuracion de cuenta</Typography>
+        <Typography className='sidebar_title' color='secondary' fontSize='1.1rem'>Configuracion de cuenta</Typography>
         <SidebarComponent sidebar={sidebar} />
       </div>
       <Divider orientation='vertical' flexItem className='dividerVertical' />

@@ -4,59 +4,28 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import { LoginErrorPop, ProfilePop } from '../config/popUps'
 
 import '../styles/loginForm.css'
 /* import { useLogin } from '../hooks/useLogin'
  */import { useAuth } from '../hooks/useAuth'
 
 const LoginForm = () => {
-/*   const { login, error, isLoading } = useLogin()
-  const form = useForm({
-    defaultValues: {
-      email: '',
-      password: ''
-    }
-  })
-
-  const { register, handleSubmit, formState } = form
-  const { errors } = formState
-
-  const onSubmit = data => login(data)
-
-  const muiStyles = {
-    sxInput: {
-      input: {
-        textAlign: 'center',
-        color: 'white',
-        width: '300px'
-      },
-      '& .MuiInput-underline:before': { borderBottomColor: '#ddd' }
-    },
-    label: {
-      style: {
-        width: '100%',
-        color: 'gray'
-      }
-    }
-  }
-
-  const [viewer, setViewer] = useState(false)
-  const handleVisibility = () => {
-    setViewer((prev) => !prev)
-  } */
-
   const { register, handleSubmit, formState: { errors } } = useForm()
   const { login } = useAuth()
   const navigate = useNavigate()
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await login(data)
-      await navigate('/home/dashboard')
-    } catch (err) {
-      console.error(err)
+      const res = await login(data)
+      if (res.status === 200) {
+        navigate('/home/dashboard')
+      }
+    } catch {
+      LoginErrorPop()
     }
   })
+
   const [viewer, setViewer] = useState(false)
   const handleVisibility = () => {
     setViewer((prev) => !prev)
