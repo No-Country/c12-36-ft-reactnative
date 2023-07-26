@@ -53,13 +53,15 @@ const Transfers = () => {
   const onSubmit = (data, e) => {
     e.preventDefault()
     const { amount, recipient, detail } = data
-    setAmount(amount)
+    const amountNumber = parseFloat(amount)
+    setAmount(amountNumber)
     setRecipient(recipient)
     setDetail(detail)
     setInfo(1)
     setTransfer(data)
   }
 
+  console.log(typeof (amount))
   console.log(thisUser)
   return (
     <>

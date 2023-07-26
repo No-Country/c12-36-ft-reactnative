@@ -22,3 +22,5 @@ export const userRequest = token => axios.get(`${API}/users`, {
     'access-token': token
   }
 })
+
+export const movementsRequest = () => axios.get(`${API}/transactions`)
