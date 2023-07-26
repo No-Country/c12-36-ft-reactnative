@@ -1,68 +1,78 @@
-.transfer{
-    margin: auto;
-    width: 75%;
+.transfer {
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    padding: 3rem;
+    width: 100%;
 }
-.titleTransfer{
+
+.titleSubtitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleTransfer {
     font-size: 2.5rem;
     font-weight: 700;
+    padding-bottom: 1.25rem;
 }
-.subtitleTransfer{
+
+.subtitleTransfer {
     font-size: 1.5rem;
     font-weight: 600;
 }
-.titleSubtitle{
-    display: flex;
-    flex-direction: column;
-}
-.containerAmount{
-    display: flex;
-    flex-direction: column;
+
+.containerAmount {
     align-items: center;
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.75rem;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+}
+
+.amount {
+    color: #f1f0ea !important;
+    font-size: 6rem;
+    font-weight: 600;
+}
+
+.available {
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0.8rem 0 3.62rem 0;
+}
+
+.transfer_info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
-}
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{
-    -webkit-text-fill-color: #858585!important;
-}
-.amount{
-    font-size: 6rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    color: #F1F0ea;
-}
-.balance{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-        object-fit: contain;
-        width: 15%;
+    margin-bottom: 4rem;
 }
 
-.sinBorde{
-    font-size: 6rem;
-    font-weight: 600;
-    background: none;
-    outline: none;
-    color: #F1F0ea;
-    border: none;
-    width: fit-content;
-}
-.css-e5ohxz-MuiFormLabel-root-MuiInputLabel-root{
-    color: #F1F0ea!important;
-}
-.css-faz01v-MuiInputBase-root-MuiInput-root:before{
-    color: #F1F0ea!important;
-}
-.containerMotivo{
-    display: flex;
-    align-items: end;
-    gap: 1rem;
-}
-.sinBorde::placeholder{
-    color: #F1F0ea;
+label {
+    color: gray!important;    
 }
 
+.sinBorde input {
+    color: #F1F0ea!important;
+    text-align: center;   
+    font-size: 6rem;
+    font-weight: 600;
+    width: 400px!important;
+}
+
+.transaction_input input {
+    color: #F1F0ea!important;
+    text-align: center;   
+    font-size: 1rem;
+    font-weight: 300;
+    width: 17rem!important;
+}
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{
     -webkit-appearance: none;
@@ -95,4 +105,34 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     box-shadow: none;
     border-radius: 10px;
     border: 2px solid #FFF!important;
+}
+.transfer_button {    
+    width: 12.875rem!important;
+}
+
+.transfer_error {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #DD643E;
+}
+  
+@media screen and (max-width:900px) {
+    .titleTransfer {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    .subtitleTransfer {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .amount {
+        font-size: 3rem;
+    }
+
+    .sinBorde input {
+        font-size: 3rem;
+        width: 13rem!important;
+    }
 }
