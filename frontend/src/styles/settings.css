@@ -4,7 +4,7 @@
 
 .settings_sidebar {
     padding: 0 1rem;
-    width: 260px;
+    width: 100%;
 }
 
 .sidebar_title {
@@ -12,17 +12,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    .sidebar{
-        width: 100%;
-
-    }
-    .focus{
-        gap:1.5rem
-    }
-    .divider{
-        display: none;
-    }
-    .sidebarResponsive{
+    .settings_sidebar {
         display: none;
     }
 }

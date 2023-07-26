@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
 /* import { useAuthContext } from '../hooks/useAuthContext'
@@ -72,7 +71,8 @@ const Profile = () => {
         </div> */}
       </div>
       <form
-        style={{ gap: '34px' }} onSubmit={handleSubmit(onSubmit)}
+        className='profile_form'
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className='containerLabel'>
           <FormLabel
@@ -173,7 +173,7 @@ const Profile = () => {
           </FormLabel>
         </div>
         <div className='containerLabel'>
-          <div style={{ width: '50%' }}>
+          <div>
             <FormLabel
               id='dateOfBirth'
               className='labelInput'
@@ -318,13 +318,12 @@ const Profile = () => {
         }
         <article className='signup-button'>
           <Button
-            className='btnGradient'
+            className='btnGradient save_changes'
             variant='contained'
             type='submit'
             sx={{
               color: '#F1F0EA'
             }}
-
           >
             Guardar cambios
           </Button>

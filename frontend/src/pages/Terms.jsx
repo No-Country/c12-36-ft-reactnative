@@ -1,14 +1,11 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
 
-import BackButton from '../components/BackButton'
-
 import '../styles/terms.css'
 
 const Terms = () => {
   return (
     <div className='termsContainer'>
-      <BackButton />
       <div className='terms_title'>
         <Typography variant='h4'>Términos y condiciones</Typography>
         <Typography varian='subtitle1'>Fecha de entrada en vigencia: [Viernes 23 de junio de 2023]</Typography>

@@ -10,7 +10,7 @@ const History = () => {
         <p className='transactions'>Historial de movimientos</p>
       </div>
       <div className='emptyTransaction'>
-        <img src={transaccion} alt='sin movimientos' />
+        <img className='transaction_icon' src={transaccion} alt='sin movimientos' />
         <Typography variant='p' color='secondary'>Sin movimientos</Typography>
       </div>
       {/* <div style={{ display: 'grid', gap: '34px' }}> */}
