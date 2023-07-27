@@ -1,30 +1,19 @@
 import { Typography } from '@mui/material'
 import '../styles/history.css'
 import transaccion from '../assets/transaccion.png'
-import { movementsRequest, userRequest } from '../api/auth'
+import { movementsRequest } from '../api/auth'
 import { useAuth } from '../hooks/useAuth'
 import { useEffect, useState } from 'react'
 import { formatearPeso } from '../config/config'
-
+// eslint-disable-next-line
 const History = ({ limit }) => {
-  const { user, authToken, dataUser } = useAuth()
-  /*   const [dataUser, setDataUser] = useState('') */
+  const { authToken, dataUser } = useAuth()
+
   const [historySender, setHistorySender] = useState([])
   const [historyReceive, setHistoryReceive] = useState([])
 
   const history = [...historyReceive, ...historySender]
   history.sort((a, b) => new Date(b.date) - new Date(a.date))
-  /*   useEffect(() => {
-    userRequest(authToken)
-      .then((res) => {
-        const usersData = res.data
-        const filterUser = usersData.find((userData) => userData.dni === user.dni)
-        setDataUser(filterUser)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }, [authToken, user.dni]) */
 
   console.log(dataUser)
   useEffect(() => {
@@ -45,6 +34,7 @@ const History = ({ limit }) => {
   console.log(historySender)
   return (
     <section className='containerHistory'>
+      <p className='transactions'>Historial de movimientos</p>
       <p className='transactions'>Historial de movimientos</p>
       {
         !history
@@ -70,6 +60,10 @@ const History = ({ limit }) => {
                         ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
                         : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                     }
+                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                        ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                        : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
+                    }
                     </div>
                     <Typography className='transfer_id' variant='p' color='secondary'>ID: {move._id}</Typography>
                   </div>
@@ -83,6 +77,10 @@ const History = ({ limit }) => {
                         ? <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Enviado a: </span>{move.recipientName}</Typography>
                         : <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Recibido de: </span>{move.senderName}</Typography>
                     }
+                      {
+                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                        ? <Typography className='transfer_amount' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                        : <Typography className='transfer_amount' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                       {
                       move.senderName === dataUser.firstName + ' ' + dataUser.lastName
                         ? <Typography className='transfer_amount' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>

@@ -1,5 +1,4 @@
 import '../styles/welcome.css'
-/* import { useAuthContext } from '../hooks/useAuthContext' */
 import openEye from '../assets/fi-sr-eye.png'
 import icon2 from '../assets/fi-sr-copy.png'
 import closeEye from '../assets/cerrar-ojo.png'
@@ -40,7 +39,6 @@ const Welcome = () => {
     <section className='containerWelcome'>
       <div>
         <p className='greetings'>Hola {dataUser.firstName}</p>
-        {/* <p className='welcome'>Bienvenido</p> */}
       </div>
       <div className='cardSaldo'>
         <div className='containerCuentas'>
