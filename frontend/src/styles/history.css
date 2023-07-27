@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .transactions {
@@ -58,4 +59,9 @@
     gap: 20px; 
     width: 100%;
   }
+}
+.noEmpty{
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-around;
 }
