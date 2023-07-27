@@ -1,9 +1,9 @@
 .home {
-  margin: auto;
+  margin: 0;
   margin-top: 120px;
   display: flex;
   padding-bottom: 2rem;
-  height: 105vh;
+  width: 100vw;
 }
 
 .dividerVertical{
