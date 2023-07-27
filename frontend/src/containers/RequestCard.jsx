@@ -1,6 +1,8 @@
+import React from 'react'
 import Typography from '@mui/material/Typography'
-import card from '../assets/TarjNaranja.png'
+import Gift from '../components/Gift'
 
+import card from '../assets/TarjNaranja.png'
 import card2 from '../assets/tarjVioleta.png'
 
 import '../styles/requestCard.css'
@@ -9,6 +11,7 @@ import { Button } from '@mui/material'
 const RequestCard = () => {
   return (
     <section className='containerRequestCard'>
+      <Gift />
       <div className='containersCards'>
         <img src={card} alt='Tarjeta Pocketpal' className='cardLanding' />
         <img src={card2} alt='Tarjeta Pocketpal' className='cardLanding_2' />
