@@ -1,5 +1,5 @@
 import React from 'react'
-import SidebarComponent from '../containers/SidebarComponent'
+import SidebarComponentResp from '../containers/SidebarComponentResp'
 import portrait from '../assets/fi-sr-portrait.png'
 import padlock from '../assets/padlock.png'
 // import notification from '../assets/fi-sr-bell.png'
@@ -17,7 +17,7 @@ const Settings = () => {
     <div className='settings'>
       <div className='settings_sidebar'>
         <Typography className='sidebar_title' color='secondary' fontSize='1.1rem'>Configuracion de cuenta</Typography>
-        <SidebarComponent className='settings_options' sidebar={sidebar} />
+        <SidebarComponentResp className='settings_options' sidebar={sidebar} />
       </div>
       <Divider orientation='vertical' flexItem className='dividerVertical' />
       <Outlet />
