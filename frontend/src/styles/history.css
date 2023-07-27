@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 80%;
+  width: 100%;
   margin: auto;
+  margin: 3rem 3rem 0 3rem;
   overflow-y: scroll;
 }
 
@@ -37,6 +38,32 @@
   width: 40px;
 }
 
+.noEmpty{
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.single_transaction {
+  align-items: center;
+  display: flex; 
+  justify-content:flex-start;
+  width: 65%;
+  gap: 1rem;
+}
+
+.transfer_data {
+  width: 50%;
+}
+
+.transfer_date {
+  width: 25%;
+}
+
+.transfer_amount {
+  text-align: right;
+  width: 25%;
+}
+
 @media screen and (max-width:900px) {
   .transactions{
     margin-top: 0;
@@ -60,9 +87,4 @@
     gap: 20px; 
     width: 100%;
   }
-}
-.noEmpty{
-  flex-direction: row;
-  gap: 2rem;
-  justify-content: space-around;
 }

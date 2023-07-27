@@ -48,11 +48,6 @@ const LoginForm = () => {
     }
   }
 
-  const [viewer, setViewer] = useState(false)
-  const handleVisibility = () => {
-    setViewer((prev) => !prev)
-  }
-
   const handleForgotPasswordClick = () => {
     console.log('Usuario hizo clic en "¿Olvidaste tu contraseña?"')
     history.push('/forgotpassword')
