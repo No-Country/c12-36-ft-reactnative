@@ -4,29 +4,24 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
-import Toolbar from '@mui/material/Toolbar'
 import { Button } from '@mui/material'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
 
-/* import { useLogout } from '../hooks/useLogout' */
-/* import { useAuthContext } from '../hooks/useAuthContext' */
-import bell from '../assets/fi-sr-bell.png'
+import logo from '../assets/logo.png'
+import SidebarResponsive from './SidebarResponsive'
 import LoginButton from '../components/LoginButton'
 import BtnGradient from '../components/BtnGradient'
 
 import '../styles/header.css'
-import Sidebar from './Sidebar'
-import { useAuth } from '../hooks/useAuth'
 
-const pages = ['Nosotros', 'Beneficios', 'Ayuda']
+const pages = [{ name: 'Nosotros', path: 'contact-us' }, { name: 'Ayuda', path: 'contact-us' }]
 
 const Header = () => {
   const { user } = useAuth()
-  /*   const { logout } = useLogout()
- */ const actualPath = useLocation().pathname
+  const actualPath = useLocation().pathname
   const [anchorNav, setAnchorNav] = useState(null)
 
   const handleOpenNavMenu = (event) => {
@@ -37,142 +32,92 @@ const Header = () => {
     setAnchorNav(null)
   }
 
-  const pages = ['Nosotros', 'Beneficios', 'Ayuda']
-  const register = { text: 'Registrarse', path: '/signup' }
-  const home = { text: 'Home', path: '/home' }
   return (
     <AppBar className='header'>
-
-      {/* <Container maxWidth='xl' style={{ display: 'flex', alignItems: 'center' }}> */}
-
-      {
-          actualPath === '/' && !user
-
-            ? (
-              <Container style={{ display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'space-between' }}>
-                <Link to='/'>
-                  <div className='logo'>Pocketpal</div>
-                </Link>
-                <div style={{ display: 'flex' }}>
-                  <LoginButton />
-                  <BtnGradient prop={register} />
-                </div>
-              </Container>
-
-              )
-            : (
-              <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                {
-                  actualPath !== '/login' && actualPath !== '/signup'
-                    ? (
-                      <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
-                        <IconButton size='large' aria-label='account' aria-controls='menu-appbar' aria-haspopup='true' onClick={handleOpenNavMenu} color='inherit'>
-                          <MenuIcon />
-                        </IconButton>
-                        <Menu id='menu-appbar' anchorEl={anchorNav} anchorOrigin={{ vertical: 'bottom', horizontal: 'rigth' }} open={Boolean(anchorNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' } }}>
-
-                          <Sidebar />
-                          {/* pages.map((page) => (
-                      <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign='center'><Link>{page}</Link></Typography>
-                      </MenuItem>
-                    ))} */}
-                        </Menu>
-                      </Box>
-                      )
-                    : null
-                }
-
-                <Link to='/'>
-                  <div className='logo'>Pocketpal</div>
-                </Link>
-                <ul className='listNav'>
-                  {
-                  pages.map(name => (
-                    <li key={name}>{name}</li>
-                  ))
-                }
-                </ul>
-                <div style={{ display: 'flex', gap: '25px' }}>
-                  {
-                  user &&
-                    <div className='circlePictureHeader'>
-                      <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
-                    </div>
-                }
-                  {
-                  user && actualPath === '/' &&
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <img className='notifications' src={bell} alt=' ' />
-                      <div className='perfilHeader'>
-                        {/* <div className='circlePictureHeader'>
-                          <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
-                        </div> */}
-                        <Link to='/home/dashboard' className='btnGradient btnGradient--header'>Ir a mi panel</Link>
-                      </div>
-                    </div>
-                }
-                </div>
-
-              </Container>
-              )
-        }
-
-      {/* <Toolbar disableGutters className='toolbar'>
-
-        {
-            actualPath === '/' &&
-              <>
-
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent='space-around'>
-                  <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
-                    {pages.map((page) => (
-                      <Link key={page} onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>{page}</Link>
-                    ))}
-                  </div>
-                  <div style={{ display: 'flex', gap: '1rem' }}>
+      <Container>
+        <div className='header_loggedout'>
+          {
+              actualPath === '/' && !user &&
+                <Container className='header_container'>
+                  <Link to='/' className='logo_container'>
+                    <img src={logo} alt='Logo' className='logo_header' />
+                    <div className='logo_text'>Pocketpal</div>
+                  </Link>
+                  <ul className='listNav'>
                     {
-                    user
-                      ? (
-                        <>
-                          <BtnGradient prop={home} />
-                          <Button
-                            color='secondary'
-                            onClick={logout}
-                          >
-                            Salir
-                          </Button>
-                        </>
-                        )
-                      : (
-                        <>
-                          <LoginButton />
-                          <BtnGradient prop={register} />
-                        </>
-                        )
+                    pages.map((page) => (
+                      <li key={page.name}>
+                        <NavLink to={page.path}>
+                          <p>{page.name}</p>
+                        </NavLink>
+                      </li>
+                    ))
                   }
+                  </ul>
+                  <div className='header_buttons'>
+                    <LoginButton />
+                    <Button
+                      href='/signup'
+                      className='btnGradient'
+                      variant='text'
+                      sx={{
+                        color: '#F1F0EA'
+                      }}
+                    >
+                      Registrarse
+                    </Button>
                   </div>
-                </Box>
-              </>
+                </Container>
+            }
+          {
+              actualPath !== '/' && !user &&
+                <Container className='header_container'>
+                  <Link to='/' className='logo_container'>
+                    <img src={logo} alt='Logo' className='logo_header' />
+                    <div className='logo_text'>Pocketpal</div>
+                  </Link>
+                </Container>
+            }
+        </div>
+      </Container>
+
+      <Container>
+        <div className='header_loggedin'>
+          {
+            user && actualPath === '/' &&
+              <Container className='header_container'>
+                <Link to='/' className='logo_container'>
+                  <img src={logo} alt='Logo' className='logo_header' />
+                  <div className='logo_text'>Pocketpal</div>
+                </Link>
+                <Link to='/home/dashboard' className='btnGradient'>
+                  Mi cuenta
+                </Link>
+              </Container>
           }
-        {
+          {
             user && actualPath !== '/' &&
-              <div
-                style={{
-                  textAlign: 'end',
-                  width: '100%'
-                }}
-              >
-                <Button
-                  color='secondary'
-                  onClick={logout}
-                >
-                  Cerrar sesión
-                </Button>
-              </div>
+              <Container className='header_container'>
+                <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
+                  <IconButton size='large' aria-label='account' aria-controls='menu-appbar' aria-haspopup='true' onClick={handleOpenNavMenu} color='inherit'>
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu id='menu-appbar' anchorEl={anchorNav} open={Boolean(anchorNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' } }}>
+                    <SidebarResponsive />
+                  </Menu>
+                </Box>
+                <Link to='/' className='logo_container'>
+                  <img src={logo} alt='Logo' className='logo_header' />
+                  <div className='logo_text'>Pocketpal</div>
+                </Link>
+                <div className='circlePictureHeader'>
+                  <Typography variant='p' color='secondary'>{user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}</Typography>
+                </div>
+              </Container>
           }
-      </Toolbar>
-      {/* </Container> */}
+        </div>
+      </Container>
+
     </AppBar>
   )
 }

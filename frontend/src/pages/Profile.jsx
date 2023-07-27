@@ -22,7 +22,6 @@ const Profile = () => {
         number: user.address.number,
         zipcode: user.address.zipcode
       }
-
     }
   })
 
@@ -66,9 +65,6 @@ const Profile = () => {
         >
           {user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}
         </Typography>
-        {/* <div className='pictureCamera'>
-          <img className='camera' src={camera} alt='' />
-        </div> */}
       </div>
       <form
         style={{ gap: '34px' }} onSubmit={handleSubmit(onSubmit)}
@@ -318,7 +314,7 @@ const Profile = () => {
         <article className='signup-button'>
           <Button
             className='btnGradient'
-            variant='contained'
+            variant='text'
             type='submit'
             sx={{
               color: '#F1F0EA'
