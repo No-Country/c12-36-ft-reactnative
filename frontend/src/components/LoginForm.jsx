@@ -48,16 +48,6 @@ const LoginForm = () => {
     }
   }
 
-  const [viewer, setViewer] = useState(false)
-  const handleVisibility = () => {
-    setViewer((prev) => !prev)
-  }
-
-  const handleForgotPasswordClick = () => {
-    console.log('Usuario hizo clic en "¿Olvidaste tu contraseña?"')
-    history.push('/forgotpassword')
-  }
-
   return (
     <div className='login_form'>
       <FormControl className='form' fullWidth>
@@ -101,7 +91,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <Link to='/forgotpassword' className='text-sm text-forgotten' onClick={handleForgotPasswordClick}>¿Olvidaste tu contraseña?</Link>
+        <a href='' className='text-sm text-forgotten'>¿Olvidaste tu contraseña?</a>
 
         {/*         {
           isLoading && (
