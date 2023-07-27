@@ -6,7 +6,7 @@
 
 .settings_sidebar {
     padding: 0 1rem;
-    width: 100%;
+    width: 260px;
 }
 
 .sidebar_title {
@@ -46,5 +46,10 @@
     }
     .sidebarResponsive{
         display: none;
+    }
+    .setting_options ul {
+        display: flex;
+        flex-direction: row;
+        gap: 0.8rem;
     }
 }
