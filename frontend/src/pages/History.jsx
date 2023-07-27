@@ -48,11 +48,11 @@ const History = ({ limit }) => {
                 ? history.slice(0, limit).map((move, i) => (
                   <div className='emptyTransaction noEmpty' key={i}>
                     <div className='single_transaction'>
-                      <Typography className='transfer_date' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
+                      <Typography className='transfer_date' color='secondary'>{new Date(move.date).toLocaleDateString('es-ES')}</Typography>
                       {
                       move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                        ? <Typography color='secondary' className='transfer_data'>Enviado a: {move.recipientName}</Typography>
-                        : <Typography color='secondary' className='transfer_data'>Recibido de: {move.senderName}</Typography>
+                        ? <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Enviado a: </span>{move.recipientName}</Typography>
+                        : <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Recibido de: </span>{move.senderName}</Typography>
                     }
                       {
                       move.senderName === dataUser.firstName + ' ' + dataUser.lastName
@@ -60,17 +60,17 @@ const History = ({ limit }) => {
                         : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                     }
                     </div>
-                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
+                    <Typography className='transfer_id' variant='p' color='secondary'>ID: {move._id}</Typography>
                   </div>
                 ))
                 : history.map((move, i) => (
                   <div className='emptyTransaction noEmpty' key={i}>
                     <div className='single_transaction'>
-                      <Typography className='transfer_date' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
+                      <Typography className='transfer_date' color='secondary'>{new Date(move.date).toLocaleDateString('es-ES')}</Typography>
                       {
                       move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                        ? <Typography color='secondary' className='transfer_data'>Enviado a: {move.recipientName}</Typography>
-                        : <Typography color='secondary' className='transfer_data'>Recibido de: {move.senderName}</Typography>
+                        ? <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Enviado a: </span>{move.recipientName}</Typography>
+                        : <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Recibido de: </span>{move.senderName}</Typography>
                     }
                       {
                       move.senderName === dataUser.firstName + ' ' + dataUser.lastName
@@ -78,7 +78,7 @@ const History = ({ limit }) => {
                         : <Typography className='transfer_amount' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                     }
                     </div>
-                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
+                    <Typography className='transfer_id' variant='p' color='secondary'>ID: {move._id}</Typography>
                   </div>
                 ))
             )

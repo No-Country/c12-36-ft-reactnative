@@ -52,6 +52,7 @@
 }
 
 .transfer_data {
+  text-align: left;
   width: 50%;
 }
 
@@ -66,9 +67,9 @@
 
 @media screen and (max-width:900px) {
   .transactions{
-    margin-top: 0;
+    /* margin-top: 0;
     margin-bottom: 0;
-    margin-left: 16px;
+    margin-left: 16px; */
   }
 
   .emptyTransaction{
@@ -81,10 +82,46 @@
     margin: 0;
   }
 
+  .transfer_id {
+    display: none!important;
+  }
+
+  .noEmpty{    
+    padding: 10px;
+    flex-direction: row;
+    font-size: 10px!important;
+  }
+
+  .single_transaction {
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .containerHistory{
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 10px; 
     width: 100%;
+  }
+
+  .transfer_data {    
+    font-size: 12px!important;
+    text-align: center;
+    width: 50%;
+  }
+  
+  .transfer_date {    
+    font-size: 12px!important;
+    width: 22%;
+  }
+  
+  .transfer_amount {    
+    font-size: 12px!important;
+    text-align: right;
+    width: 18%;
+  }
+
+  .transfer_subtitle {
+    display: none;
   }
 }
