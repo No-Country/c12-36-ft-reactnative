@@ -4,7 +4,7 @@ import FooterComponent from './FooterComponent'
 import '../styles/footer.css'
 
 const tyc = [{ path: 'terms-conditions', name: 'Terminos y condiciones' }, { path: 'privacy-policies', name: 'Politicas de Privacidad' }, { path: 'https://buenosaires.gob.ar/defensaconsumidor/como-denunciar', name: 'Defensa al Consumidor' }]
-const about = [{ path: 'about-us', name: 'Acerca de nosotros' }, { path: 'page-not-found', name: 'Enviar y recibir dinero' }, { path: 'page-not-found', name: 'Beneficios' }]
+const about = [{ path: 'about-us', name: 'Acerca de nosotros' }, { path: 'who-we-are', name: 'Quienes somos' }, { path: 'page-not-found', name: 'Enviar y recibir dinero' }]
 const help = [{ path: 'contact-us', name: 'Contacto' }, { path: 'page-not-found', name: 'Preguntas Frecuentes' }, { path: 'terms-conditions/#seguridad', name: 'Seguridad' }]
 
 const Footer = () => {

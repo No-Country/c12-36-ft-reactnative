@@ -17,7 +17,7 @@ import BtnGradient from '../components/BtnGradient'
 
 import '../styles/header.css'
 
-const pages = [{ name: 'Nosotros', path: 'contact-us' }, { name: 'Ayuda', path: 'contact-us' }]
+const pages = [{ name: 'Nosotros', path: 'who-we-are' }, { name: 'Ayuda', path: 'contact-us' }]
 
 const Header = () => {
   const { user } = useAuth()
