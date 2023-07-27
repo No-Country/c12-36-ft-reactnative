@@ -1,14 +1,11 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
 
-import BackButton from '../components/BackButton'
-
 import '../styles/policy.css'
 
 const Policy = () => {
   return (
     <div className='policyContainer'>
-      <BackButton />
       <div className='policy_title'>
         <Typography variant='h4'>Política de Privacidad de PoketPal Argentina</Typography>
         <Typography variant='subtitle1'>Fecha de entrada en vigencia: [Viernes 23 de junio de 2023]</Typography>

@@ -1,8 +1,7 @@
 .cross-circle-btn {
   width: 24px;
   height: 24px;
-  background: url('../assets/fi-sr-cross-circle.png') no-repeat center;
+  background: url('../assets/CrossCircle.png') no-repeat center;
   background-size: contain;
   cursor: pointer;
-  position: relative;
 }

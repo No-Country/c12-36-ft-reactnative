@@ -23,6 +23,7 @@ import EditProfile from './pages/Profile'
 import EditPassword from './pages/Password'
 import Error from './pages/Error'
 import ForgotPassword from './pages/ForgotPassword'
+import WhoWeAre from './pages/WhoWeAre'
 
 import './styles/app.css'
 import { useAuth } from './hooks/useAuth'
@@ -76,6 +77,7 @@ const App = () => {
               <Route path='/home/settings/edit_password' element={<EditPassword />} />
             </Route>
           </Route>
+          <Route path='/who-we-are' element={<WhoWeAre />} />
           <Route path='/terms-conditions' element={<Terms />} />
           <Route path='/privacy-policies' element={<Policy />} />
           <Route path='/about-us' element={<About />} />

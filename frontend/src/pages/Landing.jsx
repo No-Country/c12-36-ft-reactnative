@@ -4,6 +4,7 @@ import RequestCard from '../containers/RequestCard'
 import Benefits from '../containers/Benefits'
 import SignupButton from '../components/SignupButton'
 import Footer from '../containers/Footer'
+import Gift from '../components/Gift'
 import { Typography } from '@mui/material'
 
 import '../styles/landing.css'
@@ -12,6 +13,7 @@ const Landing = () => {
   return (
     <div>
       <div className='landing'>
+        <Gift />
         <Banner />
         <SignupButton />
         <Typography variant='p' className='subtitleLanding' color='secondary' textAlign='center'>Con Pocketpal podes</Typography>
