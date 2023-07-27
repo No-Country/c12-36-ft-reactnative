@@ -22,6 +22,7 @@ import Settings from './pages/Settings'
 import EditProfile from './pages/Profile'
 import EditPassword from './pages/Password'
 import Error from './pages/Error'
+import ForgotPassword from './pages/ForgotPassword'
 
 import './styles/app.css'
 import { useAuth } from './hooks/useAuth'
@@ -43,6 +44,7 @@ const App = () => {
                                       : <Login />
                                   }
           />
+          <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route
             path='/signup' element={
                                       user
