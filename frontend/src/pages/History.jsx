@@ -7,14 +7,14 @@ import { useEffect, useState } from 'react'
 import { formatearPeso } from '../config/config'
 
 const History = ({ limit }) => {
-  const { user, authToken } = useAuth()
-  const [dataUser, setDataUser] = useState('')
+  const { user, authToken, dataUser } = useAuth()
+  /*   const [dataUser, setDataUser] = useState('') */
   const [historySender, setHistorySender] = useState([])
   const [historyReceive, setHistoryReceive] = useState([])
 
   const history = [...historyReceive, ...historySender]
   history.sort((a, b) => new Date(b.date) - new Date(a.date))
-  useEffect(() => {
+  /*   useEffect(() => {
     userRequest(authToken)
       .then((res) => {
         const usersData = res.data
@@ -24,7 +24,7 @@ const History = ({ limit }) => {
       .catch((err) => {
         console.error(err)
       })
-  }, [authToken, user.dni])
+  }, [authToken, user.dni]) */
 
   console.log(dataUser)
   useEffect(() => {
@@ -66,8 +66,8 @@ const History = ({ limit }) => {
 
                       {
                   move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                    ? <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
-                    : <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                    ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                    : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                   }
                     </div>
                     {
@@ -86,8 +86,8 @@ const History = ({ limit }) => {
 
                       {
                     move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                      ? <Typography variant='p' sx={{ color: '#70CC6F' }}>+${move.amount}</Typography>
-                      : <Typography variant='p' sx={{ color: '#DD643E' }}>-${move.amount}</Typography>
+                      ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                      : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                     }
                     </div>
                     {

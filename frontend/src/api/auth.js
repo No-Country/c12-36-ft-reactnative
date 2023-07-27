@@ -24,3 +24,9 @@ export const userRequest = token => axios.get(`${API}/users`, {
 })
 
 export const movementsRequest = () => axios.get(`${API}/transactions`)
+
+export const userReload = (token, id) => axios.get(`${API}/users/${id}`, {
+  headers: {
+    'access-token': token
+  }
+})
