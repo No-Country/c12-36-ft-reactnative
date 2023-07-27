@@ -1,0 +1,55 @@
+.popup-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 9999;
+  margin-top: 138px;
+  width: 100%;
+  height: 61%;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #6F71E1 0%, #DB67FE 100%);
+  box-shadow: 0px 4px 52px 0px #8D4EB5;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #F1F0EA;
+  text-align: center;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.gift-icon {
+  align-self: center;
+  width: 175.594px;
+  height: 175.594px;
+  margin-bottom: 49.41px;
+  margin-top: 91px;
+}
+
+h2 {
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 84px;
+  gap: 30px;
+}
+
+.gift-amount {
+  font-size: 36px; 
+  width: 282px;
+  color: #F1F0EA;
+font-size: 96px;
+font-weight: 700;
+line-height: 144px;
+}
+
+
