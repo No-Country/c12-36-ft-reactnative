@@ -13,7 +13,7 @@ const Dashboard = () => {
         <CardsHome />
       </div>
       <div className='historyBenefits'>
-        <History />
+        <History limit={3} />
         <BenefitsHome />
       </div>
     </div>

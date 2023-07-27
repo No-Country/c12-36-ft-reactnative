@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from 'react'
-import { registerRequest, loginRequest } from '../api/auth'
+import { registerRequest, loginRequest, userRequest } from '../api/auth'
 import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [dataUser, setDataUser] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [authToken, setAuthToken] = useState('')
   const [activation, setActivation] = useState(false)
@@ -22,8 +23,20 @@ export const AuthProvider = ({ children }) => {
     }
   })
 
+  useEffect(() => {
+    userRequest(authToken)
+      .then((res) => {
+        const usersData = res.data
+        const filterUser = usersData.find((userData) => userData.dni === user.dni)
+        setDataUser(filterUser)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }, [authToken, user])
   /*   const [errors, setErrors] = useState([])
  */
+  console.log(dataUser)
 
   useEffect(() => {
     const seeUser = JSON.parse(localStorage.getItem('user'))
@@ -39,9 +52,6 @@ export const AuthProvider = ({ children }) => {
   const signup = async (user) => {
     const res = await registerRequest(user)
     console.log(res)
-    /* const res =
-      console.log(res.data) */
-    /* localStorage.setItem('user', JSON.stringify(res.data)) */
   }
 
   const login = async (user) => {
@@ -63,7 +73,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, signup, isAuthenticated, authToken, login, logout, data, setData, activation, setActivation, setUser }}>
+    <AuthContext.Provider value={{ user, signup, isAuthenticated, authToken, login, logout, data, setData, activation, setActivation, setUser, dataUser, setDataUser }}>
       {children}
     </AuthContext.Provider>
   )
