@@ -5,11 +5,15 @@
     gap: 1.8rem;
     margin-top: 2.5rem;
     padding: 0 4rem;
-    height: 95vh;
     width: 100%;
 }
 .welcomeCards{
     display: flex;
+    align-items: center;
+}
+.historyBenefits{
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 

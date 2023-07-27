@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { Button } from '@mui/material'
 import { transferRequest, userRequest } from '../api/auth'
 import { useEffect, useState } from 'react'
+import { formatearPeso } from '../config/config'
 
 const Transfers = () => {
   const { user, authToken } = useAuth()
@@ -39,14 +40,21 @@ const Transfers = () => {
   }, [authToken])
 
   useEffect(() => {
-    console.log(users)
     if (users.length > 0 && recipient !== '') {
-      console.log(recipient)
+      console.log(cbuODni)
       // eslint-disable-next-line
-      const search = users.filter((user) => user.dni == recipient)
+      const search = users.filter((user) => user.dni == recipient || user.cbu === recipient)
       setThisUser(search)
     }
-  }, [recipient, users])
+  }, [recipient, users, cbuODni])
+
+  useEffect(() => {
+    if (recipient.length > 8) {
+      setCbuODni('CBU')
+    } else {
+      setCbuODni('DNI')
+    }
+  }, [recipient])
 
   const onSubmit = (data, e) => {
     e.preventDefault()
@@ -65,9 +73,8 @@ const Transfers = () => {
     setTransfer(newData)
   }
 
-  console.log(transfer)
-  console.log(typeof (amount))
-  console.log(thisUser)
+  console.log(recipient.length)
+
   return (
     <>
       {
@@ -93,7 +100,7 @@ const Transfers = () => {
             </div>
             {errors.amount && <p className='transfer_error'>{errors.amount.message}</p>}
 
-            <Typography variant='p' color='secondary' className='available'>Saldo disponible ${user.balance}</Typography>
+            <Typography variant='p' color='secondary' className='available'>Saldo disponible {formatearPeso.format(user.balance)}</Typography>
             <div className='transfer_info'>
               <TextField
                 className='transaction_input' name='recipient' id='recipient' onChange={(e) => setRecipient(e.target.value)} label='Ingresar CBU o CVU' type='number' variant='standard' {
@@ -153,7 +160,7 @@ const Transfers = () => {
                 <p>Motivo: {detail}</p>
               </div>
               <div style={{ display: 'flex', gap: '2rem' }}>
-                <Button color='secondary' className='btnGradient btnBack'>Volver Atras</Button>
+                <Button color='secondary' className='btnGradient btnBack' onClick={() => setInfo(0)}>Volver Atras</Button>
                 <Button color='secondary' onClick={handleTransfer} className='btnGradient'>Confirmar</Button>
               </div>
 
