@@ -5,7 +5,6 @@ import { movementsRequest, userRequest } from '../api/auth'
 import { useAuth } from '../hooks/useAuth'
 import { useEffect, useState } from 'react'
 
-const cards = ['', '', '']
 const History = () => {
   const { user, authToken } = useAuth()
   const [dataUser, setDataUser] = useState('')
