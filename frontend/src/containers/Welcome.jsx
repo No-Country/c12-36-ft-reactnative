@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/useAuth'
 import { formatearPeso } from '../config/config'
 import { userReload } from '../api/auth'
 const Welcome = () => {
-  const { dataUser, authToken, setDataUser } = useAuth()
+  const { dataUser, authToken, setDataUser, user } = useAuth()
   const [eye, setEye] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -70,7 +70,7 @@ const Welcome = () => {
           }
         </div>
         <div className='containerCVU'>
-          <div className='cvu' style={{ fontSize: '14px' }}>{dataUser.cbu}</div>
+          <div className='cvu' style={{ fontSize: '14px' }}>{user.cbu}</div>
           <div className='icon-image2' style={{ color: '#FFFFFF', width: '24px', height: '24px' }}>
             <CopyToClipboard text={dataUser.cbu} onCopy={() => setCopied(true)}>
               <button className='eye' onClick={setTimeout(() => { setCopied(false) }, '1500')}><img src={icon2} alt='copiar CBU' /></button>
