@@ -22,10 +22,8 @@ const Transfers = () => {
   const [thisUser, setThisUser] = useState('')
   const [transfer, setTransfer] = useState('')
 
-  const handleTransfer = (amount, detail, recipient) => {
-    const id = { ...transfer, sender: user.dni }
-    console.log(id)
-    transferRequest(authToken, id)
+  const handleTransfer = () => {
+    transferRequest(authToken, transfer)
       .then((res) => {
         console.log(res.data)
       })
@@ -53,13 +51,22 @@ const Transfers = () => {
   const onSubmit = (data, e) => {
     e.preventDefault()
     const { amount, recipient, detail } = data
+
+    const newData = {
+      amount: parseFloat(amount), // Convertir amount a número
+      recipient,
+      detail,
+      sender: user.dni // Incluir el sender en transfer
+    }
     setAmount(amount)
     setRecipient(recipient)
     setDetail(detail)
     setInfo(1)
-    setTransfer(data)
+    setTransfer(newData)
   }
 
+  console.log(transfer)
+  console.log(typeof (amount))
   console.log(thisUser)
   return (
     <>
