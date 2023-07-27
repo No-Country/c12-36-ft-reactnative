@@ -105,3 +105,41 @@ export const TransferErrorPop = () => {
     width: '420px'
   })
 }
+
+export const profileUpdate = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'success',
+    position: 'center',
+    showConfirmButton: false,
+    text: '¡Datos cargados con exito! Por favor, vuelve a iniciar sesion.',
+    timer: 5000,
+    width: '420px'
+  })
+}
+export const dniError = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'error',
+    position: 'center',
+    showConfirmButton: false,
+    text: 'Ya existe un usuario con ese DNI',
+    timer: 5000,
+    width: '420px'
+  })
+}
+
+export const ageError = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'error',
+    position: 'center',
+    showConfirmButton: false,
+    text: 'Debes ser mayor de 18 años para registrarte',
+    timer: 5000,
+    width: '420px'
+  })
+}

@@ -3,8 +3,13 @@ import { Button, FormLabel, TextField, Typography } from '@mui/material'
 import '../styles/profile.css'
 import { useAuth } from '../hooks/useAuth'
 import { userUpdate } from '../api/auth'
+import { useEffect, useState } from 'react'
+import { ageError, dniError, profileUpdate } from '../config/popUps'
+import { useNavigate } from 'react-router'
 const Profile = () => {
-  const { user, authToken, activation, setActivation, setUser } = useAuth()
+  const { user, authToken, activation, setActivation, setUser, logout } = useAuth()
+  const navigate = useNavigate()
+
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName,
@@ -28,21 +33,38 @@ const Profile = () => {
         setUser(res.data.userEdited)
         localStorage.setItem('user', JSON.stringify(res.data.userEdited))
       })
+      .then(() => profileUpdate())
       .then(() => setActivation(true))
+      .then(() => logout())
+      .then(() => navigate('/login'))
       .catch((error) => {
-        console.error(error)
+        if (error.response.data.message === 'Ya existe un usuario con el mismo Dni') {
+          dniError()
+          console.error(error)
+          console.log(error.response.data.message)
+        } else if (error.response.data.mensaje === 'Debes ser mayor de 18 años para registrarte.') {
+          ageError()
+        } else {
+          console.error(error)
+          console.log(error.response.data.message)
+        }
       })
   }
 
   const customSx = {
     input: {
-      color: '#fdfdfe',
+      color: user.isActivated && '#fff',
       fontSize: '1rem',
-      width: '300px'
+      width: '300px',
+      ':disabled': {
+        color: '#8D4EB5!important',
+        '-webkitTextFillColor': '#8b8b8b!important'
+      }
     },
     label: {
       color: 'gray'
     }
+
   }
   // Accross all TextFields
   const sharedProperties = {
@@ -170,21 +192,31 @@ const Profile = () => {
               id='dateOfBirth'
               className='labelInput'
             >
+
               Fecha de nacimiento*
-              <TextField
-                id='dateOfBirth'
-                type='date'
-                aria-invalid={errors.dateOfBirth ? 'true' : 'false'}
-                {...sharedProperties}
-                {
+              {
+                user.dateOfBirth
+                  ? (<TextField
+                      id='dateOfBirth'
+                      {...sharedProperties}
+                      defaultValue={new Date(user.dateOfBirth).toLocaleDateString('es-ES')}
+                      disabled={user.isActivated}
+                     />)
+
+                  : (<TextField
+                      id='dateOfBirth'
+                      type='date'
+                      aria-invalid={errors.dateOfBirth ? 'true' : 'false'}
+                      {...sharedProperties}
+                      {
                 ...register('dateOfBirth', {
                   required: true
                   // pattern: /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/
                 })
                 }
-                defaultValue={user.dateOfBirth ? user.dateOfBirth : undefined}
-                disabled={user.isActivated}
-              />
+                      disabled={user.isActivated}
+                     />)
+            }
               {
                 errors.dateOfBirth && errors.dateOfBirth.type === 'required' &&
                   <p className='error' role='alert'>*Este campo no puede estar vacío</p>
@@ -193,6 +225,7 @@ const Profile = () => {
                 errors.dateOfBirth && errors.dateOfBirth.type === 'pattern' &&
                   <p className='error' role='alert'>*Fecha inválida (año-mes-día) </p>
               }
+
             </FormLabel>
           </div>
           <FormLabel

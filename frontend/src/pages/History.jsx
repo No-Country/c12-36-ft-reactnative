@@ -15,7 +15,6 @@ const History = ({ limit }) => {
   const history = [...historyReceive, ...historySender]
   history.sort((a, b) => new Date(b.date) - new Date(a.date))
 
-  console.log(dataUser)
   useEffect(() => {
     movementsRequest(authToken)
       .then((res) => {
@@ -24,14 +23,12 @@ const History = ({ limit }) => {
         const filterReceive = movements.filter((moves) => moves.recipientName === dataUser.firstName + ' ' + dataUser.lastName)
         setHistorySender(filterSenders)
         setHistoryReceive(filterReceive)
-        console.log(res.response)
       })
       .catch((err) => {
         console.error(err)
       })
   }, [authToken, dataUser.firstName, dataUser.lastName])
 
-  console.log(historySender)
   return (
     <section className='containerHistory'>
       <p className='transactions'>Historial de movimientos</p>

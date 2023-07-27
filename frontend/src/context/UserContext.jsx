@@ -29,21 +29,16 @@ export const AuthProvider = ({ children }) => {
         const filterUser = usersData.find((userData) => userData.dni === user.dni)
         setDataUser(filterUser)
       })
-      .catch((err) => {
-        console.error(err)
-      })
   }, [authToken, user])
 
   useEffect(() => {
     const seeUser = JSON.parse(localStorage.getItem('user'))
+    const token = JSON.parse(localStorage.getItem('token'))
     if (seeUser) {
       setUser(seeUser)
+      setAuthToken(token)
     }
   }, [])
-
-  useEffect(() => {
-    setAuthToken(user?.accessToken)
-  }, [user])
 
   const signup = async (user) => {
     const res = await registerRequest(user)
@@ -57,6 +52,8 @@ export const AuthProvider = ({ children }) => {
       await console.log(res.data)
       await setIsAuthenticated(true)
       localStorage.setItem('user', JSON.stringify(res.data))
+      localStorage.setItem('token', JSON.stringify(res.data.accessToken))
+
       /*  */
     } catch (error) {
       console.error(error)
@@ -66,6 +63,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     setUser(null)
     localStorage.removeItem('user')
+    localStorage.removeItem('token')
   }
 
   return (
