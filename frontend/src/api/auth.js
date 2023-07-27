@@ -30,3 +30,9 @@ export const userReload = (token, id) => axios.get(`${API}/users/${id}`, {
     'access-token': token
   }
 })
+
+export const changePassword = (token, data) => axios.post(`${API}/users/reset/password`, data, {
+  headers: {
+    'access-token': token
+  }
+})

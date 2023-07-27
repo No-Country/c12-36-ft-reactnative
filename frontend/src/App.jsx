@@ -61,7 +61,7 @@ const App = () => {
           >
             <Route
               path='/home/dashboard' element={
-                                                user?.isActivated
+                                                user && user.isActivated
                                                   ? <Dashboard />
                                                   : <Navigate to='/home/settings/edit_profile' />
                                               }
