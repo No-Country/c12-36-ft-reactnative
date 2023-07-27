@@ -16,7 +16,7 @@ const Gift = () => {
 
   return (
     <>
-      {showPopup && !user && (
+      {showPopup && (
         <div className='popup-container'>
           <CrossCircle className='close-icon' onClick={handleClosePopup} />
           <div className='popup-content'>
