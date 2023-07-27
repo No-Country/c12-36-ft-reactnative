@@ -1,24 +1,31 @@
-.containerDashboard{
+.containerDashboard {
     align-items: center;
-    display: flex; 
-    flex-direction: column; 
-    gap: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 2.5rem;
     padding: 0 4rem;
     width: 100%;
 }
-.welcomeCards{
+
+.welcomeCards {
     display: flex;
     align-items: center;
 }
-.historyBenefits{
+
+.historyBenefits {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.link_mas {
+    color: #f1f0ea;
+    margin-top: 1rem;
+}
+
 @media screen and (max-width:900px) {
-    .containerDashboard{
+    .containerDashboard {
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
@@ -26,14 +33,20 @@
         padding: 1rem;
         width: 382px;
     }
-    .welcomeCards{
+
+    .welcomeCards {
         flex-direction: column;
         align-items: normal;
     }
-    .historyBenefits{
+
+    .historyBenefits {
         display: flex;
         flex-direction: column;
         gap: 20px;
         width: 100%;
+    }
+
+    .link_mas {
+        margin-top: 0;
     }
 }
