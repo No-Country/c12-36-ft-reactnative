@@ -1,10 +1,17 @@
+.containerHistory{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
 .transactions {
   color: #F1F0EA;
   font-family: "Poppins", Helvetica;
   font-size: 20px;
   font-weight: 600;
-  margin-top: 90px;
-  margin-bottom: 33px;
+  margin: 0!important;
 }
 
 .cardsTransactions {
@@ -16,28 +23,20 @@
   height: 65px;
 }
 
-.containerHistory{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 .emptyTransaction{
-  margin: auto;
   display: flex;
   flex-direction: column;
   background: rgba(241, 240, 234, 0.12);
   align-items: center;
-  width: 95%;
   padding: 20px;
   border-radius: 10px;
 }
-.transactions{
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 16px;
+
+.transaction_icon {
+  width: 40px;
 }
 
-/* @media screen and (max-width:900px) {
+@media screen and (max-width:900px) {
   .transactions{
     margin-top: 0;
     margin-bottom: 0;
@@ -50,14 +49,19 @@
     flex-direction: column;
     background: rgba(241, 240, 234, 0.12);
     align-items: center;
-    width: 95%;
-    padding: 20px;
     border-radius: 10px;
+    margin: 0;
   }
 
   .containerHistory{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px; 
+    width: 100%;
   }
-} */
+}
+.noEmpty{
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-around;
+}

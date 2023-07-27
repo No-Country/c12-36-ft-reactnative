@@ -1,9 +1,12 @@
 .settings{
     display: flex;
+    height: 100vh;    
+    width: 1500px;
 }
 
 .settings_sidebar {
     padding: 0 1rem;
+    width: 100%;
 }
 
 .sidebar_title {
@@ -11,9 +14,29 @@
 }
 
 @media screen and (max-width: 900px) {
+    .settings {
+        align-items: center;
+        flex-direction: column;
+        height: 130vh;
+        margin-top: 0.4rem;
+        width: 100%;
+    }
     .sidebar{
         width: 100%;
-
+    }
+    .sidebar_title {
+        display: none;
+    }
+    .settings_sidebar {
+        background-color: #2D1930;
+        width: 100%!important;
+    }
+    .settings ul {        
+        display: flex!important;
+        justify-content: space-around!important;
+    }
+    .settings a {
+        justify-content: center;
     }
     .focus{
         gap:1.5rem

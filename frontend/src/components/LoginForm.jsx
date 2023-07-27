@@ -1,26 +1,35 @@
 import { Button, CircularProgress, FormControl, TextField, InputAdornment } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import { LoginErrorPop, ProfilePop } from '../config/popUps'
 
 import '../styles/loginForm.css'
-import { useLogin } from '../hooks/useLogin'
+/* import { useLogin } from '../hooks/useLogin'
+ */import { useAuth } from '../hooks/useAuth'
 
 const LoginForm = () => {
-  const { login, error, isLoading } = useLogin()
-  const form = useForm({
-    defaultValues: {
-      email: '',
-      password: ''
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { login } = useAuth()
+  const navigate = useNavigate()
+
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      const res = await login(data)
+      if (res.status === 200) {
+        navigate('/home/dashboard')
+      }
+    } catch {
+      LoginErrorPop()
     }
   })
 
-  const { register, handleSubmit, formState } = form
-  const { errors } = formState
-
-  const onSubmit = data => login(data)
+  const [viewer, setViewer] = useState(false)
+  const handleVisibility = () => {
+    setViewer((prev) => !prev)
+  }
 
   const muiStyles = {
     sxInput: {
@@ -48,7 +57,6 @@ const LoginForm = () => {
     console.log('Usuario hizo clic en "¿Olvidaste tu contraseña?"')
     history.push('/forgotpassword')
   }
-
 
   return (
     <div className='login_form'>
@@ -95,7 +103,7 @@ const LoginForm = () => {
 
         <Link to='/forgotpassword' className='text-sm text-forgotten' onClick={handleForgotPasswordClick}>¿Olvidaste tu contraseña?</Link>
 
-        {
+        {/*         {
           isLoading && (
             <div style={{ textAlign: 'center' }}>
               <CircularProgress color='secondary' />
@@ -103,7 +111,7 @@ const LoginForm = () => {
           )
         }
 
-        <p className='response-error'>{error}</p>
+        <p className='response-error'>{error}</p> */}
 
         <Button
           className='btnGradient login_button'

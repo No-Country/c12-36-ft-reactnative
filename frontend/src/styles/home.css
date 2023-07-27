@@ -1,9 +1,9 @@
 .home {
-  height: 100%;
-  margin: auto;
+  margin: 0;
   margin-top: 120px;
   display: flex;
   padding-bottom: 2rem;
+  width: 100vw;
 }
 
 .dividerVertical{
@@ -19,6 +19,7 @@
     margin-top: 75px;
     display: flex;
     justify-content: center;
+    height: 130vh;
   }
   .sidebarResponsive{
     display: none;

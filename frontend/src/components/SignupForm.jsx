@@ -1,33 +1,33 @@
 import { Button, Checkbox, CircularProgress, FormControlLabel, TextField, InputAdornment } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-
-import { useSignup } from '../hooks/useSignup'
+/* import { useSignup } from '../hooks/useSignup' */
+import { useAuth } from '../hooks/useAuth'
+import { SuccessPop, RegisterErrorPop } from '../config/popUps'
 
 import '../styles/signupForm.css'
 
 const SignupForm = () => {
-  const { signup, error, isLoading } = useSignup()
+/*   const { signup, error, isLoading } = useSignup() */
+  const { signup, user } = useAuth()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const [errorPass, setErrorPass] = useState('')
   const [check18, setCheck18] = useState(false)
   const [checkTerms, setCheckTerms] = useState(false)
   const [status, setStatus] = useState(false)
 
-  const onSubmit = (data, e) => {
-    e.preventDefault()
-    setErrorPass('')
+  const navigate = useNavigate()
 
-    if (data.password !== data.passwordRepeat) {
-      setErrorPass('Las contraseñas no coinciden')
-      return
-    }
-    signup(data)
-  }
-
+  const onSubmit = handleSubmit(async (values) => {
+    signup(values)
+      .then(() => SuccessPop())
+      .then(() => navigate('/login'))
+      .catch(() => RegisterErrorPop())
+  })
+  console.log(user)
   useEffect(() => {
     if (check18 === true && checkTerms === true) {
       setStatus(true)
@@ -75,7 +75,7 @@ const SignupForm = () => {
   return (
     <div className='signup_form'>
       <h1>Crea tu cuenta en Pocketpal</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmit}>
         <div className='textField'>
           <TextField
             id='email'
@@ -175,7 +175,6 @@ const SignupForm = () => {
               endAdornment: (
                 <InputAdornment className='eye_icon' position='end' onClick={handleVisibility}>
                   {viewer ? <VisibilityOffIcon color='secondary' /> : <VisibilityIcon color='secondary' />}
-
                 </InputAdornment>
               )
             }}
@@ -261,9 +260,9 @@ const SignupForm = () => {
           />
         </div>
 
-        {isLoading && <CircularProgress color='secondary' />}
+        {/*         {isLoading && <CircularProgress color='secondary' />}
         <p className='response-error'>{error}</p>
-
+ */}
         <Button
           className='btnGradient'
           variant='text'
