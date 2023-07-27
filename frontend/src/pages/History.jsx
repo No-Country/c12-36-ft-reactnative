@@ -9,7 +9,11 @@ const cards = ['', '', '']
 const History = () => {
   const { user, authToken } = useAuth()
   const [dataUser, setDataUser] = useState('')
-  const [history, setHistory] = useState([])
+  const [historySender, setHistorySender] = useState([])
+  const [historyReceive, setHistoryReceive] = useState([])
+
+  const history = [...historyReceive, ...historySender]
+  history.sort((a, b) => new Date(b.date) - new Date(a.date))
   useEffect(() => {
     userRequest(authToken)
       .then((res) => {
@@ -27,8 +31,11 @@ const History = () => {
     movementsRequest(authToken)
       .then((res) => {
         const movements = res.data
-        const filterMovements = movements.filter((moves) => moves.sender === dataUser._id)
-        setHistory(filterMovements)
+        const filterSenders = movements.filter((moves) => moves.sender === dataUser._id)
+        const filterReceive = movements.filter((moves) => moves.recipient === dataUser._id)
+        setHistorySender(filterSenders)
+        setHistoryReceive(filterReceive)
+        console.log(res.response)
       })
       .catch((err) => {
         console.error(err)
@@ -50,8 +57,14 @@ const History = () => {
             </div>
             )
           : history.map((move) => (
-            <div className='emptyTransaction' key={move._id}>
-              <Typography variant='p' color='secondary'>{move.recipient}</Typography>
+            <div className='emptyTransaction noEmpty' key={move._id}>
+              <Typography variant='p' color='secondary'>ID de operacion: {move._id}</Typography>
+              <Typography variant='p' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
+              {
+                move.sender === dataUser._id
+                  ? <Typography variant='p' sx={{ color: 'green' }}>Enviado: {move.amount}</Typography>
+                  : <Typography variant='p' sx={{ color: 'red' }}>{move.amount}</Typography>
+              }
             </div>
           ))
       }
