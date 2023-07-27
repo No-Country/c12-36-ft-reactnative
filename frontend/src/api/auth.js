@@ -17,3 +17,8 @@ export const transferRequest = (token, data, sender) => axios.post(`${API}/trans
   },
   body: sender
 })
+export const userRequest = token => axios.get(`${API}/users`, {
+  headers: {
+    'access-token': token
+  }
+})

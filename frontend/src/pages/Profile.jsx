@@ -67,7 +67,8 @@ const Profile = () => {
         </Typography>
       </div>
       <form
-        style={{ gap: '34px' }} onSubmit={handleSubmit(onSubmit)}
+        className='profile_form'
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className='containerLabel'>
           <FormLabel
@@ -168,7 +169,7 @@ const Profile = () => {
           </FormLabel>
         </div>
         <div className='containerLabel'>
-          <div style={{ width: '50%' }}>
+          <div>
             <FormLabel
               id='dateOfBirth'
               className='labelInput'
@@ -319,7 +320,6 @@ const Profile = () => {
             sx={{
               color: '#F1F0EA'
             }}
-
           >
             Guardar cambios
           </Button>

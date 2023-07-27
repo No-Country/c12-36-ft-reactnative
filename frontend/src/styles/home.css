@@ -19,6 +19,7 @@
     margin-top: 75px;
     display: flex;
     justify-content: center;
+    height: 130vh;
   }
   .sidebarResponsive{
     display: none;
