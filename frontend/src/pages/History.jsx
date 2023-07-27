@@ -4,8 +4,9 @@ import transaccion from '../assets/transaccion.png'
 import { movementsRequest, userRequest } from '../api/auth'
 import { useAuth } from '../hooks/useAuth'
 import { useEffect, useState } from 'react'
+import { formatearPeso } from '../config/config'
 
-const History = () => {
+const History = ({ limit }) => {
   const { user, authToken } = useAuth()
   const [dataUser, setDataUser] = useState('')
   const [historySender, setHistorySender] = useState([])
@@ -55,26 +56,50 @@ const History = () => {
               <Typography variant='p' color='secondary'>Sin movimientos</Typography>
             </div>
             )
-          : history.map((move, i) => (
-            <div className='emptyTransaction noEmpty' key={i}>
-              <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
-              <div style={{ display: 'flex', width: '415px', justifyContent: 'space-between' }}>
-                <Typography variant='p' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
+          : (
+              limit
+                ? history.slice(0, limit).map((move, i) => (
+                  <div className='emptyTransaction noEmpty' key={i}>
+                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
+                    <div style={{ display: 'flex', width: '415px', justifyContent: 'space-between' }}>
+                      <Typography variant='p' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
 
-                {
-                move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                  ? <Typography variant='p' sx={{ color: '#70CC6F' }}>+${move.amount}</Typography>
-                  : <Typography variant='p' sx={{ color: '#DD643E' }}>-${move.amount}</Typography>
-                }
-              </div>
-              {
-                move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                  ? <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Enviado a: {move.recipientName}</Typography>
-                  : <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Recibido de: {move.senderName}</Typography>
-                }
+                      {
+                  move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                    ? <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
+                    : <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                  }
+                    </div>
+                    {
+                  move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                    ? <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Enviado a: {move.recipientName}</Typography>
+                    : <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Recibido de: {move.senderName}</Typography>
+                  }
 
-            </div>
-          ))
+                  </div>
+                ))
+                : history.map((move, i) => (
+                  <div className='emptyTransaction noEmpty' key={i}>
+                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
+                    <div style={{ display: 'flex', width: '415px', justifyContent: 'space-between' }}>
+                      <Typography variant='p' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
+
+                      {
+                    move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                      ? <Typography variant='p' sx={{ color: '#70CC6F' }}>+${move.amount}</Typography>
+                      : <Typography variant='p' sx={{ color: '#DD643E' }}>-${move.amount}</Typography>
+                    }
+                    </div>
+                    {
+                    move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                      ? <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Enviado a: {move.recipientName}</Typography>
+                      : <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Recibido de: {move.senderName}</Typography>
+                    }
+
+                  </div>
+                ))
+            )
+
       }
 
     </section>

@@ -6,6 +6,7 @@ import closeEye from '../assets/cerrar-ojo.png'
 import { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useAuth } from '../hooks/useAuth'
+import { formatearPeso } from '../config/config'
 const Welcome = () => {
   const { user } = useAuth()
   const [eye, setEye] = useState(false)
@@ -39,11 +40,11 @@ const Welcome = () => {
 
         </div>
         <div style={{ color: '#F1F0EA', display: 'flex', fontSize: '48px', fontWeight: '700' }}>
-          <span>$ </span>
+
           {
             !eye
-              ? <span>***</span>
-              : <span>{user.balance}</span>
+              ? <span>$***</span>
+              : <span>{formatearPeso.format(user.balance)}</span>
           }
         </div>
         <div className='containerCVU'>
