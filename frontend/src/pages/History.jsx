@@ -34,9 +34,7 @@ const History = ({ limit }) => {
   console.log(historySender)
   return (
     <section className='containerHistory'>
-      <div>
-        <p className='transactions'>Historial de movimientos</p>
-      </div>
+      <p className='transactions'>Historial de movimientos</p>
       {
         !history
           ? (
@@ -49,48 +47,42 @@ const History = ({ limit }) => {
               limit
                 ? history.slice(0, limit).map((move, i) => (
                   <div className='emptyTransaction noEmpty' key={i}>
-                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
-                    <div style={{ display: 'flex', width: '415px', justifyContent: 'space-between' }}>
-                      <Typography variant='p' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
-
+                    <div className='single_transaction'>
+                      <Typography className='transfer_date' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
                       {
-                  move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                    ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
-                    : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
-                  }
+                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                        ? <Typography color='secondary' className='transfer_data'>Enviado a: {move.recipientName}</Typography>
+                        : <Typography color='secondary' className='transfer_data'>Recibido de: {move.senderName}</Typography>
+                    }
+                      {
+                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                        ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                        : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
+                    }
                     </div>
-                    {
-                  move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                    ? <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Enviado a: {move.recipientName}</Typography>
-                    : <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Recibido de: {move.senderName}</Typography>
-                  }
-
+                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
                   </div>
                 ))
                 : history.map((move, i) => (
                   <div className='emptyTransaction noEmpty' key={i}>
-                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
-                    <div style={{ display: 'flex', width: '415px', justifyContent: 'space-between' }}>
-                      <Typography variant='p' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
-
+                    <div className='single_transaction'>
+                      <Typography className='transfer_date' color='secondary'>Fecha: {new Date(move.date).toLocaleDateString('es-ES')}</Typography>
                       {
-                    move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                      ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
-                      : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
+                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                        ? <Typography color='secondary' className='transfer_data'>Enviado a: {move.recipientName}</Typography>
+                        : <Typography color='secondary' className='transfer_data'>Recibido de: {move.senderName}</Typography>
+                    }
+                      {
+                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
+                        ? <Typography className='transfer_amount' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
+                        : <Typography className='transfer_amount' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                     }
                     </div>
-                    {
-                    move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                      ? <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Enviado a: {move.recipientName}</Typography>
-                      : <Typography variant='p' color='secondary' style={{ width: '415px', textAlign: 'left' }}>Recibido de: {move.senderName}</Typography>
-                    }
-
+                    <Typography variant='p' color='secondary'>ID: {move._id}</Typography>
                   </div>
                 ))
             )
-
       }
-
     </section>
   )
 }
