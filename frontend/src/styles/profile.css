@@ -5,7 +5,7 @@
     height: 100vh;
     margin-top: 2rem;
     padding: 0 4rem;
-    width: 100%;
+    width: 800px;
 }
 
 .circlePicture {
@@ -13,6 +13,7 @@
     height: 160px;
     border-radius: 160px;
     background: linear-gradient(90deg, #7565FC 0%, #8D4EB5 100%);
+    color: #f1f0ea;
     filter: drop-shadow(0px 4px 54px #8D4EB5);
     display: flex;
     justify-content: center;
@@ -30,7 +31,7 @@
     gap: 9px;
 }
 
-.containerLabel{
+.containerLabel {
     display: flex;
     gap: 16px;
     padding-bottom: 1.5rem;
@@ -52,20 +53,21 @@ fieldset {
   font-size: .8rem;
 }
 
-.save_changes {
-    margin-top: 1.5rem!important;
-    width: 13rem;
+.signup-button .btnGradient {
+    margin-top: 1rem;
+    width: 12.875rem;
 }
 
 @media screen and (max-width: 900px) {
     .profile {
         align-items: center;
         gap: 1.95rem;
-        margin-top: 6rem;
+        margin-top: 90px;
         justify-content: center;
+        width: 100%;
     }
 
-    .circlePicture {
+    .profile .circlePicture {
         margin-bottom: 0;
     }
 
@@ -90,5 +92,9 @@ fieldset {
 
     .containerLabel label {
         font-size: 0.75rem;
+    }
+
+    .signup-button .btnGradient {
+        width: 20.5rem;
     }
 }

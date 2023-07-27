@@ -1,0 +1,39 @@
+.mydata {
+    align-items: center;
+    color: #f1f0ea;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    height: 95vh;
+    margin-top: 6rem;
+    padding: 0 4rem;
+    width: 100%;
+}
+
+.info_container {
+    align-items: center;
+    background: rgba(241, 240, 234, 0.12);
+    border: 1px solid rgba(241, 240, 234, 0.12);
+    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 450px;
+}
+
+.info_label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.info_text {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+    .info_container {
+        width: 350px;
+    }
+}

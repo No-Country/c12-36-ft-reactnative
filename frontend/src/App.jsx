@@ -13,12 +13,14 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Transfers from './pages/Transfers'
 import History from './pages/History'
-import Settings from './pages/Settings'
-import EditProfile from './pages/Profile'
+import Profile from './pages/MyData'
 import Terms from './pages/Terms'
 import Policy from './pages/Policy'
 import About from './pages/About'
 import ContactUs from './pages/ContactUs'
+import Settings from './pages/Settings'
+import EditProfile from './pages/Profile'
+import EditPassword from './pages/Password'
 import Error from './pages/Error'
 
 import './styles/app.css'
@@ -64,11 +66,12 @@ const App = () => {
             />
             <Route path='/home/transfers' element={<Transfers />} />
             <Route path='/home/history' element={<History />} />
-            <Route path='/home/profile' element={<EditProfile />} />
+            <Route path='/home/profile' element={<Profile />} />
             <Route path='home/terms-conditions' element={<Terms />} />
             <Route path='home/contact-us' element={<ContactUs />} />
             <Route path='/home/settings' element={<Settings />}>
               <Route path='/home/settings/edit_profile' element={<EditProfile />} />
+              <Route path='/home/settings/edit_password' element={<EditPassword />} />
             </Route>
           </Route>
           <Route path='/terms-conditions' element={<Terms />} />
