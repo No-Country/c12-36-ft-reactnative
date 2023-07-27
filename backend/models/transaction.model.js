@@ -1,10 +1,9 @@
-const  {Schema, model}  = require ('mongoose');
+const { Schema, model } = require("mongoose");
 
 const transactionSchema = new Schema({
   sender: {
     type: Schema.Types.ObjectId,
     ref: "User",
-
   },
   recipient: {
     type: Schema.Types.ObjectId,
@@ -27,4 +26,4 @@ const transactionSchema = new Schema({
   },
 });
 
-module.exports = model( "Transaction", transactionSchema)
+module.exports = model("Transaction", transactionSchema);
