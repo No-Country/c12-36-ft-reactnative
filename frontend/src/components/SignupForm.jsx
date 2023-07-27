@@ -18,16 +18,25 @@ const SignupForm = () => {
   const [check18, setCheck18] = useState(false)
   const [checkTerms, setCheckTerms] = useState(false)
   const [status, setStatus] = useState(false)
+  const [passwordRepeat, setPasswordRepeat] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
-
+  console.log(password, passwordRepeat)
   const onSubmit = handleSubmit(async (values) => {
-    signup(values)
-      .then(() => SuccessPop())
-      .then(() => navigate('/login'))
-      .catch(() => RegisterErrorPop())
+    if (password === passwordRepeat) {
+      signup(values)
+        .then(() => SuccessPop())
+        .then(() => navigate('/login'))
+        .catch(() => RegisterErrorPop())
+    } else {
+      setErrorPass('Las contraseñas no coinciden')
+    }
   })
-  console.log(user)
+
+  const validatePass = () => {
+
+  }
   useEffect(() => {
     if (check18 === true && checkTerms === true) {
       setStatus(true)
@@ -114,7 +123,7 @@ const SignupForm = () => {
               sx={muiStyles.smInput}
               InputLabelProps={muiStyles.label}
               {
-              ...register('firstName', { required: true, minLength: 3 })
+              ...register('firstName', { required: true, minLength: 3, pattern: /^[a-zA-Z]+$/ })
               }
             />
             {
@@ -124,6 +133,10 @@ const SignupForm = () => {
             {
               errors.firstName && errors.firstName.type === 'minLength' &&
                 <p className='error' role='alert'>*Mínimo 3 caracteres</p>
+            }
+            {
+              errors.firstName && errors.firstName.type === 'pattern' &&
+                <p className='error' role='alert'>*El nombre solo puede contener letras y sin espacios</p>
             }
           </div>
 
@@ -138,7 +151,7 @@ const SignupForm = () => {
               sx={muiStyles.smInput}
               InputLabelProps={muiStyles.label}
               {
-              ...register('lastName', { required: true, minLength: 3 })
+              ...register('lastName', { required: true, minLength: 3, pattern: /^[a-zA-Z]+$/ })
               }
             />
             {
@@ -148,6 +161,10 @@ const SignupForm = () => {
             {
               errors.lastName && errors.lastName.type === 'minLength' &&
                 <p className='error' role='alert'>*Mínimo 3 caracteres</p>
+            }
+            {
+              errors.lastName && errors.lastName.type === 'pattern' &&
+                <p className='error' role='alert'>*El apellido solo puede contener letras y sin espacios</p>
             }
           </div>
         </div>
@@ -160,6 +177,7 @@ const SignupForm = () => {
             variant='outlined'
             color='secondary'
             autoComplete='off'
+            onKeyUp={(e) => setPassword(e.target.value)}
             sx={muiStyles.sxInput}
             InputLabelProps={muiStyles.label}
             {
@@ -199,11 +217,13 @@ const SignupForm = () => {
             label='Repetir contraseña'
             variant='outlined'
             color='secondary'
+            aria-invalid={errors.passwordRepeat ? 'true' : 'false'}
             autoComplete='off'
+            onKeyUp={(e) => setPasswordRepeat(e.target.value)}
             sx={muiStyles.sxInput}
             InputLabelProps={muiStyles.label}
             {
-            ...register('passwordRepeat', { required: false })
+            ...register('passwordRepeat', { required: true, validate: validatePass })
             }
             type={viewer ? 'text' : 'password'}
             InputProps={{
@@ -215,7 +235,9 @@ const SignupForm = () => {
               )
             }}
           />
-          <p className='error' role='alert'>{errorPass}</p>
+          {
+            errorPass && <p className='error' role='alert'>{errorPass}</p>
+          }
         </div>
 
         <div className='checkboxes'>
@@ -260,9 +282,6 @@ const SignupForm = () => {
           />
         </div>
 
-        {/*         {isLoading && <CircularProgress color='secondary' />}
-        <p className='response-error'>{error}</p>
- */}
         <Button
           className='btnGradient'
           variant='text'
@@ -273,7 +292,7 @@ const SignupForm = () => {
           }}
         >
           Crear cuenta
-          {/* <Link to='/home'>Crear cuenta</Link> */}
+
         </Button>
       </form>
 

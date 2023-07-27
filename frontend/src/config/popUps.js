@@ -67,6 +67,19 @@ export const PasswordPop = () => {
   })
 }
 
+export const TransferPop = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'success',
+    position: 'center',
+    showConfirmButton: false,
+    text: '¡Transferencia realizada con exito!',
+    timer: 5000,
+    width: '420px'
+  })
+}
+
 export const LoginErrorPop = () => {
   Swal.fire({
     background: '#503853',
@@ -75,6 +88,19 @@ export const LoginErrorPop = () => {
     position: 'center',
     showConfirmButton: false,
     text: 'El usuario o contraseña son incorrectos.',
+    timer: 5000,
+    width: '420px'
+  })
+}
+
+export const TransferErrorPop = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'error',
+    position: 'center',
+    showConfirmButton: false,
+    text: 'Ha ocurrido un error, verifique los datos e intentelo nuevamente.',
     timer: 5000,
     width: '420px'
   })

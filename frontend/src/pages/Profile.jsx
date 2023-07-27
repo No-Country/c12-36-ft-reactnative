@@ -1,9 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { Button, CircularProgress, FormControl, FormLabel, TextField, Typography } from '@mui/material'
-/* import { useAuthContext } from '../hooks/useAuthContext'
-import { useProfile } from '../hooks/useProfile'
- */
-// import camera from '../assets/fi-sr-camera.png'
+import { Button, FormLabel, TextField, Typography } from '@mui/material'
 import '../styles/profile.css'
 import { useAuth } from '../hooks/useAuth'
 import { userUpdate } from '../api/auth'
