@@ -19,6 +19,7 @@ import Policy from './pages/Policy'
 import About from './pages/About'
 import ContactUs from './pages/ContactUs'
 import Error from './pages/Error'
+import ForgotPassword from './pages/ForgotPassword'
 
 import './styles/app.css'
 
@@ -38,6 +39,7 @@ const App = () => {
                                       : <Login />
                                   }
           />
+          <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route
             path='/signup' element={
                                       user
