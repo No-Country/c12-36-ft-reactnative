@@ -1,9 +1,8 @@
 import { createContext, useEffect, useState } from 'react'
 import { registerRequest, loginRequest, userRequest } from '../api/auth'
-import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = createContext()
-
+// eslint-disable-next-line
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [dataUser, setDataUser] = useState('')
@@ -34,9 +33,6 @@ export const AuthProvider = ({ children }) => {
         console.error(err)
       })
   }, [authToken, user])
-  /*   const [errors, setErrors] = useState([])
- */
-  console.log(dataUser)
 
   useEffect(() => {
     const seeUser = JSON.parse(localStorage.getItem('user'))

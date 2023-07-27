@@ -1,14 +1,13 @@
-import { Button, CircularProgress, FormControl, TextField, InputAdornment } from '@mui/material'
+import { Button, FormControl, TextField, InputAdornment } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import { LoginErrorPop, ProfilePop } from '../config/popUps'
+import { LoginErrorPop } from '../config/popUps'
 
 import '../styles/loginForm.css'
-/* import { useLogin } from '../hooks/useLogin'
- */import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../hooks/useAuth'
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -21,7 +20,8 @@ const LoginForm = () => {
       if (res.status === 200) {
         navigate('/home/dashboard')
       }
-    } catch {
+    } catch (err) {
+      console.error(err)
       LoginErrorPop()
     }
   })
