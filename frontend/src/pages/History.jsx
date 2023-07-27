@@ -35,7 +35,6 @@ const History = ({ limit }) => {
   return (
     <section className='containerHistory'>
       <p className='transactions'>Historial de movimientos</p>
-      <p className='transactions'>Historial de movimientos</p>
       {
         !history
           ? (
@@ -60,10 +59,6 @@ const History = ({ limit }) => {
                         ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
                         : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                     }
-                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                        ? <Typography variant='p' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
-                        : <Typography variant='p' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
-                    }
                     </div>
                     <Typography className='transfer_id' variant='p' color='secondary'>ID: {move._id}</Typography>
                   </div>
@@ -77,10 +72,6 @@ const History = ({ limit }) => {
                         ? <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Enviado a: </span>{move.recipientName}</Typography>
                         : <Typography color='secondary' className='transfer_data'><span className='transfer_subtitle'>Recibido de: </span>{move.senderName}</Typography>
                     }
-                      {
-                      move.senderName === dataUser.firstName + ' ' + dataUser.lastName
-                        ? <Typography className='transfer_amount' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
-                        : <Typography className='transfer_amount' sx={{ color: '#70CC6F' }}>+{formatearPeso.format(move.amount)}</Typography>
                       {
                       move.senderName === dataUser.firstName + ' ' + dataUser.lastName
                         ? <Typography className='transfer_amount' sx={{ color: '#DD643E' }}>-{formatearPeso.format(move.amount)}</Typography>
