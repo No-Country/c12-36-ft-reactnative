@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
-
+import { useNavigate } from 'react-router-dom'
 import '../styles/transfer.css'
 import { useAuth } from '../hooks/useAuth'
 import { useForm } from 'react-hook-form'
@@ -9,7 +9,6 @@ import { transferRequest, userRequest } from '../api/auth'
 import { useEffect, useState } from 'react'
 import { formatearPeso } from '../config/config'
 import { TransferErrorPop, TransferPop } from '../config/popUps'
-import { useNavigate } from 'react-router'
 
 const Transfers = () => {
   const { user, authToken } = useAuth()
@@ -22,16 +21,14 @@ const Transfers = () => {
   const [users, setUsers] = useState('')
   const [thisUser, setThisUser] = useState('')
   const [transfer, setTransfer] = useState('')
-  const { navigate } = useNavigate()
+  const navigate = useNavigate()
+
   const handleTransfer = () => {
     transferRequest(authToken, transfer)
       .then((res) => {
-        console.log(res.data)
         TransferPop()
       })
-      .then(() => {
-        navigate('/home/dashboard')
-      })
+      .then(() => navigate('/home/dashboard'))
       .catch((err) => {
         console.error(err)
         TransferErrorPop()
@@ -49,7 +46,6 @@ const Transfers = () => {
 
   useEffect(() => {
     if (users.length > 0 && recipient !== '') {
-      console.log(cbuODni)
       // eslint-disable-next-line
       const search = users.filter((user) => user.dni == recipient || user.cbu === recipient)
       setThisUser(search)
@@ -80,8 +76,6 @@ const Transfers = () => {
     setInfo(1)
     setTransfer(newData)
   }
-
-  console.log(recipient.length)
 
   return (
     <>

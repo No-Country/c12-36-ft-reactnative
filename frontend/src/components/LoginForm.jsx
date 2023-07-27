@@ -14,16 +14,15 @@ const LoginForm = () => {
   const { login } = useAuth()
   const navigate = useNavigate()
 
-  const onSubmit = handleSubmit(async (data) => {
-    try {
-      const res = await login(data)
-      if (res.status === 200) {
+  const onSubmit = handleSubmit((data) => {
+    login(data)
+      .then(() => {
         navigate('/home/dashboard')
-      }
-    } catch (err) {
-      console.error(err)
-      LoginErrorPop()
-    }
+      })
+      .catch((err) => {
+        console.error(err)
+        LoginErrorPop()
+      })
   })
 
   const [viewer, setViewer] = useState(false)
@@ -52,7 +51,7 @@ const LoginForm = () => {
     console.log('Usuario hizo clic en "¿Olvidaste tu contraseña?"')
     history.push('/forgotpassword')
   }
-  
+
   return (
     <div className='login_form'>
       <FormControl className='form' fullWidth>
@@ -96,7 +95,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <a href='' className='text-sm text-forgotten'>¿Olvidaste tu contraseña?</a>
+        <a href='/forgotpassword' className='text-sm text-forgotten'>¿Olvidaste tu contraseña?</a>
 
         {/*         {
           isLoading && (
