@@ -60,6 +60,7 @@
   bottom: -20px;
   font-size: 0.8rem;
   color: #DD643E;
+  width: max-content;
 }
 
 .response-error {

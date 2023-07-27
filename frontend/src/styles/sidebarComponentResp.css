@@ -43,4 +43,8 @@
     .css-6hp17o-MuiList-root-MuiMenu-list{
         background: #2D1930;
     }    
+
+    .sidebar_component .ul_resp {
+        flex-direction: row;
+    }
 }
