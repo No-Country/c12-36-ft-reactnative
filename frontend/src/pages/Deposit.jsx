@@ -75,10 +75,10 @@ const Deposit = () => {
         <div className='labelsDeposit'>
           <input
             className='labelCard'
-            type='tel'
+            type='number'
             name='number'
+            pattern='^\d{16}$'
             maxLength={16}
-            minLength={16}
             placeholder='Numero de Tarjeta'
             value={number}
             onChange={e => setNumber(e.target.value)}
@@ -98,7 +98,7 @@ const Deposit = () => {
           />
           <input
             className='labelCard'
-            type='text'
+            type='number'
             name='expiry'
             placeholder='MM/YY Fecha de expiracion'
             value={expiry}
@@ -110,7 +110,7 @@ const Deposit = () => {
           />
           <input
             className='labelCard'
-            type='tel'
+            type='number'
             name='cvc'
             placeholder='CVC'
             value={cvc}
