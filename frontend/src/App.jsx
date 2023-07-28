@@ -33,7 +33,6 @@ const App = () => {
   const { user } = useAuth()
 
   return (
-
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Header />
@@ -76,6 +75,13 @@ const App = () => {
               }
             />
             <Route
+              path='/home/deposit' element={
+                user && user.isActivated
+                  ? <Deposit />
+                  : <Navigate to='/home/settings/edit_profile' />
+              }
+            />
+            <Route
               path='/home/history' element={
                 user && user.isActivated
                   ? <History />
@@ -89,25 +95,23 @@ const App = () => {
                   : <Navigate to='/home/settings/edit_profile' />
               }
             />
-            <Route path='/home/deposit' element={<Deposit />} />
-            <Route path='home/terms-conditions' element={<Terms />} />
-            <Route path='home/contact-us' element={<ContactUs />} />
+            <Route path='/home/terms-conditions' element={<Terms />} />
+            <Route path='/home/contact-us' element={<ContactUs />} />
             <Route
               path='/home/settings' element={
-               user && user.isActivated
-                 ? <Settings />
-                 : <Navigate to='/home/settings/edit_profile' />
+                user && user.isActivated
+                  ? <Settings />
+                  : <Navigate to='/home/settings/edit_profile' />
               }
             />
-              <Route path='/home/settings/edit_profile' element={<EditProfile />} />
-              <Route
-                path='/home/settings/edit_password' element={
+            <Route path='/home/settings/edit_profile' element={<EditProfile />} />
+            <Route
+              path='/home/settings/edit_password' element={
                 user && user.isActivated
                   ? <EditPassword />
                   : <Navigate to='/home/settings/edit_profile' />
               }
-              />
-            </Route>
+            />
           </Route>
           <Route path='/who-we-are' element={<WhoWeAre />} />
           <Route path='/terms-conditions' element={<Terms />} />
@@ -117,7 +121,7 @@ const App = () => {
           <Route path='/page-not-found' element={<Error />} />
         </Routes>
       </ThemeProvider>
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }
 
