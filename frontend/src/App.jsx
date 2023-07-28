@@ -103,15 +103,16 @@ const App = () => {
                   ? <Settings />
                   : <Navigate to='/home/settings/edit_profile' />
               }
-            />
-            <Route path='/home/settings/edit_profile' element={<EditProfile />} />
-            <Route
-              path='/home/settings/edit_password' element={
+            >
+              <Route path='/home/settings/edit_profile' element={<EditProfile />} />
+              <Route
+                path='/home/settings/edit_password' element={
                 user && user.isActivated
                   ? <EditPassword />
                   : <Navigate to='/home/settings/edit_profile' />
               }
-            />
+              />
+            </Route>
           </Route>
           <Route path='/who-we-are' element={<WhoWeAre />} />
           <Route path='/terms-conditions' element={<Terms />} />
@@ -121,7 +122,7 @@ const App = () => {
           <Route path='/page-not-found' element={<Error />} />
         </Routes>
       </ThemeProvider>
-    </BrowserRouter >
+    </BrowserRouter>
   )
 }
 
