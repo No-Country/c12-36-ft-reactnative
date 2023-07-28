@@ -31,7 +31,7 @@ const Password = () => {
   }
 
   return (
-    <section className='password'>
+    <section className='change_password'>
       <form className='containerPassword' onSubmit={handleSubmit(onSubmit)}>
         <div className='titlePassword'>
           <Typography className='password_title' color='secondary'>

@@ -41,42 +41,72 @@ const App = () => {
           <Route path='/' element={<Landing />} />
           <Route
             path='/login' element={
-                                    user
-                                      ? <Navigate to='/home/dashboard' />
-                                      : <Login />
-                                  }
+              user
+                ? <Navigate to='/home/dashboard' />
+                : <Login />
+            }
           />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route
             path='/signup' element={
-                                      user
-                                        ? <Navigate to='/login' />
-                                        : <SignUp />
-                                    }
+              user
+                ? <Navigate to='/login' />
+                : <SignUp />
+            }
           />
           <Route
             path='/home' element={
-                                    user
-                                      ? <Home />
-                                      : <Navigate to='/' />
-                                  }
+              user
+                ? <Home />
+                : <Navigate to='/' />
+            }
           >
             <Route
               path='/home/dashboard' element={
-                                                user && user.isActivated
-                                                  ? <Dashboard />
-                                                  : <Navigate to='/home/settings/edit_profile' />
-                                              }
+                user && user.isActivated
+                  ? <Dashboard />
+                  : <Navigate to='/home/settings/edit_profile' />
+              }
+            />
+            <Route
+              path='/home/transfers' element={
+                user && user.isActivated
+                  ? <Transfers />
+                  : <Navigate to='/home/settings/edit_profile' />
+              }
+            />
+            <Route
+              path='/home/history' element={
+                user && user.isActivated
+                  ? <History />
+                  : <Navigate to='/home/settings/edit_profile' />
+              }
+            />
+            <Route
+              path='/home/profile' element={
+                user && user.isActivated
+                  ? <Profile />
+                  : <Navigate to='/home/settings/edit_profile' />
+              }
             />
             <Route path='/home/deposit' element={<Deposit />} />
-            <Route path='/home/transfers' element={<Transfers />} />
-            <Route path='/home/history' element={<History />} />
-            <Route path='/home/profile' element={<Profile />} />
             <Route path='home/terms-conditions' element={<Terms />} />
             <Route path='home/contact-us' element={<ContactUs />} />
-            <Route path='/home/settings' element={<Settings />}>
+            <Route
+              path='/home/settings' element={
+               user && user.isActivated
+                 ? <Settings />
+                 : <Navigate to='/home/settings/edit_profile' />
+              }
+            />
               <Route path='/home/settings/edit_profile' element={<EditProfile />} />
-              <Route path='/home/settings/edit_password' element={<EditPassword />} />
+              <Route
+                path='/home/settings/edit_password' element={
+                user && user.isActivated
+                  ? <EditPassword />
+                  : <Navigate to='/home/settings/edit_profile' />
+              }
+              />
             </Route>
           </Route>
           <Route path='/who-we-are' element={<WhoWeAre />} />
@@ -88,7 +118,6 @@ const App = () => {
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
-
   )
 }
 
