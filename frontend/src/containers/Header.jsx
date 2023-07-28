@@ -13,13 +13,14 @@ import terms from '../assets/fi-sr-document.png'
 import tarjeta from '../assets/fi-sr-credit-card.png'
 import portrait from '../assets/fi-sr-portrait.png'
 import close from '../assets/close.png'
+import deposit from '../assets/depositar.png'
 import LoginButton from '../components/LoginButton'
 import BtnGradient from '../components/BtnGradient'
 
 import '../styles/header.css'
 
 const pages = [{ name: 'Nosotros', path: 'who-we-are' }, { name: 'Ayuda', path: 'contact-us' }]
-const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Movimientos', img: moves, path: '/home/history' }, { name: 'Mis datos', img: portrait, path: '/home/profile' }]
+const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Depositos', img: deposit, path: '/home/deposit' }, { name: 'Movimientos', img: moves, path: '/home/history' }, { name: 'Mis datos', img: portrait, path: '/home/profile' }]
 const sidebarDown = [{ name: 'Terminos de uso', img: terms, path: 'home/terms-conditions' }, { name: 'Ayuda y soporte', img: help, path: 'home/contact-us' }, { name: 'Configuraciones', img: settings, path: '/home/settings/edit_profile' }]
 
 const Header = () => {

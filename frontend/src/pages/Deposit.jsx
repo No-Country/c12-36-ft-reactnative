@@ -50,12 +50,27 @@ const Deposit = () => {
   return (
     <div className='deposit'>
       <Cards
+        className='deposit_cards'
         number={number}
         expiry={expiry}
         cvc={cvc}
         name={name}
         focused={focus}
       />
+      <div>
+        <label id='amount' className='amount'>$</label>
+        <TextField
+          id='amount' name='amount' type='number' className='sinBorde' onChange={(e) => setAmount(e.target.value)} variant='standard' placeholder='0' {...register('amount', {
+            required: 'Ingrese un monto valido',
+            pattern: {
+              value: /^[0-9]+(\.[0-9]{1,2})?$/,
+              message: 'Ingrese un monto válido (ej: 100 o 100.50).'
+            }
+          })}
+          error={Boolean(errors.amount)}
+        />
+        {errors.amount && <p className='transfer_error'>{errors.amount.message}</p>}
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} className='formDeposit'>
         <div className='labelsDeposit'>
           <input
@@ -105,21 +120,6 @@ const Deposit = () => {
             onFocus={e => setFocus(e.target.name)}
             required
           />
-        </div>
-        <div>
-          <label id='amount' className='amount'>$</label>
-          <TextField
-            id='amount' name='amount' type='number' className='sinBorde' onChange={(e) => setAmount(e.target.value)} variant='standard' placeholder='0' {...register('amount', {
-              required: 'Ingrese un monto valido',
-              pattern: {
-                value: /^[0-9]+(\.[0-9]{1,2})?$/,
-                message: 'Ingrese un monto válido (ej: 100 o 100.50).'
-              }
-            })}
-            error={Boolean(errors.amount)}
-          />
-          {errors.amount && <p className='transfer_error'>{errors.amount.message}</p>}
-
         </div>
 
         <Button className='btnGradient' color='secondary' type='submit'>Ingresar Dinero</Button>

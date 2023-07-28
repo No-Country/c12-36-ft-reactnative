@@ -100,7 +100,7 @@ export const TransferErrorPop = () => {
     icon: 'error',
     position: 'center',
     showConfirmButton: false,
-    text: 'Ha ocurrido un error, verifique los datos e intentelo nuevamente.',
+    text: 'Ha ocurrido un error, verifica los datos e intentalo de nuevo.',
     timer: 5000,
     width: '420px'
   })
@@ -113,7 +113,7 @@ export const profileUpdate = () => {
     icon: 'success',
     position: 'center',
     showConfirmButton: false,
-    text: '¡Datos cargados con exito! Por favor, vuelve a iniciar sesion.',
+    text: '¡Datos cargados con exito! Por favor, vuelve a iniciar sesión.',
     timer: 5000,
     width: '420px'
   })
@@ -125,7 +125,7 @@ export const dniError = () => {
     icon: 'error',
     position: 'center',
     showConfirmButton: false,
-    text: 'Ya existe un usuario con ese DNI',
+    text: 'Ya existe un usuario registrado con ese DNI',
     timer: 5000,
     width: '420px'
   })
@@ -164,7 +164,7 @@ export const depositError = () => {
     icon: 'error',
     position: 'center',
     showConfirmButton: false,
-    text: 'Ha ocurrido un error. Puedes intentarlo nuevamente.',
+    text: 'Ha ocurrido un error. Intenta de nuevo.',
     timer: 5000,
     width: '420px'
   })
