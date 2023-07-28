@@ -18,6 +18,9 @@ const Welcome = () => {
       userReload(authToken, dataUser._id)
         .then((res) => {
           localStorage.setItem('user', JSON.stringify(res.data))
+          return res
+        })
+        .then((res) => {
           setDataUser(res.data)
         })
         .catch((error) => {
@@ -38,7 +41,7 @@ const Welcome = () => {
   return (
     <section className='containerWelcome'>
       <div>
-        <p className='greetings'>Hola {dataUser.firstName}</p>
+        <p className='greetings'>Hola {user.firstName}</p>
       </div>
       <div className='cardSaldo'>
         <div className='containerCuentas'>
@@ -72,7 +75,7 @@ const Welcome = () => {
         <div className='containerCVU'>
           <div className='cvu' style={{ fontSize: '14px' }}>{user.cbu}</div>
           <div className='icon-image2' style={{ color: '#FFFFFF', width: '24px', height: '24px' }}>
-            <CopyToClipboard text={dataUser.cbu} onCopy={() => setCopied(true)}>
+            <CopyToClipboard text={user.cbu} onCopy={() => setCopied(true)}>
               <button className='eye' onClick={setTimeout(() => { setCopied(false) }, '1500')}><img src={icon2} alt='copiar CBU' /></button>
             </CopyToClipboard>
           </div>

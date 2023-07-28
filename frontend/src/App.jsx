@@ -27,6 +27,7 @@ import WhoWeAre from './pages/WhoWeAre'
 
 import './styles/app.css'
 import { useAuth } from './hooks/useAuth'
+import Deposit from './pages/Deposit'
 
 const App = () => {
   const { user } = useAuth()
@@ -88,15 +89,16 @@ const App = () => {
                   : <Navigate to='/home/settings/edit_profile' />
               }
             />
-            <Route path='/home/terms-conditions' element={<Terms />} />
-            <Route path='/home/contact-us' element={<ContactUs />} />
+            <Route path='/home/deposit' element={<Deposit />} />
+            <Route path='home/terms-conditions' element={<Terms />} />
+            <Route path='home/contact-us' element={<ContactUs />} />
             <Route
               path='/home/settings' element={
-                user && user.isActivated
-                  ? <Settings />
-                  : <Navigate to='/home/settings/edit_profile' />
+               user && user.isActivated
+                 ? <Settings />
+                 : <Navigate to='/home/settings/edit_profile' />
               }
-            >
+            />
               <Route path='/home/settings/edit_profile' element={<EditProfile />} />
               <Route
                 path='/home/settings/edit_password' element={
@@ -116,7 +118,6 @@ const App = () => {
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
-
   )
 }
 
