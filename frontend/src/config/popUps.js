@@ -143,3 +143,29 @@ export const ageError = () => {
     width: '420px'
   })
 }
+
+export const depositSucces = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'success',
+    position: 'center',
+    showConfirmButton: false,
+    text: '¡Deposito realizado!',
+    timer: 5000,
+    width: '420px'
+  })
+}
+
+export const depositError = () => {
+  Swal.fire({
+    background: '#503853',
+    color: '#f1f0ea',
+    icon: 'error',
+    position: 'center',
+    showConfirmButton: false,
+    text: 'Ha ocurrido un error. Puedes intentarlo nuevamente.',
+    timer: 5000,
+    width: '420px'
+  })
+}

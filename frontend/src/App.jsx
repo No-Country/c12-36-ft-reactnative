@@ -27,6 +27,7 @@ import WhoWeAre from './pages/WhoWeAre'
 
 import './styles/app.css'
 import { useAuth } from './hooks/useAuth'
+import Deposit from './pages/Deposit'
 
 const App = () => {
   const { user } = useAuth()
@@ -67,6 +68,7 @@ const App = () => {
                                                   : <Navigate to='/home/settings/edit_profile' />
                                               }
             />
+            <Route path='/home/deposit' element={<Deposit />} />
             <Route path='/home/transfers' element={<Transfers />} />
             <Route path='/home/history' element={<History />} />
             <Route path='/home/profile' element={<Profile />} />
