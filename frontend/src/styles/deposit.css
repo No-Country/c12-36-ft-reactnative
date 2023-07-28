@@ -1,3 +1,13 @@
+.deposit{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 40px;
+    padding: 0 4rem;
+    width: 100%;
+    height: 95vh;
+}
 .labelCard{
     width: 200px;
     height: 50px;
@@ -6,14 +16,9 @@
     border-radius: 10px;
     color: #fff;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
-.deposit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    gap: 1rem;
-}
+
 .labelsDeposit{
     display: flex;
     gap: 1rem;
@@ -23,4 +28,26 @@
     flex-direction: column;
     align-items: center;
     gap: 3rem;
+    margin-top: 2rem;
+}
+.rccs {
+    margin-bottom: 2rem!important;
+    box-shadow: 0px 4px 52px 0px #8D4EB5;
+    border-radius: 150px;
+}
+
+@media screen and (max-width:900px) {
+    .rccs {
+        margin-bottom: 2rem!important;
+    }
+    .labelsDeposit{
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+    .labelCard {
+        width: 300px;
+    }
+    .formDeposit{
+        margin-top: 1.5rem;
+    }
 }

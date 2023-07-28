@@ -16,9 +16,9 @@ import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 /* import { useLogout } from '../hooks/useLogout'
  */
-const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Depositos', img: deposit, path: '/home/deposit' }, { name: 'Movimientos', img: moves, path: '/home/history' }, { name: 'Mis datos', img: portrait, path: '/home/profile' }]
+const sidebarUp = [{ name: 'Mi panel', img: panel, path: '/home/dashboard', focus: true }, { name: 'Transacciones', img: tarjeta, path: '/home/transfers' }, { name: 'Ingresar dinero', img: deposit, path: '/home/deposit' }, { name: 'Movimientos', img: moves, path: '/home/history' }, { name: 'Mis datos', img: portrait, path: '/home/profile' }]
 // { name: 'Mis tarjetas', img: cards }, { name: 'Servicios', img: manos },
-const sidebarDown = [{ name: 'Terminos de uso', img: terms, path: 'home/terms-conditions' }, { name: 'Ayuda y soporte', img: help, path: 'home/contact-us' }, { name: 'Configuraciones', img: settings, path: '/home/settings/edit_profile' }]
+const sidebarDown = [{ name: 'Terminos de uso', img: terms, path: '/home/terms-conditions' }, { name: 'Ayuda y soporte', img: help, path: '/home/contact-us' }, { name: 'Configuraciones', img: settings, path: '/home/settings/edit_profile' }]
 
 const Sidebar = () => {
   const { navigate } = useNavigate()
