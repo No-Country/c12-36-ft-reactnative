@@ -26,7 +26,13 @@ export const AuthProvider = ({ children }) => {
     userRequest(authToken)
       .then((res) => {
         const usersData = res.data
+        return usersData
+      })
+      .then((usersData) => {
         const filterUser = usersData.find((userData) => userData.dni === user.dni)
+        return filterUser
+      })
+      .then((filterUser) => {
         setDataUser(filterUser)
       })
   }, [authToken, user])
@@ -41,23 +47,30 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const signup = async (user) => {
-    const res = await registerRequest(user)
-    console.log(res)
+    await registerRequest(user)
   }
 
-  const login = async (user) => {
-    try {
-      const res = await loginRequest(user)
-      await setUser(res.data)
-      await console.log(res.data)
-      await setIsAuthenticated(true)
-      localStorage.setItem('user', JSON.stringify(res.data))
-      localStorage.setItem('token', JSON.stringify(res.data.accessToken))
+  const login = (user) => {
+    loginRequest(user)
+      .then((res) => {
+        setUser(res.data)
+        return res
+      })
+      .then((res) => {
+        localStorage.setItem('user', JSON.stringify(res.data))
+        return res
+      })
+      .then((res) => {
+        localStorage.setItem('token', JSON.stringify(res.data.accessToken))
+        return res
+      })
+      .then((res) => setAuthToken(res.data.accessToken))
+      .then(() => setIsAuthenticated(true))
+      .catch((err) => {
+        console.error(err)
+      })
 
-      /*  */
-    } catch (error) {
-      console.error(error)
-    }
+    /* Código adicional aquí después del login exitoso si es necesario */
   }
 
   const logout = async () => {

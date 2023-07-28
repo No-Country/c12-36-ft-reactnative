@@ -47,11 +47,6 @@ const LoginForm = () => {
     }
   }
 
-  const handleForgotPasswordClick = () => {
-    console.log('Usuario hizo clic en "¿Olvidaste tu contraseña?"')
-    history.push('/forgotpassword')
-  }
-
   return (
     <div className='login_form'>
       <FormControl className='form' fullWidth>

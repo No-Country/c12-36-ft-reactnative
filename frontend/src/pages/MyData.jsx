@@ -5,8 +5,6 @@ import '../styles/myData.css'
 const MyData = () => {
   const { user } = useAuth()
 
-  console.log(user)
-
   return (
     <div className='mydata'>
       <div className='info_container'>

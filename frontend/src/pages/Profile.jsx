@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router'
 const Profile = () => {
   const { user, authToken, activation, setActivation, setUser, logout } = useAuth()
   const navigate = useNavigate()
-
+  console.log(authToken)
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName,
