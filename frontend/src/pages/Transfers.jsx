@@ -105,7 +105,7 @@ const Transfers = () => {
             <Typography variant='p' color='secondary' className='available'>Saldo disponible {formatearPeso.format(user.balance)}</Typography>
             <div className='transfer_info'>
               <TextField
-                className='transaction_input' name='recipient' id='recipient' onChange={(e) => setRecipient(e.target.value)} label='Ingresar CBU o CVU' type='number' variant='standard' {
+                className='transaction_input' name='recipient' id='recipient' onChange={(e) => setRecipient(e.target.value)} label='Ingresar CBU o CVU o DNI' type='number' variant='standard' {
               ...register('recipient', {
                 required: 'Ingrese un CVU valido',
                 minLength: 8,
