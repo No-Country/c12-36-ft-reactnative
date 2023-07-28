@@ -3,11 +3,11 @@
   flex-direction: column;
   min-height: 100vh;
   color: #F1F0EA;
-  padding-top: 150px;
+  margin-top: 40px;
 }
 
 @media screen and (max-width:900px) {
   .login{
-    padding-top: 100px;
+    padding-top: 1px;
   }
 }
