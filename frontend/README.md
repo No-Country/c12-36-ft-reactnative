@@ -22,9 +22,9 @@ Las carpetas que llevara el proyecto serán:
     
 Los pasos para crearla desde cero y seguir con su desarrollo son:
 
-1. Clona este repositorio en tu dispositivo local: `git clone https://github.com/tu-usuario/pocket-frontend.git`
+1. Clona este repositorio en tu dispositivo local: `git clone https://github.com/No-Country/c12-36-ft-reactnative`
 
-2. Ingresa a la carpeta del proyecto: `cd pocket-frontend`
+2. Ingresa a la carpeta del proyecto: `cd /c12-36-ft-reactnative/frontend`
 
 3. Instala las dependencias necesarias con el siguiente comando: `npm install`
 
