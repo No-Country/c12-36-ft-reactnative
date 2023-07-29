@@ -34,7 +34,7 @@
 ### Configuración y desarrollo del Backend
 
 1. Clona este repositorio en tu dispositivo local: `git clone https://github.com/No-Country/c12-36-ft-reactnative`
-2. Ingresa a la carpeta del proyecto: `cd /c12-36-ft-reactnative/frontend`
+2. Ingresa a la carpeta del proyecto: `cd /c12-36-ft-reactnative/backend`
 3. Instala las dependencias necesarias con el siguiente comando: `npm install`
 4. Crea un archivo `.env` en la raíz del directorio y configura las variables de entorno necesarias.
 5. Inicia el servidor con el siguiente comando: `npm run dev`
@@ -76,8 +76,8 @@ Para desplegar el Backend, utiliza Railway siguiendo los pasos mencionados en la
 
 ### Configuración y desarrollo del Frontend
 
-1. Clona este repositorio en tu dispositivo local: `git clone https://github.com/tu-usuario/pocket-frontend.git`
-2. Ingresa a la carpeta del proyecto: `cd pocket-frontend`
+1. Clona este repositorio en tu dispositivo local: `git clone https://github.com/No-Country/c12-36-ft-reactnative`
+2. Ingresa a la carpeta del proyecto: `cd /c12-36-ft-reactnative/frontend`
 3. Instala las dependencias necesarias con el siguiente comando: `npm install`
 4. Crea un archivo `.env` en la raíz del directorio y configura las variables de entorno necesarias.
 5. Inicia la aplicación con el siguiente comando: `npm run dev`
