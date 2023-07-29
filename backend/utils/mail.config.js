@@ -54,28 +54,45 @@ async function sendVerificationEmail(user, registerToken) {
    result = await transporter.sendMail(mailOptions);  
 
     
-  } 
+  } ;
   
+   // Enviar correo de con clave temporal
 
-  /*const getTemplate = (firstName, token) => {
-      return `
-        <head>
-            <link rel="stylesheet" href="./style.css">
-        </head>
-        
-        <div id="email___content">
-            <img src="../public/ImagenEmail.png" alt="">
-            <h2>Hola ${ firstName }</h2>
-            <p>Para confirmar tu cuenta, ingresa al siguiente enlace</p>
-            <a
-                href="https://wallet-project-nocountry-backend-production-y.up.railway.app/api/users/confirm/${ token }"
-                target="_blank"
-            >Confirmar Cuenta</a>
-        </div>
-      `;
-  }*/
+async function sendrecoveryPasswordEmail(existingUser, recovPassword) {
+  const accessToken = await oAuth2client.getAccessToken();
+
+   const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      type: "OAuth2",
+      user: "pocketpal.nocountry@gmail.com", // Reemplaza con tu dirección de Gmail
+      clientId: CLIENT_ID, 
+      clientSecret: CLIENT_SECRET,
+      refreshToken: REFRESH_TOKEN,
+      accessToken: accessToken,
+    },
+  });   
+  
+  const mailOptions = {
+      from: "pocketpal.nocountry@gmail.com", // Reemplaza con tu dirección de Gmail
+      to: existingUser.email,  
+      subject: "Recuperacion de contraseña Pocketpal",
+      html: `<a href="https://ibb.co/hgMML36"><img src="https://i.ibb.co/6yZZrjM/Imagen-Email.png" alt="Imagen-Email" border="0"></a>,
+      <p>Hola ${existingUser.firstName},        
+      </p><p>Tu nueva contraseña es:${recovPassword}</p>,
+      </p><p>Utiliza esta contraseña para ingresar al sitio <a href="https://pocket-pal.web.app/login">aquí</a>.</p>,
+      </p><p>¡Muchas Gracias! </p>`, 
+      
+    };
+  console.log("Enviando correo de recuperacion de contraseña..."); // para debuguear
+ // console.log(registerToken+"a");
+
+ result = await transporter.sendMail(mailOptions);  
+  
+} 
+ 
 
   module.exports = {
     sendVerificationEmail,
-    /*getTemplate*/
+    sendrecoveryPasswordEmail
   }
